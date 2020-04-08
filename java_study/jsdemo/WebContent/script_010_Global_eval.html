@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>script_010_Global_eval</title>
+</head>
+<body>
+	<script type="text/javascript">
+// eval(String) : 수식의 결과를 리턴, 문자열을 숫자로 리턴
+var data=eval("3+2");
+document.write(typeof data+" data="+data+"<br/>"); // 5 number
+data=eval("3"+"2");
+document.write(typeof data+" data="+data+"<br/>"); // 32 number
+
+
+var m="2";
+var p="3";
+document.write(typeof (m+p)+" (m+p)="+(m+p)+'<br/>'); // 23 string
+
+data=eval("3")+eval("2");
+document.write(typeof data+" data="+data+"<br/>"); // 5 number
+document.write("<hr/>");
+// string [1,2,3,4,5]
+var arr='[1,2,3,4,5]';
+document.write(typeof arr+" "+arr+"<br/>");
+
+// string -> array
+data=eval(arr); 
+document.write(typeof data+" "+data+"<br/>"); // object 1,2,3,4,5 
+document.write((data instanceof Array)+"<br/>"); // true
+
+var obj='{one:"java",two:"jsp"}'; // string 
+// var obj="{one:'java',two:'jsp'}"; 위와 동일함.
+document.write(typeof obj+ " "+obj+"<br/>"); // string {one:"java",two:"jsp"}
+
+data=eval("("+obj+")");
+document.write(typeof data+ " "+data+"<br/>"); // object [object Object]
+
+document.write(data.one+" , "+data.two+"<br/>"); // java, jsp
+</script>
+</body>
+</html>

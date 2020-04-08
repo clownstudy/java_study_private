@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>css_018_border</title>
+<style type="text/css">
+.dv1 {
+	width: 100px;
+	height: 100px;
+	background-color: yellow;
+	
+	/* width만 들어가면 안되고, style도 들어가야 적용된다. */
+	
+	/* border-top-width: 5px;
+	border-right-width: 10px;
+	border-bottom-width: 15px;
+	border-left-width: 20px; */
+	
+	/* border속성에 값을 지정할 때 시계 방향으로 설정한다. */
+	border-width: 5px 10px 15px 20px;
+	
+	/* border-top-style: solid;
+	border-right-style: dashed;
+	border-bottom-style: double;
+	border-left-style: dotted; */
+	
+	border-style: solid dashed double dotted;
+	
+	/* border-top-color: aqua;
+	border-right-color: blue;
+	border-bottom-color: green;
+	border-left-color: maroon; */
+
+	border-color: aqua blue green maroon;
+	
+}
+
+.dv2 {
+	width: 100px;
+	height: 100px;
+	background-color: olive;
+	
+	/* border-top-width: 5px;
+	border-right-width: 10px;
+	border-bottom-width: 5px;
+	border-left-width: 10px; */
+	
+	/* 단축속성 시 두개만 쓰면 상하/좌우로 적용된다. */
+	border-width: 5px 10px;
+	
+	/* border-top-style: solid;
+	border-right-style: dashed;
+	border-bottom-style: solid;
+	border-left-style: dashed; */
+
+	border-style: solid dashed;	
+
+	/* border-top-color: aqua;
+	border-right-color: blue;
+	border-bottom-color: aqua;
+	border-left-color: blue; */
+	
+	border-color: aqua blue;
+}
+
+.dv3 {
+	width: 100px;
+	height: 100px;
+	background-color: red;
+
+	/* border-top-width: 5px;
+	border-right-width: 10px;
+	border-bottom-width: 20px;
+	border-left-width: 10px; */
+	
+	/* 좌우값이 같을 때는 3개만 쓸 수 있음. 반대의 경우는 불가능. */
+	border-width: 5px 10px 20px;
+	
+	border-style: solid;
+	border-color: black;
+
+}
+
+.wrap {
+	width: 200px;
+	height: 200px;
+	background-color: orange;
+	/* border-width: 10px;
+	border-style: solid;
+	border-color: purple; */
+	/* border : border-width border-style border-color; */
+	border: 10px solid purple;
+	
+}
+</style>
+
+
+</head>
+<body>
+	<div class="wrap">
+		<div class="dv1"></div>
+		<div class="dv2"></div>
+	</div>
+
+	<div class="dv3"></div>
+
+</body>
+</html>

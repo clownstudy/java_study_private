@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>script_008_number</title>
+</head>
+<body>
+<script type="text/javascript">
+	var m = "5.6";
+	var p = "3.5";
+	
+	// Number(), parseInt(), parsefloat() : Global에서 제공되는 함수이다.
+	
+	document.write((m+p)+'<br/>');
+	document.write(typeof Number(m)+'<br/>');
+	document.write(parseInt(m)+'<br/>');
+	document.write(typeof parseInt(m)+'<br/>');
+	document.write(parseFloat(p)+'<br/>');
+	document.write(typeof parseFloat(p)+'<br/>');
+	
+	var pn='k';
+	// NaN : Not a Number
+	document.write(Number(pn)+'<br/>'); // NaN
+	document.write(parseInt(pn)+'<br/>'); // NaN
+	
+	var ko=true;
+	document.write(Number(ko)+'<br/>'); // 1
+	document.write(parseInt(ko)+'<br/>'); // NaN
+	
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>script_012_Date</title>
+</head>
+<body>
+<script type="text/javascript">
+//https://www.w3schools.com/js/js_dates.asp
+
+var date = new Date();
+
+//Wed Apr 08 2020 11:39:25 GMT+0900 (대한민국 표준시)
+document.write(date+"<br/>");
+//연도
+document.write(date.getFullYear()+"<br/>"); //2020
+//월은 1월이 0으로 시작, 따라서 +1을 해줘야 당월이 나온다.
+document.write(date.getMonth()+1+"<br/>"); //4
+//일 
+document.write(date.getDate()+"<br/>"); // 해당일 출력
+//요일 0일요일 6토요일
+document.write(date.getDay()+"<br/>"); // 해당 요일 출력
+//시(0-23)
+document.write(date.getHours()+"<br/>");
+//분(0-59)
+document.write(date.getMinutes()+"<br/>");
+//초(0-59)
+document.write(date.getSeconds()+"<br/>");
+//밀리초(0-999)
+document.write(date.getMilliseconds()+"<br/>");
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>script_016_Boolean</title>
+</head>
+<body>
+<script type="text/javascript">
+// true
+document.write(Boolean(3>2)+"<br/>");
+// true -- 하나 들어가있으면 true
+document.write(Boolean("korea")+"<br/>");
+// false -- 비어있으면 false 
+document.write(Boolean("") + "<br/>");
+// true -- 하나 들어가있으면 true
+document.write(Boolean(10)+"<br/>");
+// true -- 숫자 하나면 true
+document.write(Boolean(-10)+"<br/>");
+// false -- 0은 값이 없는 것으로 취급하기 때문에.
+document.write(Boolean(0)+"<br/>");
+// true -- 식의 결과값이 1개여서 
+document.write(Boolean(0+2+3)+"<br/>");
+// true -- 실수 값도 있으니까 true
+document.write(Boolean(1.7)+"<br/>");
+// NaN
+document.write((3/"H")+"<br/>");
+// false
+document.write(Boolean(3/"H")+"<br/>");
+// false
+document.write(Boolean(undefined)+"<br/>");
+// false
+document.write(Boolean(null)+"<br/>");
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>script_005_05_statement</title>
+</head>
+<body>
+<script type="text/javascript">
+var arr = [ 1, 2, 3, 4, 5 ];
+
+var odd=0; // 짝수
+var even=0; // 홀수
+
+	for(var i=0;i<arr.length;i++){
+		if(arr[i]%2==1){
+			odd=odd+arr[i];
+		} else {
+			even=even+arr[i];
+		}
+	}
+
+	document.write('even= ' + even + '<br/>'); 
+	document.write('odd= ' + odd); 
+</script>
+</body>
+</html>

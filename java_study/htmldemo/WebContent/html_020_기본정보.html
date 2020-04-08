@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>html_020_기본정보</title>
+<style>
+	td {
+		font-weight: bold;
+		border: 1px solid;
+	}
+
+	table {
+		width: 600px;
+		border: 1px solid black;
+	}
+
+	#i {
+		text-align: center;
+	}
+	
+</style>
+</head>
+<body>
+<form>
+<table>
+	<tr>
+		<td id="i">이름</td>
+		<td><input type="text"></td>
+	</tr>
+	<tr>
+		<td id="i">아이디</td>
+		<td>
+			<input type="text">
+			<input type="submit" value="중복체크">
+	</tr>
+	<tr>
+		<td id="i">비밀번호</td>
+		<td><input type="password"></td>
+	</tr>
+	<tr>
+		<td id="i">비밀번호확인</td>
+		<td><input type="password"></td>
+	</tr>
+	<tr>
+		<td id="i">이메일</td>
+		<td><input type="email">@
+			<select name="service_name">
+				<option value="select">선택하세요</option>
+				<option value="gmail">gmail</option>
+				<option value="hanmail">hanmail</option>
+				<option value="naver">naver</option>
+			</select> 
+			<input type="text">
+		</td>
+	</tr>
+	<tr>
+		<td id="i">연락처</td>
+		<td><input type="tel"></td>
+	</tr>
+	<tr>
+		<td id="i">메일수신여부</td>
+		<td style="font-weight:normal;">
+			<input type="radio" name="yn" value="yes">받음
+			<input type="radio" name="yn" value="no">받지않음
+		</td>
+	</tr>
+	<tr>
+		<td id="i">관심분야</td>
+		<td style="font-weight:normal;">
+			<input type="checkbox" name="lang" value="java">자바
+			<input type="checkbox" name="lang" value="c++">C++
+			<input type="checkbox" name="lang" value="python">파이썬
+			<input type="checkbox" name="lang" value="android">안드로이드
+		</td>
+	</tr>
+</table>
+
+<input type="reset" value="취소">
+<input type="submit" value="저장">
+</form>
+</body>
+</html>

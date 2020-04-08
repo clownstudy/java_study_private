@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>script_011_String</title>
+</head>
+<body>
+<script type="text/javascript">
+var data = 'it\'s alright'; // https://www.w3schools.com/js/js_strings.asp / escape character
+			//it's alright
+			document.write(data + "<br/>");
+			
+			// keyword : 의미를 부여해서 정의해놓은 단어.
+			// length : 문자열의 길이 리턴.
+			document.write(data.length + "<br/>");
+			
+			/* data.length() 자바에서.*/
+			/* 
+			특정범위 데이터를 리턴해주는 3가지 메소드
+			1. slice(start, end); +기호 : 왼우, -기호: 우왼
+			2. substring(start, end);
+			3. substr(start, length);
+			 */
+			 
+			var str = "Apple, Banana, Kiwi";
+			 document.write(str.slice(7,13) + "<br/>"); // Banana
+			 document.write(str + "<br/>");
+			 
+			 document.write(str.slice(-12,-6) + "<br/>"); // Banana - 값은 역으로.
+			 document.write(str.substring(7,13) + "<br/>"); // Banana
+			 document.write(str.substring(-12,-6) + "<br/>"); // 성립하지 않음. substring은 - 없음.
+			 document.write(str.substr(7,6) + "1<br/>"); // Banana
+			 document.write(str.substr(-12,6) + "<br/>"); // Banana
+			 
+			 str = "Please visit Microsoft! and microsoft Microsoft";
+			 
+
+			 document.write(str.replace("Microsoft","W3Schools")+"<br/>"); //Please visit W3Schools! and microsft Microsoft
+			 document.write(str+"<br/>"); // Please visit Microsoft! and microsft Microsoft
+			 // replace(/찾을단어/g,"변경할단어")) 로 하면 모든 단어찾아서 바꿈
+			 // replace(/찾을단어/gi,"변경할단어")) 로 하면 모든 단어찾아서 바꿈 + 대소문자 구분없이 다.
+			 
+			 document.write(str.replace(/Microsoft/g,"W3Schools")+"<br/>"); // Please visit W3Schools! and microsoft W3Schools
+			 document.write(str.replace(/Microsoft/ig,"W3Schools")+"<br/>"); // Please visit W3Schools! and W3Schools W3Schools
+				
+			 var text1 = "Hello World";
+			 document.write(text1.toUpperCase()+"<br/>"); // HELLO WORLD
+			 document.write(text1.toLowerCase()+"<br/>"); // hello world
+			 
+			 var text2 = "javascript";
+			 document.write(text1+text2+"<br/>"); // Hello Worldjavascript
+			 document.write(text1.concat(text2)+"<br/>");// Hello Worldjavascript
+			 
+			 document.write(text1.concat(" ",text2)+"<br/>");// Hello World javascript
+			 document.write(text1.concat(",",text2)+"<br/>");// Hello World,javascript
+			 
+			 var str2 = "HELLO WORLD"; // https://www.w3schools.com/jsref/jsref_charat.asp
+			 document.write(str2.charAt(0) +"<br/>"); // H
+			 document.write(str2.charAt(1) +"<br/>"); // E
+
+			 // unicode >> A:65 a:97 '0':48
+			 document.write(str2.charCodeAt(0) +"<br/>"); // unicode로 표현 : 72
+			 
+			 var txt = "a,b,c,d,e";
+			 //string
+			 document.write(typeof txt + "<br/>");
+
+			 var arr = txt.split(",");
+			 //object true
+			 document.write(typeof arr + "  "+ (arr instanceof Array) + "<br/>");
+			 // a b c d e
+			 for(var index in arr){
+				 document.write(arr[index]+"<br/>");
+			 }
+			 
+			 var txt2="hijklmn";
+			 var arr2=txt2.split("");
+			
+			 document.write(arr2); // h,i,j,k,l,m,n
+			 // h i j k l m n 
+			 for(var index in arr2){
+				 document.write(arr2[index]+"<br/>");
+			 } 
+			 
+			 var str3 = "The rain in SPAIN stays mainly in the plain";
+			 document.write(str3.match("SPAIN")+"<br/>"); // SPAIN
+			 document.write(str3.match("spain")+"<br/>"); // null - 검색데이터와 일치하는 문자열이 없으면 null을 반환.
+			 document.write(str3.match(/ain/)+"<br/>"); // ain - 단일
+			 document.write(str3.match(/ain/g)+"<br/>"); // ain,ain,ain, - 전체
+			 document.write(str3.match(/ain/gi)+"<br/>"); // ain,AIN,ain,ain - 전체+ 대소문자 구분x	
+			 
+			 document.write("<hr/>");
+			 document.write(str3.search("ain")+"<br/>"); // 5 - search는 index로 반환. 
+			 document.write(str3.search("spain")+"<br/>"); // -1 > 검색한 데이터가 없으면 -1을 반환.
+			 document.write(str3.search(/spain/i)+"<br/>"); // 12
+			 
+			 document.write(str3.search(/ain/g)+"<br/>"); // 5 - 무조건 처음에 일치하는 인덱스 리턴 
+			 
+</script>
+</body>
+</html>

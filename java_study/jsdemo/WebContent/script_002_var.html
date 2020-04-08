@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>script_002_var</title>
+<script type="text/javascript">
+/* 변수 : 프로그램이 어떤 값을 메모리에 저장두기 위한 공간이다. */
+
+
+
+//전역변수:함수 밖에 있는 변수
+var data=10.6;
+var grade="A등급";
+var na;
+var d=0, f=4;
+var g=6, h;
+// 변수가 선언되었으나 값이 할당되어있지 않은 경우, undefined가 출력된다.
+
+
+
+// data type : 자료형
+// 함수정의
+function process(){
+	var np='korea' //지역변수: 함수 안에 있는 변수
+	document.write(data+" "+"<br/>"+typeof(data)+"<br/>"); /* typeof 해당 변수의 자료형 구하기  */
+	document.write(grade+ " "+ typeof(grade)+"<br/>");
+	document.write(np+" "+ typeof(np)+"<br/>");
+	document.write(na+" "+ typeof(na)+"<br/>");
+}
+
+</script>
+</head>
+<body>
+ <button onclick="process()">click</button>
+</body>
+</html>

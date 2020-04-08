@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>css_027_position</title>
+<style type="text/css">
+
+/* 
+	position은 원래 위치값과 기준이 어딘지를 파악해야한다.
+	fixed, absolute는 원래 위치값을 잃어버린다.
+
+	position 을 명시하지 않으면 static으로 default가 되어있고, static이면 body를 기준으로 잡게 된다. 
+	relative 를 주게 되면 그 자식은 부모를 기준으로 position을 잡는다.
+	
+	
+	포지션(position)
+	1. 포지션은 박스에 대한 배치를 변경할 때 사용된다.
+	2. 포지션은 값으로 static, absolute, relative, fixed가 있다.
+	3. static : 순서에 의한 기본 위치를 지정한다.
+	   absolute : 부모 요소를 기준으로 위치를 지정한다.(원래의 위치값을 잃는다.)
+	   relative : 자기 자신을 기준으로 위치를 지정한다.(원래의 위치값을 가지고 있다.)
+	   fixed : 스크린을 기준으로 위치를 지정한다.(원래의 위치값을 잃는다.)
+	4. absolute의 위치 지정
+	   부모 요소의 position이 static이면 기준점이 body가 된다.
+	   부모 요소의 position이 absolute, relative이면 기준점이 부모가 된다. 
+	
+*/
+
+* {
+	margin:0;
+	padding:0;
+	border-width:0;
+}
+
+div.box1 {
+	width: 500px;
+	height: 100px;
+	background-color: black; 
+}
+
+div.box2 {
+	width: 500px;
+	height: 200px;
+	background-color: yellow;
+	position:relative; 
+}
+
+div.box3 {
+	width: 100px;
+	height: 100px;
+	background-color: red;
+	position: absolute;
+	left:50px;
+	top:50px;
+}
+
+div.box4 {
+	width: 100px;
+	height: 100px;
+	background-color: green; 
+	position: relative;
+	top: 0px;
+	left: 200px;
+}
+
+div.box5 {
+	width: 100px;
+	height: 100px;
+	background-color: orange;
+	position: fixed;
+	right: 10px;
+	top: 50px;
+}
+
+div.box6 {
+	width: 800px;
+	height: 100px;
+	background-color: aqua;
+	 
+}
+</style>
+</head>
+<body>
+	<div class="box1"></div>
+	<div class="box2">
+		<div class="box3"></div>
+		<div class="box4"></div>
+		<p>요소들의 위치변경</p>
+	</div>
+	<div class="box5"></div>
+	<div class="box6">엄청나게 빨리 자란다. 생후 11개월 정도면 다 자란다. 소형견의 경우 약 10개월, 대형견은 1년 남짓 정도 걸린다. 보통 생후 2개월의 나이에 데려오게 되는데, 처음 데려왔을 때의 귀여움은 거의 한달도 지속되지 않는다. 데려온지 일주일만 지나도 체중이 늘고 몸이 큰게 느껴지며 한달이 지나면 외모가 눈에 띄게 달라지기 시작한다.
+
+잠이 많다.
+	 
+	</div>
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> 
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> 
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> 
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> 
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> 
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />g
+</body>
+</html>

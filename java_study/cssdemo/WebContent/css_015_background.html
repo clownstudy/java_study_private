@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>css_015_background</title>
+<style type="text/css">
+* {
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+.dv1 {
+	background-color: yellow; /* #FFE400 */
+	width: 100px;
+	height: 100px;
+}
+
+.dv2 {
+	width: 500px;
+	height: 500px;
+	border:1px solid;
+	background-image:url('https://i.pinimg.com/originals/2d/3b/01/2d3b014531228f84eac788c971f65a74.jpg');
+	background-repeat: no-repeat; /* 배경이 반복되지 않게 하는 것. */
+	background-position: center center;
+	/* left center right, top center bottom */
+	background-color: gray;
+}
+
+.dv3 {
+	width: 300px;
+	height: 300px;
+	border: 2px solid black;
+	background-image:url('https://i.pinimg.com/originals/2d/3b/01/2d3b014531228f84eac788c971f65a74.jpg');
+	background-repeat: no-repeat;
+	background-size:  150px 150px;
+	background-position: 100px -50px;
+	
+	/* position에서 두번째인 상하의 경우, 위로가는게 - */
+}
+/* background: bg-color bg-image position/bg-size bg-repeat bg-origin bg-clip bg-attachment initial|inherit; */
+
+.dv4 {
+	width: 300px;
+	height: 100px;
+	background: #ff0000 url('https://i.pinimg.com/originals/2d/3b/01/2d3b014531228f84eac788c971f65a74.jpg') 100px 50px no-repeat;
+/* 	- 들어가는 놈들을 순서대로 입력해서 하는거:단축속성 */	
+}
+</style>
+</head>
+<body>
+	<div class="dv1">&nbsp;</div>
+	<div class="dv2">&nbsp;</div>
+	<div class="dv3">&nbsp;</div>
+	<div class="dv4">&nbsp;</div>
+	<input type="submit" value="길게얘기하면어떻게될지궁금한데이게짤릴까안짤릴까궁금한사람이있을꺼야분명히" style="width:300px, display:block"/>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>html_017_select</title>
+</head>
+<body>
+<!--  
+
+	<select> 태그는 셀렉트 박스 (( 드롭다운 )) 을 표시한다.
+	<option> 태그는 셀렉트 박스에 포함될 항목들을 정ㅈ의하기 위해 사용한다.
+	selected 속성은 여러 개의 항목 중 선택된 항목을 표시하기 위해 사용한다.
+	value 속성은 각 항목 값을 지정하기 위해 사용한다.
+	예를 들어 "JAVA"를 선택하면 이 셀렉트의 값은 "JAVA"가 된다.
+	
+ -->
+<form action="html_017_process.jsp">
+	<select name="subject">
+		<option value="java">JAVA</option>
+		<option value="jsp">JSP</option>
+		<option value="HTML5" selected="selected">HTML5</option> <!-- selected="selected" 와 selected 는 같다. checked도 마찬가지. 속성명과 속성값이 같은 경우, 속성명만 써줘도 되긴 된다. -->
+		<option value="jquery">JQuery</option>
+	</select>
+	
+	<input type="submit" value="commit" />
+</form>
+
+<form action="html_017_process.jsp">
+	<select name="subgroup">
+		<optgroup label="backend">
+			<option value="java">JAVA</option>
+			<option value="jsp">JSP</option>
+			<option value="servlet">SERVLET</option>			
+		</optgroup>
+		<optgroup label="frontend">
+			<option value="html">HTML</option>
+			<option value="css">CSS</option>
+			<option value="js">JAVASCRIPT</option>			
+		</optgroup>
+		<optgroup label="database">
+			<option value="oracle">ORACLE</option>
+			<option value="mysql">MYSQL</option>
+			<option value="mssql">MSSQL</option>			
+		</optgroup>
+	</select>
+	<input type="submit" value="commit" />
+</form>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>script_004_operator</title>
+</head>
+<body>
+<script type="text/javascript">
+/* 
+
+	연산자
+
+	1. 산술연산자 : +, -, *, /, %
+	2. 문자결합연산자 (+)
+	3. 대입연산자 : = += -= *= /=(복합대입연산자)
+	4. 증감연산자 : 증가연산자(++) 감소연산자(--)
+	5. 비교연산자 : ===, !==, ==, !=, >, <, >=, <=    true or false 로 나온다.
+	6. 논리연산자 : &&(and), ||(or), !(not)      true or false 로 나온다.
+	7. 삼항조건연산자 : 식 ? 참 : 거짓        식이 true면 '참'에 있는 것을 취하고, false면 '거짓'을 취한다.
+	8. 데이터타입연산자(typeof, instanceof) : instanceof는 object에서만 활용 가능.
+	
+	n항 연산자 : 피연산자(연산에 참여하는 변수나 상수)의 개수에 따름. not은 하나에 붙으므로 1항연산자, &&, || 등은 2개가 필요하므로 2항연산자.
+*/
+	
+	var x = 10;//number
+	var y = "10"; // string
+	var z = 20;
+	
+	document.write(typeof(x)+" "+typeof(y)+"<br/>");
+	document.write(x+z+"<br/>"); //30
+	document.write(x+y+"<br/>"); //1010
+	document.write(x+true+"<br/>"); //11 true=1, false=0
+	
+	var a=0;
+	/* a=a+1; */
+	a += 1;
+	document.write(a+"<br/>");
+	
+	//리터널(literal) : 자체의 값
+	var b=4;
+	b++;
+	document.write(b+"<br/>"); // 5
+	
+
+	// 값과 데이터 타입을 비교.
+	document.write((x===y)+'<br/>'); // false. x===y+'<br/>'로 처리하면 y+'<br/>'이 먼저 처리된다. 그래서 괄호처리해서 우선순위 높여줌.
+
+	// 값만 비교
+	document.write((x==y)+'<br/>'); // true
+	
+	document.write((x!==y)+'<br/>'); // true
+	document.write((x!=y)+'<br/>'); // false
+	
+	var result= 3>2 && 10>5; 
+	document.write(result+'<br/>'); // true
+	document.write(!result+'<br/>'); // false
+	
+	var totalPage=23%5==0 ? 23/5 : 23/5+2;
+	document.write(totalPage+'<br/>');
+	
+	var arr=[1,2,3];
+	document.write((typeof arr)+ '<br/>'); //object
+	document.write((arr instanceof Array)+'<br/>'); //true
+	
+	var rect={width:10, height:220};
+	document.write((typeof rect) + '<br/>');
+	document.write((rect instanceof Object) + '<br/>');
+	
+	document.write((typeof x)+'<br/>');//number
+	document.write((x instanceof Number)+'<br/>');//false number와 Number는 다름.
+	// number -> Number
+	var nn=new Number(x); // new : 객체 생성 시 사용(객체 타입 생성할 수 있는 메모리 확보)
+	document.write((typeof nn)+'<br/>'); // object
+	document.write((nn instanceof Number)+'<br/>'); // true
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>script_005_03_statement</title>
+</head>
+<body>
+<script type="text/javascript">
+
+/* 
+
+	for(초기식;조건식;증감식){
+		수행할 문장;
+	}
+
+*/
+
+	var arr=[10,20,30,40,50];
+	// 초기식 -> 조건식(true) -> 수행문장 -> 증감식 -> 조건식(true) -> 수행문장 -> 증감식 -> 조건식(false) 끗.
+	for(var i=0; i<=4; i++){
+		document.write(arr[i]);
+	}
+	// 변수.length : 변수의 길이
+	document.write('<hr/>');
+	for(var i=0; i<arr.length; i++){
+		document.write(arr[i]);
+	}
+	
+	document.write('<hr/>');
+	
+	// 0번째 인덱스부터 순차로 증가할 때만 for~in을 사용 가능 
+	for(var index in arr){ // for(int element :arr)
+		document.write(index + ' '+'<br/>');
+	}
+	for(var index in arr){ // for(int element :arr)
+		document.write(arr[index] + ' ');
+	}
+	
+	
+	
+	/*
+	
+	while(조건식){
+		수행할 문장;
+	}
+	
+	*/
+	
+	document.write('<hr/>');
+	var j=0; // while문에는 조건식만 들어가므로, 초기식을 따로 잡아줘야함.
+	while(j<arr.length){
+		document.write(arr[j]+' ');
+		j++; // 무한 반복 방지.
+	}
+	
+	
+</script>
+</body>
+</html>

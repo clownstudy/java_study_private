@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>css_025_imagemenu</title>
+<style type="text/css">
+* {
+	margin:0;
+	padding:0;
+	border-width:0;
+}
+
+h1{
+	width:0;
+	height:0;
+	visibility: hidden;
+	text-indent: -2000px;
+}
+
+ul.mainMenu {
+	width:1208px;
+	height:104px;
+	background-color:yellow;
+	border-left: 2px solid;
+	margin:auto;
+}
+
+ul.mainMenu li {
+	list-style-type:none;
+	float:left;
+	border: 2px solid;
+	border-left: 0px;
+}
+
+ul.mainMenu li a {
+	display:block;
+	width: 300px;
+	height: 100px;
+	text-indent: -3000px;
+}
+
+ul.mainMenu li.mail a {
+	background-image: url('./images/mail.gif');
+
+}
+
+ul.mainMenu li.cafe a {
+	background-image: url('./images/cafe.gif');
+
+}
+
+ul.mainMenu li.blog a {
+	background-image: url('./images/blog.gif');
+
+}
+
+ul.mainMenu li.kin a {
+	background-image: url('./images/kin.gif');
+
+}
+
+ul.mainMenu li.mail a:hover {
+	background-position: right bottom; /* -300px 0;과 같다  */
+	
+
+}
+
+ul.mainMenu li.cafe a:hover {
+	background-position: -300px 0;
+
+}
+
+ul.mainMenu li.blog a:hover {
+	background-position: 300px 0;
+
+}
+
+ul.mainMenu li.kin a:hover {
+	background-position: right top;
+
+}
+
+</style>
+</head>
+<body>
+	<h1>메뉴</h1>
+	<ul class="mainMenu">
+		<li class="mail"><a href="#">메일</a></li>
+		<li class="cafe"><a href="#">카페</a></li>
+		<li class="blog"><a href="#">블로그</a></li>
+		<li class="kin"><a href="#">지식in</a></li>
+	</ul>
+
+
+<!-- <img src="./images/kin.gif" /> -->
+</body>
+</html>

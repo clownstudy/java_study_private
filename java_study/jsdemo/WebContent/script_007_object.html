@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>script_007_object</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var data = 10; // number
+		var obj = new Number(data); // object
+	
+		document.write(typeof data+'<br/>'); // number
+		document.write(typeof obj+'<br/>'); // object
+		
+		// String
+		document.write(typeof data.toString()+'<br/>');
+		document.write(typeof obj.toString()+'<br/>'); 
+		
+		var str1 = new String(data);
+		var str2 = new String(obj);
+		
+		document.write(typeof str1 + '<br/>');
+		document.write(str1 instanceof String);
+		
+		var a=3; // number
+		var b='apple'; // string
+		typeof a; // number string booolean object null...
+		
+		var c=new Number(4); // typeof 시 object로 나온다.
+		typeof c // object
+		c instanceof Number; // true
+		
+		document.write(typeof obj.valueOf()+'<br/>'); // number
+		document.write(typeof str1.valueOf()+'<br/>'); // string
+	</script>
+</body>
+</html>
