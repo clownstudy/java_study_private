@@ -5,13 +5,40 @@
 <title>script_025_dom_attribute</title>
 </head>
 <body>
+
+<!--  
+	
+	요소의 속성값 변경 및 불러오는 방법
+	
+	요소선택.속성명
+		: 요소로 지정한 속성값을 불러옴 
+	요소선택.getAttribute("속성")
+		: 요소로 지정한 속성값을 불러옴
+		
+	요소선택.속성명="값" 
+		: 요소로 지정한 속성값을 새값으로 변경
+	요소선택.setAttribute("속성","값")
+		: 요소로 지정한 속성값을 새값으로 변경
+	
+	외부에서 불러온걸 set이나 getAttribute 안에 넣어줄 수 있으니,
+	지정된 속성명이나 값이 아닌 경우 쓴다.
+		
+ -->
 	<img src="images/gosu.jpg" width="100" height="100" />
 	<img src="images/gosu.jpg" width="100" height="100" />
 	<script type="text/javascript">
 	var imgNode=document.getElementsByTagName("img")[0];
-	// img 변경 
+	// 첫번째 이미지 변경 
 	imgNode.src="images/bag.jpg";
+	// http://localhost:8090/jsdemo/images/bag.jpg
+	document.write(imgNode.src);
 	
+	var imgNode2=document.getElementsByTagName("img")[1];
+	// 두번째 이미지 변경
+	imgNode2.setAttribute("src","images/pg.jpg");
+	document.write("<br/>"+"<hr/>");
+	// images/pg.jpg
+	document.write(imgNode2.getAttribute("src"));
 	</script>
 </body>
 </html>
