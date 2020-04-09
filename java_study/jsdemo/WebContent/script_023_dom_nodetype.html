@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>script_023_dom_nodetype</title>
+</head>
+<body>
+	
+	<!--
+	node_name : https://www.w3schools.com/jsref/prop_node_nodename.asp
+	node_type : https://www.w3schools.com/jsref/prop_node_nodetype.asp // Node Types - Return Values 참고.
+	node_value : https://www.w3schools.com/jsref/prop_node_nodevalue.asp
+	 -->
+	
+	<div id="wrap">
+		<p>content1</p>
+		<p>content2</p>
+		<span><a href="#">이동</a></span>
+	</div>
+	
+	<script type="text/javascript">
+	// p의 2번째 요소를 가져옴.(인덱스1)
+	var pNode=document.getElementsByTagName("p")[1];
+	// [object HTMLParagraphElement]
+	document.write(pNode+"<br/>");
+	// 1 p null
+	document.write(pNode.nodeType+" "+pNode.nodeName+" "+pNode.nodeValue+"<br/>");
+	
+	
+	var divAttr=document.getElementById("wrap").attributes[0];
+	// [object Attr]
+	document.write(divAttr+"<br/>");
+	// 2 id wrap
+	document.write(divAttr.nodeType+" "+divAttr.nodeName+" "+divAttr.nodeValue+"<br/>"+"<hr/>"+"<br/>");
+	
+	var aNode=document.getElementsByTagName("a")[0];
+	// http://localhost:8090/jsdemo/script_023_dom_nodetype.html#
+	document.write(aNode+"<br/>");
+	
+	var textNode=aNode.firstChild;
+	// 3 #text 이동
+	document.write(textNode.nodeType+" "+textNode.nodeName+" "+textNode.nodeValue+"<br/>");
+	
+	</script>
+</body>
+</html>

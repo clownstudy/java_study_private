@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>script_021_dom_parentNode</title>
+</head>
+<body>
+	<div id = "wrap">
+		<p id="p1">content1</p><p id="p2">content2</p><p id="p3">content3</p> <!-- 엔터도 하나의 textNode로 인식함. -->
+	</div>
+	
+	<script type="text/javascript">
+		var pNode2=document.getElementById("p2");
+		// [object HTMLParagraphElement]
+		document.write(pNode2);
+		// div의 자식들의 색상이 변경됨.
+		document.getElementById("p2").parentNode.style.color="blue";
+		// content1에 적용됨.
+		pNode2.previousSibling.style.fontSize="20px";
+		// content3에 적용됨.
+		pNode2.nextSibling.style.border="2px solid black";
+		
+		
+	</script>
+	
+</body>
+</html>
