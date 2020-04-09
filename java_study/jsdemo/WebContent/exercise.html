@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>script_027_02_event_submit</title>
+</head>
+<body>
+<form method="get" name="frm">
+	<!-- script_027_02_first.jsp -->
+	<button id="first">first</button>
+	<!-- script_027_02_second.jsp -->
+	<button id="second">second</button>
+	<!-- script_027_02_third.jsp -->
+	<button id="third">third</button>
+</form>
+<script type="text/javascript">
+/* var first=document.getElementById("first");
+var second=document.getElementById("second");
+var third=document.getElementById("third"); 
+
+	
+	first.onclick=function(){
+		document.frm.action="script_027_02_first.jsp"
+		
+	};
+	
+	second.onclick=function(){
+		document.frm.action="script_027_02_second.jsp"
+		
+	};
+	
+	third.onclick=function(){
+		document.frm.action="script_027_02_third.jsp"
+		
+	}; */ 
+	
+			var btn=document.getElementsByTagName("button").item;
+			console.log(typeof btn)
+			
+			/* document.frm.onsubmit=function(){
+			
+				if(document.getAttribute("btn")==1){
+					document.frm.action="script_027_02_first.jsp";	
+				}
+				
+				if(document.getAttribute("btn")==2){
+					document.frm.action="script_027_02_second.jsp";
+				}
+				
+				if(document.getAttribute("btn")==3){
+					document.frm.action="script_027_02_third.jsp";
+				}
+			}; */
+			
+			
+</script>
+</body>
+</html>
