@@ -13,14 +13,20 @@
 		<label for="my_pass">비밀번호</label>
 		<input type="password" name="my_pass" id="my_pass" />
 		<!-- submit 이벤트가 발생해야 form action이 수행된다. -->
-		<input type="submit" value="login" />
+		<!-- 1번 방법 <input type="submit" value="login" /> -->
+		
+		<!-- 2번 방법 <input type="button" value="login" id="btn" /> 작동해야하는 기능이 여러 개 있을때, 버튼당 submit을 할당해서 구현. -->
+		<!--  3번 방법 <button value="login">login</button> <!--  button으로 해놓으면 submit은 자동으로 된다. -->
+		
+		<input id="imgbtn" type="image" src="images/signin.gif" /> 
 	</fieldset>
 </form>
 
 <script type="text/javascript">
 	/* --------------------------------------------- */
-	
-	document.log_f.onsubmit=function(){
+	/* 4번방법. 얘도 자동으로 submit 이벤트가 발생 */ 
+	var imgbtn=document.getElementById("imgbtn");
+	imgbtn.onclick=function(){
 		var idNode=document.getElementById("my_id");
 		var passNode=document.getElementById("my_pass");
 		
@@ -34,6 +40,66 @@
 			return false;
 		}
 	};
+	
+	
+	/* --------------------------------------------- */
+	/* 3번 방법 : button 활용 시 submit은 자동으로 처리된다.*/
+	/*var button=document.getElementsByTagName("button")[0];
+	button.onclick=function(){
+		var idNode=document.getElementById("my_id");
+		var passNode=document.getElementById("my_pass");
+		
+		if(idNode.value==""){
+			alert("아이디를 입력하세요."); // window.alert인데, window.은 생략 가능.
+			return false; // action 실행 방지.
+		} 
+		
+		if(passNode.value==""){
+			alert("비밀번호를 입력하세요.");
+			return false;
+		}
+	};*/
+	
+	/* --------------------------------------------- */
+	/* 2번 방법 
+	
+	var button=document.getElementById("btn");
+	btn.onclick=function(){
+		var idNode=document.getElementById("my_id");
+		var passNode=document.getElementById("my_pass");
+		
+		if(idNode.value==""){
+			alert("아이디를 입력하세요."); // window.alert인데, window.은 생략 가능.
+			return false; // action 실행 방지.
+		} 
+		
+		if(passNode.value==""){
+			alert("비밀번호를 입력하세요.");
+			return false;
+		}
+		// button은 submit이벤트가 발생하지 않으므로, 강제로 발생시켜야함.
+		document.log_f.submit(); // 강제로 이벤트 발생시킬 땐 메소드를 사용.
+	}
+	
+	
+	/* --------------------------------------------- */
+	/* 아이디 비밀번호 입력란 비어있으면 얼럿 */
+	/* 1번 방법
+	
+		document.log_f.onsubmit=function(){
+		var idNode=document.getElementById("my_id");
+		var passNode=document.getElementById("my_pass");
+		
+		if(idNode.value==""){
+			alert("아이디를 입력하세요."); // window.alert인데, window.은 생략 가능.
+			return false; // action 실행 방지.
+		} 
+		
+		if(passNode.value==""){
+			alert("비밀번호를 입력하세요.");
+			return false;
+		}
+	}; */
 
 
 </script>
