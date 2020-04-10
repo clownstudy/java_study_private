@@ -3,6 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <title>script_027_02_event_submit</title>
+<script type="text/javascript">
+window.onload=function(){
+	function getbtn() {
+		var btn = document.getElementsByName('button');
+		/* var btnValue=btn.value; */
+		console.log(btn);
+		
+	};
+};
+</script>
 </head>
 <body>
 <form method="get" name="frm">
@@ -13,8 +23,8 @@
 	<!-- script_027_02_third.jsp -->
 	<button id="third">third</button>
 </form>
-<script type="text/javascript">
-/* var first=document.getElementById("first");
+
+<!-- var first=document.getElementById("first");
 var second=document.getElementById("second");
 var third=document.getElementById("third"); 
 
@@ -33,9 +43,13 @@ var third=document.getElementById("third");
 		document.frm.action="script_027_02_third.jsp"
 		
 	}; */ 
-	
-			var btn=document.getElementsByTagName("button").item;
-			console.log(typeof btn)
+/* 	function getAllParaElems() {
+	      var allParas = document.getElementsByTagName('p');
+	      var num = allParas.length;
+	      alert('There are ' + num + ' paragraph in this document');
+	    } */
+	/* document.getElementsByTagName("button")=btn; */
+
 			
 			/* document.frm.onsubmit=function(){
 			
@@ -50,9 +64,7 @@ var third=document.getElementById("third");
 				if(document.getAttribute("btn")==3){
 					document.frm.action="script_027_02_third.jsp";
 				}
-			}; */
-			
-			
-</script>
+			}; -->
+<button onclick='getbtn();'>click</button>
 </body>
 </html>
