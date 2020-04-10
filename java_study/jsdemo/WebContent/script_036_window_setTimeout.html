@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>script_036_window_setTimeout</title>
+<script type="text/javascript">
+ var i = 0;
+window.onload = function() {
+	/*	// setTimeout("실행한스크립트", 시간간격);
+		//일정한 시간 후 스크립트를 한번만 실행시킬 때 사용한다.
+	
+	var auto=window.setTimeout("console.log(++i);",3000);
+    }; */
+	
+	/* 내가한거  
+	
+	var t = 0;
+	
+	window.onload = function(){
+		var auto=window.setTimeout("cnt.innerHTML=++t;",3000);
+	}
+	 */
+	 
+	 // 강사님이 한거 
+	var i = 0;
+	var pNode=document.getElementById("cnt");
+	var auto=window.setTimeout(function() {
+		pNode.innerText=++i;
+	}, 2000);
+	
+	var bNode=document.getElementById("stop");
+	bNode.onclick=function(){
+		window.clearTimeout(auto); // 타임아웃 안하면 메모리에 계속 남아있어서.
+	};
+};
+</script>
+</head>
+<body>
+	<p id="cnt">&nbsp;</p>
+	<button id="stop">정지</button>
+
+</body>
+</html>
