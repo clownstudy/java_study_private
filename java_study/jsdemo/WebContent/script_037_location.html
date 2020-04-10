@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>script_037_location</title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+	location : 현재 주소 영역에 참조주소(url)정보를 나타낸다.
+	location객체는 로컬 컴퓨터에서는 href속성만 지원하므로 웹호스팅(웹서버)에 올리고 테스트를 해야만 정상적으로 실행된다.
+	*/
+	// http://localhost:8090/jsdemo/script_037_location.html
+	document.write("href:"+location.href+"<br/>");
+	// localhost
+	document.write("hostname:"+location.hostname+"<br/>");
+	// http:
+	document.write("protocol:"+location.protocol+"<br/>");
+	// http://localhost:8090/jsdemo/script_037_location.html?pagenum=10 // parameter 값가져옴. 
+	document.write("search:"+location.search+"<br/>");
+</script>
+</body>
+</html>
