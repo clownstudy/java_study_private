@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>script_043_function</title>
+</head>
+<body>
+	<script type="text/javascript">
+	// 재귀함수 장점. num이 10일 때까지 docuemt.write가 메모리에 계속 쌓임. 단점. 메모리에 계속 쌓이므로, 쌓을게 많으면 메모리과부하... 
+	// 재귀함수 호출
+	var num=0;
+	// 1~ 10까지 출력되고 === 10 === 가 9개 출력.
+	function testFun(){
+		num++;
+		document.write(num+"<br/>");
+		if(num==10) return; // 10일 때 빠져나옴 
+		testFun(); // testFun()으로 다시 돌아가서 num++;부터 document.write("==="...)까지 다시 수행한다고 보면 됨. 
+		document.write("==="+num+"===<br/>");
+	};
+	testFun();
+	</script>
+</body>
+</html>
