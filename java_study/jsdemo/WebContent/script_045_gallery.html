@@ -70,8 +70,6 @@ a {
 
 <script type="text/javascript">
 	window.onload = function() {
-		/* var btnB=document.getElementById("before_btn")
-		var btnA=document.getElementById("after_btn") */
 		/* 1. 포토 목록에 작은 이미지를 클릭했을 때 큰 이미지로 바꾸는 방법 */
 		var list_zone=document.getElementById("inner_list");
 		var ul_li = list_zone.children;
@@ -85,9 +83,28 @@ a {
 				return false; // 위와 동일. 이때는 function(e)에서 e를 제거한다.
 			}
 			
-		} 
-	};
+		} // end for
+		
+		/* 이전, 다음 버튼을 클릭할 때마다 <ul>이 100px만큼 증가 또는 감소되어 사진이 좌, 우측으로 이동한다 */
+		 
+	 	/* 다음 버튼을 클릭했을 때마다 <ul>이 100px만큼 좌측으로 이동해야한다. */
+	 	var m_num=0;
+	 	var b_btn=document.getElementById("next_btn");
+	 	b_btn.onclick=function(){
+	 		if(m_num>=ul_li.length-3){
+	 			return false;
+	 		}
+	 		
+	 		m_num++;
+	 		list_zone.style.marginLeft=-100*m_num+'Px';
+	 		// <a>를 클릭했을 때 이동이 되지 않도록 false를 리턴.
+	 		return false; 
+	 	}//b_btn
+		
+		
+	}; /////////
 
+ 
 </script>
 </head>
 <body>
