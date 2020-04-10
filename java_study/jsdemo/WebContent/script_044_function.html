@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>script_044_function</title>
+</head>
+<body>
+	<script type="text/javascript">
+		
+		/* // 10
+		function outer() {
+			var num = 10;
+			function inner(){
+				document.write(num);
+			}
+			inner();
+		}
+		outer(); */
+		
+		function outer() {
+			var sum = 50;
+			
+			return function() {
+				return sum;
+			}
+		} 
+		// 클로저(closure)는 외부 함수가 종료되더라도 내부 함수를 통해 외부에서 외부 함수의 자원을 참조할 수 있는 함수이다.
+		var result=outer();
+		// function() { return sum; }
+		document.write(result); 
+		document.write("<hr/>");
+		// 50
+		document.write(result()); // 변수로 지정된 함수 불러올 땐 소괄호 붙인다.
+	</script>
+</body>
+</html>
