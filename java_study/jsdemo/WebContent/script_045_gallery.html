@@ -95,7 +95,21 @@ a {
 	 			return false;
 	 		}
 	 		
-	 		m_num++;
+	 		m_num++; // 현재 위치 파악. 누적용.
+	 		list_zone.style.marginLeft=-100*m_num+'Px';
+	 		// <a>를 클릭했을 때 이동이 되지 않도록 false를 리턴.
+	 		return false; 
+	 	}//b_btn
+	 	
+	 	/* 이전 버튼을 클릭했을 때마다 <ul>이 100px만큼 우측으로 이동해야한다. */
+	 	
+	 	var a_btn=document.getElementById("before_btn");
+	 	a_btn.onclick=function(){
+	 		if(m_num<=0){ // == 0 도 상관없다.
+	 			return false;
+	 		}
+	 		
+	 		m_num--; // 현재 위치 파악. 누적용.
 	 		list_zone.style.marginLeft=-100*m_num+'Px';
 	 		// <a>를 클릭했을 때 이동이 되지 않도록 false를 리턴.
 	 		return false; 
