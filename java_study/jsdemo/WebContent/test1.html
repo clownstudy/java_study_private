@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+body #dv1 div {
+	float:left;
+	padding: 20px 20px;
+	/* margin: 0px 20px; */
+}
+
+#dv2 {
+	clear:both;
+
+}
+#dv3 {
+	display:none;
+	height: 80px;
+	border:2px solid #45093f;
+	margin: 10px;
+	padding: 10px;
+	line-height: 40px;
+	
+}
+
+</style>
+<script type="text/javascript">
+	window.onload=function() {
+		var answerBtn = document.getElementById("answer");
+			answerBtn.onclick=function(){
+				var html= document.getElementById("html");
+				var oracle= document.getElementById("oracle");
+				var css= document.getElementById("css");
+				var js=document.getElementById("js");
+				
+				var langChk = false;
+		        var arr_lang = document.getElementsByName("lang[]");
+		        for(var i=0;i<arr_lang.length;i++){
+		            if(arr_lang[i].checked == true) {
+		                langChk = true;
+		                if (oracle.checked){
+							alert("정답입니다");
+							dv3.style.display="block";
+						} else {
+							alert("오답입니다");
+						}
+		                break;
+		            }
+		        }
+		    
+		        if(!langChk){
+		            alert("보기 중 하나 이상 선택해주세요.");
+		            return false;
+		        }
+			}
+	}
+</script>
+</head>
+<body>
+	<p>1. 클라이언트 프로그램이 아닌 것은?
+	<div id ="dv1">
+		<div><input type="radio" id="html" name="lang[]" value="1" /> (1) HTML</div>
+		<div><input type="radio" id="oracle" name="lang[]" value="2" /> (2) ORACLE</div>
+		<div><input type="radio" id="css" name="lang[]" value="3" /> (3) CSS</div>
+		<div><input type="radio" id="js" name="lang[]" value="4" /> (4) JAVASCRIPT</div>
+	</div>
+	<div id="dv2">
+		<button onclick="location='test2.html'">다음</button><button id="answer">정답풀이</button>
+	</div>
+	<div id="dv3" style="display:none;">
+	정답 : 2 <br />
+	ORACLE은 데이터베이스 관리시스템입니다.
+	</div>
+</body>
+</html>
