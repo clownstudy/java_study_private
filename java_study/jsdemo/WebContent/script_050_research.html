@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>script_050_research</title>
+<style type="text/css">
+
+#dv {
+	margin: 30px 0;
+	padding: 10px 0;
+	border: 2px solid;
+	display:none;
+	
+}
+#dv1 div{
+	float:left;
+	margin: 10px 10px;
+	padding: 10px 10px;
+	
+}
+#dv2 {
+	clear:both;
+}
+</style>
+<script type="text/javascript">
+	window.onload=function() {
+		var btn1=document.getElementById("beforebtn");
+		btn1.onclick=function() {
+			/* window.location.href="script_049_process.html"; */
+			window.open('script_049_process.html');
+		}
+		
+		var btn2=document.getElementById("result");
+		btn2.onclick=function() {
+			var dv1=document.getElementById("dv")
+			dv1.style.display="block";
+		}
+	}
+</script>
+</head>
+<body>
+	<p>2. 줄바꿈을 위한 요소는 무엇인가?</p>
+	<div id="dv1">
+		<div>(1) BR</div>
+		<div>(2) DIV</div>
+		<div>(3) SPAN</div>
+		<div>(4) MENU</div>
+	</div>
+	<div id="dv2">
+	<button id="beforebtn">이전</button>
+	<!-- <button onclick="location=window.open('script_050_research.html')"> 다음 </button> -->
+	<button id="result">정답풀이</button></div><br />
+	<div id="dv">
+		정답: 1 <br /><br />
+		BR은강제줄바꿈을 의미하는 요소입니다.
+	</div>
+	
+</body>
+</html>
