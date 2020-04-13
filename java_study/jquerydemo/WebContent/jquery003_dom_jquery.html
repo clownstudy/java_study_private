@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery003_dom_jquery</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		var btnNode = document.getElementById("btn");
+		var btnEle = $('#btn');
+		
+		//[object HTMLButtonElement] , [object Object]
+		document.write(btnNode+" , "+btnEle + "<br />");
+		// [object Object] , [object HTMLButtonElement] // [0]을 붙이면 jquery가 dom으로 출력.
+		// 			   dom->jquery     jquery->dom
+		document.write($(btnNode)+" , "+btnEle[0]);
+	});
+</script>
+</head>
+<body>
+	<button id="btn">commit</button>
+</body>
+</html>
