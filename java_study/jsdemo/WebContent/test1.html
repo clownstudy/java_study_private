@@ -29,10 +29,10 @@ body #dv1 div {
 	window.onload=function() {
 		var answerBtn = document.getElementById("answer");
 			answerBtn.onclick=function(){
-				var html= document.getElementById("html");
+				/* var html= document.getElementById("html"); */
 				var oracle= document.getElementById("oracle");
-				var css= document.getElementById("css");
-				var js=document.getElementById("js");
+				/* var css= document.getElementById("css");
+				var js=document.getElementById("js"); */
 				
 				var langChk = false;
 		        var arr_lang = document.getElementsByName("lang[]");
@@ -53,8 +53,16 @@ body #dv1 div {
 		            alert("보기 중 하나 이상 선택해주세요.");
 		            return false;
 		        }
-			}
-	}
+			};
+			
+						/* var nextPage = document.getElementById("nextBtn")
+						nextPage.onclick=function() {
+								if(dv3.display=="none"){
+									alert("문제를 풀어보세요");
+										return false;
+							};
+						} */
+	};
 </script>
 </head>
 <body>
@@ -66,9 +74,11 @@ body #dv1 div {
 		<div><input type="radio" id="js" name="lang[]" value="4" /> (4) JAVASCRIPT</div>
 	</div>
 	<div id="dv2">
-		<button onclick="location='test2.html'">다음</button><button id="answer">정답풀이</button>
+<!-- 		<button onclick="location='test2.html'">다음</button> -->
+		<button id="nextBtn">다음</button>
+		<button id="answer">정답풀이</button>
 	</div>
-	<div id="dv3" style="display:none;">
+	<div id="dv3">
 	정답 : 2 <br />
 	ORACLE은 데이터베이스 관리시스템입니다.
 	</div>
