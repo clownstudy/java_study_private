@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>script_050_right_answer</title>
+<style type="text/css">
+#dv {
+	display:none;
+}
+</style>
+<script type="text/javascript">
+	window.onload=function(){
+			document.getElementById('next').onclick=function(){
+					document.frm.action="script_049_process.html";
+			}
+			document.getElementById('solution').onclick=function(){
+				document.getElementById('dv').style.border="2px solid red";
+				document.getElementById('dv').style.display="block";
+				return false;
+			}
+	}
+</script>
+</head>
+<body>
+	<div id="wrap">
+		<form name="frm">
+		<p> 클라이언트 어쩌고 </p>
+			<input type="radio" name="lang" /> html
+			<input type="radio" name="lang" /> oracle
+			<input type="radio" name="lang" /> css
+			<input type="radio" name="lang" /> java
+			<button id="next">다음 </button>
+			<button id="solution">정답 </button>
+		</form>
+		<div id='dv'>
+			여기는 내용이 들어가는 곳입니다.
+			
+			엣헴 엣헴 
+		</div>
+	
+	</div>
+</body>
+</html>
