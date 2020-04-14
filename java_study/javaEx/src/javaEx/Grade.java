@@ -18,13 +18,13 @@ public class Grade {
 		}
 		if(score <= 100 && score >= 90)
 			grade = "A"; 
-		if(score <= 89 && score >= 80)
+		else if(score <= 89 && score >= 80)
 			grade = "B"; 
-		if(score <= 79 && score >= 70)
+		else if(score <= 79 && score >= 70)
 			grade = "C"; 
-		if(score <= 69 && score >= 60)
+		else if(score <= 69 && score >= 60)
 			grade = "D"; 
-		if(score <= 59)
+		else if(score <= 59)
 			grade = "F"; 
 		
 		return grade;		
