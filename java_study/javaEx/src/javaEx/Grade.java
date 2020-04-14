@@ -24,7 +24,7 @@ public class Grade {
 			grade = "C"; 
 		else if(score <= 69 && score >= 60)
 			grade = "D"; 
-		else (score <= 59)
+		else if(score <= 59)
 			grade = "F"; 
 		
 		return grade;		
