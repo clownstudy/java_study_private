@@ -22,3 +22,7 @@ java_study\.metadata\.plugins
 hs_err_pid*
 *.index
 /.metadata/
+*.dat
+.metadata/.plugins/org.eclipse.jdt.core/savedIndexNames.txt
+*.index
+.metadata/.plugins/com.genuitec.eclipse.devstyle/recent.json
