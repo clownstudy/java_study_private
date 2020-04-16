@@ -1,0 +1,12 @@
+package javaEx;
+
+public class BreakContinueEx1 {
+	public static void main(String[] args) {
+		// 반복문에서 가장 가까운 반복문을 벗어나거나(break)
+		// 해당 반복문의 조건으로 이동(continue)
+		for (int i=0; i<11; i++) {
+			if(i==6)break;
+			System.out.println("i="i);
+		}
+	}
+}
