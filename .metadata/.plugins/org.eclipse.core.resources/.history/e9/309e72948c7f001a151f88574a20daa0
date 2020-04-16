@@ -1,0 +1,14 @@
+package javaEx;
+
+public class SwitchEx1 {
+	public static void main(String[] args) {
+	/* 
+		switch(조건)--값(정수,char){
+		case(값1): // break;가 안들어가면 아래로 다 돌기 때문에, 웬만하면 break를 쓰는 것이...
+		case(값2):
+		case(값3):
+		default:
+		}
+	*/	
+	}
+}
