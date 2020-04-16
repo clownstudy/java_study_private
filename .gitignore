@@ -1,5 +1,5 @@
-.metadata\.plugins
-java_study\.metadata\.plugins
+.metadata/.plugins
+java_study/.metadata/.plugins
 # Log file
 *.log
 
