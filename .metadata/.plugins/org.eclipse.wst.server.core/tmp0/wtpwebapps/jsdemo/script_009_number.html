@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>script_009_number</title>
+<script type="text/javascript">
+	function process(){	
+		var dan=document.getElementById("dan");
+		console.log(typeof dan.value); // typeof dan -> 뭘 입력해도 object, typeof dan.value -> string
+		dan=parseInt(dan.value); // 바로 위 console과 변경하면 안됨. Number type에 value 속성이 없기 때문에.
+		for(var i=1;i<=9;i++){
+			document.write(dan+"*"+i+"="+(dan*i)+"<br/>");
+		}
+	}
+</script>
+
+</head>
+<body>
+	<span>단입력:</span>
+	<input type='text' id="dan" />
+	<button onclick='process()'>
+		click
+	</button>
+</body>
+</html>

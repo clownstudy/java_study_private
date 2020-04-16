@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>script_042_function</title>
+<script type="text/javascript">
+	var color = [ "white", "yellow", "aqua", "purple" ];
+	var i = 0;
+
+	// 콜백함수 : 이벤트가 발생된 후 수행되는 함수 
+	window.onload = function() {
+		window.setInterval(colorBg, 300);
+	};
+	function colorBg() {
+		i++;
+		if (i >= color.length) // 4이상되면 
+			i = 0;
+		var bodyTag = document.getElementsByTagName("body")[0];
+		bodyTag.style.backgroundColor = color[i];
+
+	};
+</script>
+</head>
+<body>
+	<button>background color change</button>
+</body>
+</html>

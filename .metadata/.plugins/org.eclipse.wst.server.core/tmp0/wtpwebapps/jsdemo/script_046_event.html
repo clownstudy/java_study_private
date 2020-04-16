@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>script_046_event</title>
+<script type="text/javascript">
+window.onload = function () {
+	var btn = document.getElementById("btn");
+	// 한 객체에 같은 이벤트를 여러 개 등록할 수 없다. 마지막으로 등록한 이벤트가 실행됨.
+	btn.onclick = function (){
+		alert('test1');
+	}//test1
+	
+	btn.onclick = function () {
+		alert('test2');
+	}//test2
+}//////
+
+</script>
+</head>
+<body>
+	<button id = "btn">button</button>
+</body>
+</html>

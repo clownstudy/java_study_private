@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery_004_this</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+	$('button').click(process); // click 이벤트가 발생했을 때 process등록.
+});
+
+function process(){
+	// [object HTMLButtonElement] , [object Object]
+	document.write(this+" , "+$(this)+"<br/>"); /* this는 dom형태로 가져옴 */
+	// BODY - 부모노드 노드 네임 구하기 
+	document.write(this.parentNode.nodeName+"<br/>");
+	// BODY - 부모노드 태그 네임 구하기
+	document.write(this.parentNode.tagName+"<br/>");
+	// BODY - 부모노드 노드 네임 구하기 - DOM -> jQuery
+	document.write($(this).parent()[0].nodeName+"<br/>");
+	document.write("<hr/>");
+	// BODY - 부모노드 태그 네임 구하기 - DOM -> jQuery
+	document.write($(this).parent()[0].tagName+"<br/>");
+	
+}////
+
+</script>
+</head>
+<body>
+	<button id="btn">commit</button>
+</body>
+</html>

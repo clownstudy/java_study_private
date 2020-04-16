@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>script_028_option.jsp</title>
+</head>
+<body>
+	<script type="text/javascript">
+	// window.onload=function(){} - 현재 페이지가 메모리에 로딩이 되면, 
+	window.onload=function(){
+		document.frm.onsubmit=function(){
+			var optFruit=document.frm.fruit; // document.xxx.xxx => name으로 가져오기.
+			alert(optFruit.selectedIndex+"="+optFruit.value);// selectedIndex : 선택된 항목의 index 가져오기. 
+		}
+	};
+	</script>
+	<form name="frm" method="get" action="#">
+		<p>과일선택</p>
+		<select name="fruit">
+			<option value="fruit">과일을 선택하세요</option>
+			<option value="apple">사과</option>
+			<option value="kiwi">키위</option>
+			<option value="banana">바나나</option>
+			
+		</select>
+		<input type="submit" value="commit" />
+	</form>
+	<!-- <script type="text/javascript">
+		document.frm.onsubmit=function(){
+			var optFruit=document.frm.fruit; // document.xxx.xxx => name으로 가져오기.
+			alert(optFruit.selectedIndex+"="+optFruit.value);// selectedIndex : 선택된 항목의 index 가져오기. 
+		}
+	</script> -->
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>script_005_statement</title>
+</head>
+<body>
+<!-- 
+	
+	제어문
+	1. 선택문 : if~else, switch~case
+	2. 반복문 : for, while, do~while, for ~in
+	3. 기타 : break,
+
+ -->
+ 	<script type="text/javascript">
+ 	/*
+ 	
+ 		if(조건식){
+ 			
+ 		}else{
+ 			
+ 		}
+ 	*/
+ 	var jumsu=88;
+ 	if(jumsu>=60){
+ 		document.write('합격'); // 조건식이 참일 때
+ 	}else{
+ 		document.write('불합격'); // 조건식이 거짓일 때 
+ 	}
+ 	
+ 	document.write('<hr>');
+ 	
+ 	/*
+ 	
+ 	if(조건식){
+ 		수행할 문장;
+ 	}elif(조건식){
+ 		수행할 문장;
+ 	}else if(조건식){
+ 		수행할 문장;
+ 	}else{
+ 		수행할 문장;
+ 	}
+ 	
+ 	*/
+ 	
+ 	var res;
+ 	if(jumsu>=90){
+ 		res='A';
+ 	}else if (jumsu>=80){
+ 		res='B';
+ 	}else if (jumsu>=70){
+ 		res='C';
+ 	}else if (jumsu>=60){
+ 		res='D';
+ 	}else {
+ 		res='F';
+ 	};
+ 	document.write(res+'<br/>');
+ 	</script>
+ 
+ 
+</body>
+</html>

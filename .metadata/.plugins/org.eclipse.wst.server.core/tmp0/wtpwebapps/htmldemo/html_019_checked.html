@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>html_019_checked</title>
+</head>
+<body>
+
+<!-- <input>태그의 type속성이 checked이면 체크박스를, radio이면 라디오 버튼을 표시한다.
+checked속성은 여러 개의 항목 중 선택된 항목을 표시하기 위해 사용한다.
+라디오 버튼은 name속성의 값이 모두 일치해야한다.(name속성이 같은 항목들 중 한 개만 선택이 가능하다)
+체크박스는 name속성의 값과는 상관없이 다중 선택이 가능하다. -->
+
+
+	<form action="html_019_process.jsp">
+	<h3>체크박스</h3>
+	<input type="checkbox" name="subject" value="java" checked="checked"> 자바
+	<input type="checkbox" name="subject" value="database" checked="checked"> 데이터베이스
+	<input type="checkbox" name="subject" value="spring" checked="checked"> 스프링
+	<!-- name을 동일하게 줬기 때문에 jsp로 갈 때 배열로 가게된다. 따로 지정하면 변수로 되어서, 값이 다르게 됩니다. -->
+	<p><input type="submit" value="눌러보세요" /></p>
+	</form>
+	
+	
+	<!-- 라디오 버튼은 name값을 다 일치시켜줘야함. -->
+	
+	<form action="html_019_process.jsp">
+	<h3>라디오버튼</h3>
+	<input type="radio" name="fruit" value="apple">사과
+	<input type="radio" name="fruit" value="melon" checked="checked">메론
+	<input type="radio" name="fruit" value="grape">포도
+	<p><input type="submit" value="commit" /></p>
+	</form>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>script_049_process</title>
+<style type="text/css">
+
+#dv {
+	margin: 30px 0;
+	padding: 10px 0;
+	border: 2px solid #de2fd8;
+	display:none;
+	
+}
+#dv1 div{
+	float:left;
+	margin: 10px 10px;
+	padding: 10px 10px;
+	
+}
+#dv2 {
+	clear:both;
+}
+</style>
+<script type="text/javascript">
+	window.onload=function() {
+		var btn1=document.getElementById("nextbtn");
+		btn1.onclick=function() {
+			/* window.location.href="script_050_research.html"; */
+			window.open('script_050_research.html');
+		}
+		
+		var btn2=document.getElementById("result");
+		btn2.onclick=function() {
+			var dv1=document.getElementById("dv")
+			dv1.style.display="block";
+		}
+	}
+</script>
+</head>
+<body>
+	<p>1. 클라이언트 프로그램이 아닌 것은?</p>
+	<div id="dv1">
+		<div>(1) HTML</div>
+		<div>(2) ORACLE</div>
+		<div>(3) CSS</div>
+		<div>(4) JAVASCRIPT</div>
+	</div>
+	<div id="dv2">
+	<button id="nextbtn">다음</button>
+	<!-- <button onclick="location=window.open('script_050_research.html')"> 다음 </button> -->
+	<button id="result">정답풀이</button></div><br />
+	<div id="dv">
+		정답: 2 <br /><br />
+		ORACLE은 데이터베이스 관리시스템입니다.
+	</div>
+	
+</body>
+</html>

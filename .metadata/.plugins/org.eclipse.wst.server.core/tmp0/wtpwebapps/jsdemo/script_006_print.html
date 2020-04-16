@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>script_006_print</title>
+</head>
+<body>
+	<script type="text/javascript">
+	
+		var data = 'javascript';
+		var ko = 'test';
+		
+		// document.write(data+'<br/>'+ko);
+		// document.write(data+'\n'+ko); // \n적용 안됨.
+		
+		// window.alert(data+'<br/>'+ko); // br파싱 안됨.
+		// window.alert(data+'\n'+ko);
+		console.log(data+' '+ko); // 화면에 뜨지 않고, 브라우저 개발자도구 console에서 출력된다. 간단하게 테스트할 때 사용
+		
+	</script>
+</body>
+</html>

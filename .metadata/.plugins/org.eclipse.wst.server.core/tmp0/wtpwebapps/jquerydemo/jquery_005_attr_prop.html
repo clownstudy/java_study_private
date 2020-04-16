@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery_005_attr_prop</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	// 속성 : attribute(HTML), property(JavaScript)
+	// attribute : 요소에 속성으로 지정되어있는 것만 가져옴. 없으면 undefined
+	// property : 속성에 지정되어있지 않아도 false true로 가져옴.
+
+	$(document).ready(function() {	
+		$('button').click(function(){
+			// a라는 요소의 속성 href의 값을 가져와라!!
+			// jquery001_cnd.html
+			// alert($('a').attr('href'));
+			
+			// http://localhost:8090/jquerydemo/jquery001_cnd.html
+			//alert($('a').prop('href'));
+			
+			// undefined, checked
+			alert($('input').attr('checked'));
+			// false(unchecked), true(checked)
+			// alert($('input').prop('checked'));
+		});
+	});
+</script>
+</head>
+<body>
+	<button id="btn">commit</button>
+	<a href="jquery001_cnd.html">첫페이지</a>
+	<input type="checkbox" />
+	<div>test</div>
+</body>
+</html>

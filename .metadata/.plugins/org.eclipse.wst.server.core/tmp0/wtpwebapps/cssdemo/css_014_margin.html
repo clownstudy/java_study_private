@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+* {
+	margin: 0px;
+	padding: 0px;
+	border-width: 0px;
+}
+
+.wrap {
+	width: 160px;
+	height: 260px;
+	background-color: yellow;
+	text-align: center;
+}
+
+.aa {
+	width: 100px;
+	height: 100px;
+	background-color: red;
+	border-top: 10px solid black;
+	border-bottom: 10px solid black;
+	margin-bottom: 10px;
+}
+
+.bb {
+	width: 100px;
+	height: 100px;
+	background-color: blue;
+	border-top: 10px solid black;
+	border-bottom: 10px solid black;
+	margin-top: 10px;
+}
+
+/* 마진(margin)은 겹치면 둘 중 하나만 적용됨 */
+span.sp1 {
+	background-color: aqua;
+}
+
+span.sp2 {
+	background-color: lime;
+	border: 1px solid black;
+	padding: 30px;
+}
+
+.inline {
+	background-color: maroon;
+	overflow: hidden;
+}
+
+.cc {
+	background-color: green
+}
+
+#m1 {
+	width: 100px;
+	height: 100px;
+	background-color: blue;
+	margin: 10px;
+/* 	padding-top: 1px; */
+}
+
+#m2 {
+	width: 80px;
+	height: 80px;
+	background-color: yellow;
+	margin: 10px;
+}
+</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="aa">sample</div>
+		<div class="bb">test</div>
+	</div>
+	<div class="inline">
+		<span class="sp1">span1</span><span class="sp2">span2</span>
+		<span class="sp1">span1</span>
+		<span class="sp2">span2</span>
+		<!-- 붙여서 바로 쓰는 것과, 줄바꿈하는 것은 공백 하나정도 차이가 발생한다.  -->
+		<!-- inline은 블록이긴 하지만, 최상위, 즉 떠있다고 보면 되어서 다른걸 덮어버린다. overflow:hidden 속성으로 감출 수 있음. -->
+	</div>
+	<p class="cc">test test test test test test</p>
+	<div id="m1">
+		<div id="m2">test</div>
+	</div>
+
+
+</body>
+</html>

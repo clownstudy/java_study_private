@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>html_016_form</title>
+</head>
+<body>
+
+<!--
+	fomr요소는 웹 문서에서 서로 상호작용을 할 수 있도록 하는 역할을 담당한다.
+	
+	<form>
+	클라이언트로부터 입력받아 서버로 보내기 위한 요소를 작성한다.
+	</form>
+	
+	action 속성 : form의 내용을 처리하기 위한 서버 URI를 설정한다.
+	method 속성 : 클라이언트의 데이터를 서버로 보내기 위한 방법을 설정한.
+		값 get은폼의 내용을 서버로 전송할 때 255바이트 이하까지만 전송한다.
+			주소표시줄에전송되는 값이 노출된다. 쿼리스트링
+		값 post는 폼의 내용을 서버로 전송할 때 255바이트보다 크거나 보안이 필요한 내용을 보낼 때 설정한다.
+	enctype 속성 : 전송할 데이터에 첨부파일이 없을 때는 
+				enctype="application/x-www-form-urlencoded"
+				
+				전송할 데이터에 첨부파일이 있을 때
+				enctype="mulitpart/form-data
+				
+	
+	name		value
+	parameter	parameter-value
+	
+-->
+	
+	
+
+<form action="html_016_process.jsp" method="get" enctype="application/x-www-form-urlencoded">
+	<fieldset>
+		<legend>로그인</legend>
+		<label for="fid">아이디</label> <!-- for는 id와 동일해야한다. 아이디라는 텍스트를 클릭해도 input으로 넘어갈 수 있게 해주는 항목.  -->
+		<input type="text" name="fid" id="fid" /> <!-- name은 파라미터명(매개변수명), 입력한 값은 안보이지만 input의 value로 저장된다. -->
+		<label for="fpass">비밀번호</label>
+		<input type="password" name="fpass" id="fpass" />
+	</fieldset>
+	
+	<input type="submit" value="로그인" /> <!-- submit시  action에 있는 page를 서버에 요청.  -->
+</form>
+
+
+<form action="html_016_process.jsp" method="post" enctype="application/x-www-form-urlencoded"> <!-- post시 한글이 깨지는 경우가 발생하는데, form에 accept-charset="utf-8"  를 넣어주면 된다.
+혹은 jsp파일에서
+<% 
+	request.setCharacterEncoding("UTF-8");
+%> 를 명시해주면 된다.-->
+	<fieldset>
+		<legend>로그인</legend>
+		<input type="text" name="fid" id="fid" placeholder="아이디" />
+		<input type="password" name="fpass" id="fpass" placeholder="비밀번호" />
+	</fieldset>
+	<input type="submit" value="로그인" />
+</form>
+
+<!-- get, post?
+
+	1. post는 좀 중요한거 보낼 때
+	2. post가 용량이 크다. (256byte 이상일 때 쓴다.)
+	3. 파라미터로 첨부파일을 보낼 시 enctype을 multipart/form-data 라고 명시해야한다. -->
+</body>
+</html>

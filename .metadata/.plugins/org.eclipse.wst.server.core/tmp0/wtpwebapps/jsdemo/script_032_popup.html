@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>script_032_popup</title>
+<script type="text/javascript">
+window.onload=function(){
+	document.getElementsByTagName('area')[0].onclick=function(){
+		var imgEle=document.getElementsByTagName("img")[0];
+		imgEle.style.width='0px';
+		imgEle.style.height='0px';
+		imgEle.style.visibility='hidden';
+	}
+};
+	
+	
+</script>
+</head>
+<body>
+<p>팝업창 띄우기</p>
+
+	<img src="images/popup.jpg" usemap="#pop" />
+	<map name="pop" id="pop">
+		<area shape="rect" coords="255,332,290,345" href="#" alt="창닫기" onclick="window.close();"/></map>
+</body>
+</html>

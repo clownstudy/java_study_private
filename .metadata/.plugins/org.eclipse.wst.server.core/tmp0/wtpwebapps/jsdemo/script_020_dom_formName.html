@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>script_020_dom_formName</title>
+<script type="text/javascript">
+	function process(){
+		var fname=document.frm.fname; // input을 가져옴.
+		console.log(fname.value);
+		console.log(fname.defaultValue);
+		return false; // action이 실행되지 않음. 아래 onclick에도 넣어줘야함.
+	}
+	
+	  
+</script>
+</head>
+<body>
+<form name="frm">
+	<label for="fname">이름</label>
+	<input type="text" name="fname" id="fname" value="이름.." />
+	<button onclick="return process()">click</button> <!-- onclick에 return process넣고, 위에 return false해야함.--> 
+</form>
+
+</body>
+</html>

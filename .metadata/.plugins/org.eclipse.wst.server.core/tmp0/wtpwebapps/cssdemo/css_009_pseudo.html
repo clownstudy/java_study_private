@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>css_009_pseudo</title>
+<style type="text/css">
+
+/* p요소 2번째에 스타일을 적용한다.
+index는 1부터 시작한다. */
+
+/* p가 두번째에 있을때만 적용. */
+
+p:nth-child(2) {
+	background-color: red;
+}
+</style>
+</head>
+<body>
+	<div>
+		<p>computer</p>
+		<span>test</span> 
+		<p>monitor</p>
+		<p>television</p>
+		<p>desk</p>
+		<p>top</p>
+	</div>
+	<div>
+		<p>ddd</p>
+		<p>ddddd</p>
+	</div>
+	<div>
+		<p>test2</p>
+		<div>
+		<p>ddd</p>
+		<p>ddddd</p>
+		</div>
+		<p>tsklejtske</p>
+	</div>
+</body>
+</html>

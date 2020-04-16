@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery003_selector</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	// button요소의 모든 부모요소.
+	$('button').parent().css({
+		'width':'200px',
+		'height':'200px',
+		'border':'1px solid black'
+	});
+	// ul요소의 모든 자식요소
+	$('ul').children().css({
+		'color':'red'
+	});
+	// ul요소의 이전 이웃요소 
+	$('ul').prev().css({
+		'background-color':'aqua'
+	})
+	// ul요소의 다음 이웃요소 
+	$('ul').next().css({
+		'background-color':'yellow'
+	})
+	/* // li요소 중에서 짝수만 구하기.(인덱스 상으로. 0,1,2니까..)
+	$('li:even').css({
+		'border':'2px solid black'
+	})
+	// li요소 중에서 홀수만.(인덱스 0부터 시작.)
+	$('li:odd').css({
+		'border':'2px solid blue'
+	}) */
+	
+	// li요소의 짝수번째 자식(인덱스 1부터 시작)
+	$('li:nth-child(even)').css({
+		'border':'2px solid green'
+	})
+});
+</script>
+</head>
+<body>
+	<div id="wrap">
+		<button id="btn">click</button>
+		<ul>
+			<li>list1</li>
+			<li>list2</li>
+			<li>list3</li>
+		</ul>
+		<p>line</p>			
+	</div>
+</body>
+</html>

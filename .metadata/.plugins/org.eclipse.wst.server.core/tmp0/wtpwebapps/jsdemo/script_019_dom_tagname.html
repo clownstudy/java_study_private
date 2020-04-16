@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>script_019_dom_tagname</title>
+</head>
+<body>
+	<p>content1</p>
+	<p>content2</p>
+	<p>content3</p>
+	<p>content4</p>
+	<script type="text/javascript">
+		var pNode=document.getElementsByTagName("p");
+		console.log(pNode.length);	// 4
+		console.log(typeof pNode); // object
+		
+		// https://www.w3schools.com/jsref/dom_obj_htmlcollection.asp
+		console.log(pNode instanceof HTMLCollection); // true
+		console.log(pNode.item(0)); // <p>content1</p>
+		console.log(pNode[0,1]); // <p>content1</p> <p>content2</p>
+		// CSS꺼JS로 변경 시 ; 하이픈제거 후 하이픈 뒤 첫글자를 대문자로 변경.
+		pNode[0].style.backgroundColor="yellow";
+		pNode.item(1).style.border="2px solid red";
+	</script>
+</body>
+</html>

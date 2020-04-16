@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery002_selector</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+	$('*').css({'margin':'0px','padding':'0px','border-size':'0px'});
+	$('div').css({'background-color':'green','width':'200px','height':'200px'});
+	$('#line').css({'color':'blue'});
+	$('.common').css({'border':'1px solid black'});
+	$('a[href]').css({'color':'red'});
+	
+});
+</script>
+</head>
+<body>
+	<div></div>
+	<p id="line">line</p>
+	<p class="common">common</p>
+	<a href="#">korea</a>
+</body>
+</html>

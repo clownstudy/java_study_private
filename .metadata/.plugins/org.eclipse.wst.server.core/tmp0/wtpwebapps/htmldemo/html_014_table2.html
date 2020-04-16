@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+		table{
+			background-color: yellow;
+			width:500px;
+			margin:auto;
+		}
+		
+		table,th,td{
+			border:1px solid black;
+			border-collapse:collapse;
+		}
+		/* table, th, td >> ,는 or 과 같음. 해당하는 모든 셀렉터에 적용하라는 의미 */
+	</style>
+</head>
+<body>
+
+<table>
+<thead>
+	<tr>
+		<th rowspan="2">교실</th>
+		<th colspan="2" id="s">수강생</th>
+	</tr>			
+	<tr>
+		<th id="m">남</th>
+		<th id="w">여</th>
+	</tr>
+</thead>
+	<tbody>
+		<tr>
+			<th id="L1">L1반</th>
+			<!--  수강생 남 L1반 10 -->
+			<td headers="s m L1">10</td>
+			<!--  수강생 여 L1반 5 -->
+			<td headers="s w L1">5</td>
+		</tr>
+		<tr>
+			<th id="L2">L2반</th>
+			<td headers="m s">5</td>
+			<td headers="w s">10</td>
+		</tr>
+		
+		
+		
+		
+	</tbody>
+</table>
+
+
+</body>
+</html>

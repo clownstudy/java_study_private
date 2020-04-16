@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>script_024_dom_html_value</title>
+</head>
+<body>
+	<input type="text" name="data" id="data" />
+	<div id="dv">
+	<script type="text/javascript">
+		// input 입력칸에 기본으로 "value속성"이 입력됨.
+		document.getElementById("data").value="value속성";
+		// div에 <p>Text</p> 들어감.
+		// document.getElementById("dv").innerText="<p>Text</p>";
+		
+		// <div><p>Text</p><div> 요소로 넣는 방법.
+			// Text만 노출됨.
+		document.getElementById("dv").innerHTML="<p>Text</p>";
+		// console에 "value속성" 출력됨.
+		console.log(document.getElementById("data").value);
+		// console에 "Text" 출력됨.
+		console.log(document.getElementById("dv").innerText);
+		// console에 "<p>Text</p>" 출력됨.
+		console.log(document.getElementById("dv").innerHTML);
+		
+	</script>
+	</div>
+</body>
+</html>
