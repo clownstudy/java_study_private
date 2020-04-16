@@ -1,0 +1,6 @@
+package kr.co.soldesk.emp;
+
+public class employee {
+	//멤버 변수
+	// 출근메소드, 퇴근메소드, 근무메소드
+}

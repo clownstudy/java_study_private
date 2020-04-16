@@ -1,0 +1,7 @@
+package javaEx;
+
+public class ReferenceEx1 {
+	public static void main() {
+		boolean r = new Integer("1") == new Integer("1");
+}
+}

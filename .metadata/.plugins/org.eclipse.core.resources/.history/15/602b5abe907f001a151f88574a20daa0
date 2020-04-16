@@ -1,0 +1,26 @@
+package javaEx;
+
+public class SwitchEx3 {
+	public static void main(String[] args) {
+		//System.out.println(args[0].charAt(0));
+		char c = args[0].charAt(0);
+		switch(c) {
+		case 'A':
+			"AAAA";
+			break;
+		case 'B':
+			"ABAA";
+			break;
+		case 'C':
+			"AACA";
+			break;
+		case 'D':
+			"AAAD";
+			break;
+		default:
+			"----";
+		}
+		}
+	}
+
+

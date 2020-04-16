@@ -1,0 +1,12 @@
+package javaEx;
+
+public class ReferenceEx1 {
+	public static void main(String[] args) {
+	// 값을 비교하는 것이 아니라 레퍼런스를 비교하는 것.
+		boolean r = new Integer("1") == new Integer("1");
+	// false
+		System.out.println(r);
+	r = new Integer("1").equals(new Integer("1"));
+	System.out.println(r);
+}
+}
