@@ -40,6 +40,15 @@ public class company {
 		ep2.clockIn();
 		ep2.clockOut();
 		ep2.work();
+		
+		PartTime pt = new PartTime();
+		pt.setPart(6);
+		// pt.setName("rorhtod");
+		// pt.setPosit("sajang");
+		pt.name="알바생"; // 직접 접근 .. 이거 되어야하는데 왜 안되는거지..?
+		pt.posit="계약직"; // 직접 접근
+		pt.clockIn();
+		System.out.println(pt.name+"의 일급여: "+pt.dayPay());// getName()아니고 그냥 pt.name 이었음
 	}
 
 }
