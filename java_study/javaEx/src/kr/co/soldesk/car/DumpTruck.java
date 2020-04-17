@@ -2,9 +2,9 @@ package kr.co.soldesk.car;
 
 public class DumpTruck extends Car {
 // 반드시 @Override 재정의를 해줘야함.
-	public DumpTruck() {
+	public DumpTruck(int wheel, int doors, String color) {
+		super(wheel,doors,color);
 	}
-	
 	public void dumpUp() {
 		System.out.println("적재칸을 올린다.");
 		
@@ -32,7 +32,7 @@ public class DumpTruck extends Car {
 	}
 
 	@Override // 재정의
-	public void redrive() {
+	public void reDrive() {
 		System.out.println("기어를 바꾼다.");
 		System.out.println("경고음이 울린다.");
 		System.out.println("후방을 주시하며 후진한다.");
