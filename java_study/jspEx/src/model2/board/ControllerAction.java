@@ -7,11 +7,14 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import model2.board.action.CommandAction;
 
 
 /**
@@ -61,6 +64,8 @@ public class ControllerAction extends HttpServlet {
 				Class commandClass = Class.forName(className);
 				Object commandIntance = commandClass.newInstance();
 				 //해당 키와 인스턴스를 저장해서 Web상에서 불러서 사용할 것임.
+				commandMap.put(command, commandIntance);
+				
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			} catch (InstantiationException e) {
@@ -84,16 +89,37 @@ public class ControllerAction extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		requestPro(request, response);
 	}
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
+	private void requestPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//ListAction 등 모든 클래스를 실행(다형성 이용)
+		String view = null; // view는 해당 액션에서 전달됨
+		CommandAction com = null;
+		try {
+			String command = request.getRequestURI();
+			System.out.println(command);
+			System.out.println(request.getContextPath()); 
+			if(command.indexOf(request.getContextPath())==0) { // contextPath = application path
+				command = command.substring(request.getContextPath().length());
+				System.out.println(command);
+			}
+			com = (CommandAction)commandMap.get(command);
+			//com requestPro실행
+				view = com.requestPro(request, response);
+			} catch (Throwable e) {
+				e.printStackTrace();
+			}
+			//forward view로
+			RequestDispatcher dispatcher = request.getRequestDispatcher(view);
+			dispatcher.forward(request, response);
+	}
 }
