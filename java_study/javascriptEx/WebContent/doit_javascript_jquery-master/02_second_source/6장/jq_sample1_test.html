@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title> 선택자 </title>  
+<script src="js/jquery.js"></script>
+<script>
+$(function(){
+	// $("#title").css("color","red");
+	// $("#title2").nextUntil(".title5").css("color","green");
+	 $("#title4").siblings().css("color","red");
+
+});
+</script>
+</head>
+<body>
+  <div id="dv" class="btn">
+  <p id="title">내용</p>
+  <p id="title2">내용2</p>
+  <p id="title3">내용3</p>
+  <p id="title4">내용4</p>
+  <p id="title5">내용5</p>
+  </div>
+</body>
+</html>

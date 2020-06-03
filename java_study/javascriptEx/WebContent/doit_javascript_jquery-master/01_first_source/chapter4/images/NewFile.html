@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+var newWindow;
+
+function open_Page(){
+	newWindow=window.open("https://www.work.go.kr/event/eventContent.do?eventNo=533&scrollYn=Y");
+}
+
+function receiver_onclick(){
+	var c1=newWindow.getElementById("btnButton");
+	alert(c1);
+}
+
+// window.onload=function(){
+// function btn_click(){
+// 	location.href='https://www.work.go.kr/event/eventContent.do?eventNo=533&scrollYn=Y';
+	// window.onload=function() {
+	// var c1 = document.getElementById('btnCoupon');
+	// c1.click();
+	// console.log(c1);
+	// }
+
+// }
+</script>
+</head>
+<body>
+<button name="btn" onclick="open_Page()">클릭해보세요</button>
+</body>
+</html>

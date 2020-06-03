@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<script type="text/javascript">
+	myfuc();
+	function myfuc(){
+		document.write("hello world"+"<br>");
+	}
+	
+	myfuc();
+	
+	// thefuc(); 참조변수로 함수를 정의해줬을 땐 실행되지 않는다.
+	
+	var thefuc = function(){
+		document.write("hell world"+"<br>");
+	}
+	
+	thefuc();
+</script>
+</body>
+</html>
