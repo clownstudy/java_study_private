@@ -269,28 +269,4 @@ public class BoardDAO {
 		   }
 		   return r;
 	   }
-//	   public int boardDelete(BoardDTO dto) throws NamingException, SQLException{
-//			int r=0;
-//		   //dbconnection
-//			
-//			//preparedstatement
-//			PreparedStatement pstmt = null;
-//			try {
-//				String sql ="delete from board where num = ?";
-//			Connection conn = null;
-//			conn = DBConnection.getConnection();
-//			pstmt = conn.prepareStatement(sql);
-//			pstmt.setInt(1, dto.getNum());
-//			r = pstmt.executeUpdate();
-//			
-//		    if (pstmt!=null)pstmt.close();
-//		    if (conn!=null)conn.close();
-//			} catch (NamingException e){
-//				e.printStackTrace();
-//			} catch (SQLException e) {
-//				e.printStackTrace();
-//			}
-//
-//			return r;
-//}
 }
