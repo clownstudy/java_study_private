@@ -10,19 +10,19 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript" src="./js/boardScript.js"></script>
 <script type="text/javascript" src="./js/jquery_board.js"></script>
-<script src="./js/jquery.js"></script>
-<link href="./css/board.css" rel="stylesheet">
+<script src="./board2/js/jquery.js"></script>
+<link href="./board2/css/board.css" rel="stylesheet">
 </head>
 <body>
 	<jsp:useBean id="dto" class="board.BoardDTO"/>
 	<jsp:setProperty property="*" name="dto"/>
 	<%-- <%BoardDTO dto = (BoardDTO)request.getAttribute("dto",dto);
 			System.out.println("--"+dto.getSubject());%> --%>
-	<form action="writePro.jsp" method="post" name="writeForm" onsubmit="return sendData()">
-	     <input type="text" name="num" value = "${dto.num}" />
-         <input type="text" name="ref" value = "${dto.ref}" />
-         <input type="text" name="re_step" value = "${dto.re_step}" />
-         <input type="text" name="re_level" value = "${dto.re_level}" />
+	<form action="writePro.do" method="post" name="writeForm" onsubmit="return sendData()">
+	     <input type="text" name="num" value = "${num}" />
+         <input type="text" name="ref" value = "${ref}" />
+         <input type="text" name="re_step" value = "${re_step}" />
+         <input type="text" name="re_level" value = "${re_level}" />
 	
 	
 	
@@ -35,11 +35,11 @@
 			<tbody>
 				<tr>
 					<th>제목:</th>
-					<c:if test="${dto.num==0}">
+					<c:if test="${num==0}">
 					<td><input type="text" size="70%" placeholder="제목을 입력하세요"
 						id="subject" name="subject"/></td>
 					</c:if>
-					<c:if test="${dto.num!=0}">
+					<c:if test="${num!=0}">
 					<td><input type="text" size="70%" placeholder="제목을 입력하세요"
 						id="subject" name="subject" value="[답글]"/></td>
 					</c:if>
@@ -72,6 +72,6 @@
 			</tbody>
 		</table>
 <!-- 	<form action="updateForm.jsp" name="parent" -->
-	</form>http://localhost:8080/jspEx/board/writeForm.jsp
+	</form>
 </body>
 </html>

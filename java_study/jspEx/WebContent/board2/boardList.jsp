@@ -9,6 +9,12 @@
 <meta charset="UTF-8">
 <title>글목록</title>
 <link href="./board2/css/board.css" rel="stylesheet">
+<script type="text/javascript">
+function callContent(num){
+	document.content.num.value = num;
+	document.content.submit();
+}
+</script>
 </head>
 <body>
    <!-- 글목록 출력 -->
@@ -38,12 +44,13 @@
  	  	<!-- 해당 리스트 출력 jstl사용 -->
       <c:forEach var="dto" items="${list}">
          <tr>
-            <td><c:out value="${dto.rr}"/></td>
+            <td><c:out value="${dto.rr}"/>
             	<input type="hidden" value='<c:out value="${dto.num}" />' />
+            </td>
             
             <c:if test="${dto.re_level ==1}">
             <td align="left">
-            	<a href='content.jsp?num=<c:out value="${dto.num}"/>'>
+            	<a href="javascript:callContent('<c:out value="${dto.num}" />')">
             	<c:out value="${dto.subject}"/>
             	</a>
             	</td>
@@ -52,7 +59,7 @@
             <td align="left">
             	<img src="./board2/content/images/level.gif" width="${dto.re_level*5}">
             	<img src="./board2/content/images/re.gif">
-            	<a href='content.jsp?num=<c:out value="${dto.num}"/>'>
+             	<a href="javascript:callContent('<c:out value="${dto.num}" />')">
             	<c:out value="${dto.subject}"/>
             	</a>
             	</td>
@@ -74,10 +81,12 @@
          </tr>
       </tbody>
    </table>
+   
    </c:when>
-   
-   
    </c:choose>
+   <form action="content.do" name="content" method="post">
+	<input type="hidden" name="num" value='<c:out value="${dto.num}" />'/>
+   </form>
 <%--       
    
    <c:forEach var="dto" items="${list}">

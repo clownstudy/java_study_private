@@ -106,11 +106,8 @@ public class ControllerAction extends HttpServlet {
 		CommandAction com = null;
 		try {
 			String command = request.getRequestURI();
-			System.out.println(command);
-			System.out.println(request.getContextPath()); 
 			if(command.indexOf(request.getContextPath())==0) { // contextPath = application path
 				command = command.substring(request.getContextPath().length());
-				System.out.println(command);
 			}
 			com = (CommandAction)commandMap.get(command);
 			//com requestPro실행

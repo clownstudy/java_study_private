@@ -8,30 +8,17 @@
 <meta charset="UTF-8">
 <title>글내용 </title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script type="text/javascript" src="./js/boardScript.js"></script>
-<script type="text/javascript" src="./js/boardjquery.js"></script>
-<script type="text/javascript" src="./js/jquery_board.js"></script>
-<link href="./css/board.css" rel="stylesheet" />
+<script type="text/javascript" src="./board2/js/boardScript.js"></script>
+<script type="text/javascript" src="./board2/js/boardjquery.js"></script>
+<script type="text/javascript" src="./board2/js/jquery_board.js"></script>
+<link href="./board2/css/board.css" rel="stylesheet" />
 <!-- <script type="text/javascript">
 // function pwCheck(){
 // 	document.confirm.submit();
 // }
 </script> -->
-<link href="./css/board.css" rel="stylesheet">
 </head>
 <body>
-   <%
-   //이전페이지에서 보내준 데이터 받기
-   int num = Integer.parseInt(request.getParameter("num"));
-   //실제데이터 가져오기
-   //DAO사용.. 인스턴스얻어오기
-    BoardDAO dao = BoardDAO.getInstance();
-   //해당 인스턴스에서 해당되는 메소드 실행
-   BoardDTO dto = dao.getArticle(num);
-   //setAttribute를 해줘야 됨
-     request.setAttribute("dto",dto);
-   
-   %>
    <table border=1>
          <thead>
             <tr>
@@ -67,7 +54,7 @@
                <input type="button" id="del_btn" value="글 삭제" onclick="pwCheck('d');"/>
                <input type="button" id="reply" value="답글" />
                <input type="button" value="글 목록으로" 
-               onclick="javascript:location.href='boardList.jsp'" />
+               onclick="javascript:location.href='list.do'" />
                </td>
             </tr>
          </tbody>
