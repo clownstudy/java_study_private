@@ -266,7 +266,7 @@ public class BoardDAO {
 			   if (conn!=null)conn.close();
 		   } catch(SQLException e) {
 			   e.printStackTrace();
-		   }
+		   }   
 		   return r;
 	   }
 }
