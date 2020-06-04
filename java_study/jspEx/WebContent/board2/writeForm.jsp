@@ -8,16 +8,12 @@
 <meta charset="UTF-8">
 <title>게시판 글쓰기</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script type="text/javascript" src="./js/boardScript.js"></script>
-<script type="text/javascript" src="./js/jquery_board.js"></script>
+<script type="text/javascript" src="./board2/js/boardScript.js"></script>
+<script type="text/javascript" src="./board2/js/jquery_board.js"></script>
 <script src="./board2/js/jquery.js"></script>
 <link href="./board2/css/board.css" rel="stylesheet">
 </head>
 <body>
-	<jsp:useBean id="dto" class="board.BoardDTO"/>
-	<jsp:setProperty property="*" name="dto"/>
-	<%-- <%BoardDTO dto = (BoardDTO)request.getAttribute("dto",dto);
-			System.out.println("--"+dto.getSubject());%> --%>
 	<form action="writePro.do" method="post" name="writeForm" onsubmit="return sendData()">
 	     <input type="text" name="num" value = "${num}" />
          <input type="text" name="ref" value = "${ref}" />
@@ -71,7 +67,7 @@
 				</tr>
 			</tbody>
 		</table>
-<!-- 	<form action="updateForm.jsp" name="parent" -->
+<!-- 	<form action="updateForm.do" name="parent" -->
 	</form>
 </body>
 </html>

@@ -24,12 +24,12 @@ function sendData() {
 function pwCheck(s) {
 	window.name = "parentForm";
 	if (s == 'u') {
-		document.parentForm.action = 'updateForm.jsp';
+		document.parentForm.action = 'updateForm.do';
 	} else if (s == 'd') {
-		document.parentForm.action = 'deletePro.jsp';
+		document.parentForm.action = 'deletePro.do';
 	}
-	window.open("idCheck.jsp", "idCheck",
-			"width=500, height=200, resizable=no, scrollbar=no");
+	window.open("./board2/idCheck.jsp", "idCheck",
+			"width=500, height=200, location=no, menubar=no, resizable=no, scrollbar=no");
 }
 
 function setParentText() {

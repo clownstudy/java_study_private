@@ -53,8 +53,7 @@
                <input type="button" id="up_btn" value="글 수정" onclick="pwCheck('u');"/>
                <input type="button" id="del_btn" value="글 삭제" onclick="pwCheck('d');"/>
                <input type="button" id="reply" value="답글" />
-               <input type="button" value="글 목록으로" 
-               onclick="javascript:location.href='list.do'" />
+               <input type="button" id="list1" value="글 목록으로" />
                </td>
             </tr>
          </tbody>
@@ -63,7 +62,7 @@
          <input type="text" name="passwd" value = "${dto.passwd}" />
          <input type="hidden" name="cpass" value = "" />
          <input type="hidden" name="num" value = "${dto.num}" />
-         <input type="hidden" name="ref" value = "${dto.ref}" />
+         <input type="text" name="ref" value = "${dto.ref}" />
          <input type="hidden" name="re_step" value = "${dto.re_step}" />
          <input type="hidden" name="re_level" value = "${dto.re_level}" />
       </form>

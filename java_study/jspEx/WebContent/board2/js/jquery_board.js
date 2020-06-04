@@ -1,10 +1,10 @@
 $(function(){
 	$('#reply').click(function(){
-		document.parentForm.action='writeForm.jsp';
+		document.parentForm.action='writeForm.do';
 		document.parentForm.submit();
 	});
 
 	$('#list1').click(function(){
-		javascript:location.href='boardList.jsp';
+		javascript:location.href='list.do';
 	});
 })

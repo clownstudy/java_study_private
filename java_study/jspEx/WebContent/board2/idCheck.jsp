@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>비밀번호 확인</title>
-<script type="text/javascript" src="./js/boardScript.js"></script>
+<script type="text/javascript" src="/jspEx/board2/js/boardScript.js"></script>  
 </head>
 <body>
 	<table>

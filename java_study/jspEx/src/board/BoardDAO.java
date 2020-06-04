@@ -205,11 +205,11 @@ public class BoardDAO {
 	   public int boardUpdate(BoardDTO dto) throws NamingException, SQLException{
 			int r=0;
 		   //dbconnection
-			
 			//preparedstatement
 			PreparedStatement pstmt = null;
 			Connection conn = null;
 			conn = DBConnection.getConnection();
+
 			try {
 				String sql ="update board set ";
 				sql+="subject = ?,";

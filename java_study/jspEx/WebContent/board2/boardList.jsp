@@ -74,7 +74,7 @@ function callContent(num){
       </c:forEach>
          <tr>
          	<td colspan="2" align="right">
-         		<a href="writeForm.jsp">
+         		<a href="writeForm.do">
          		<input type="button" value="글쓰기">
          	</a>
          	</td>

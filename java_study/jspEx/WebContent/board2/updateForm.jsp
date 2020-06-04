@@ -9,22 +9,16 @@
 <meta charset="UTF-8">
 <title>비밀번호 확인</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script type="text/javascript" src="./js/boardScript.js"></script>
-<script src="./js/jquery.js"></script>
-<link href="./css/board.css" rel="stylesheet" >
+<script type="text/javascript" src="./board2/js/boardScript.js"></script>
+<script type="text/javascript" src="./board2/js/jquery_board.js"></script>
+<script src="./board2/js/jquery.js"></script>
+<link href="./board2/css/board.css" rel="stylesheet" >
 </head>
 <body>
-<%
-	int num = Integer.parseInt(request.getParameter("num"));
-	//DAO를 통해서 해당 글 갖고오기
-   //DAO사용.. 인스턴스얻어오기
-     BoardDAO dao = BoardDAO.getInstance();
-   //해당 인스턴스에서 해당되는 메소드 실행
-     BoardDTO dto = dao.getArticle(num);
-   //setAttribute를 해줘야 됨
-     request.setAttribute("dto",dto);
-%>
-<form action="updatePro.jsp" method="post" name="writeForm" onsubmit="return sendData()">
+<form action="updatePro.do" method="post" name="writeForm" onsubmit="return sendData()">
+	<input type="hidden" name="re_step" value="${dto.re_step}" />
+	<input type="hidden" name="re_level" value="${dto.re_level}" />
+	
 		<table border="1">
 			<thead>
 				<tr>
@@ -49,7 +43,7 @@
 				</tr>
 				<tr>
 					<th>작성자:</th>
-					<td><c:out value="${dto.writer}"/></td>
+					<td><input type="text" name="writer" value='<c:out value="${dto.writer}"/>' /></td>
 				</tr>
 				<tr>
 					<th>이메일:</th>
@@ -63,7 +57,7 @@
 				</tr>
 				<tr>
 					<td colspan="2" align="center">
-						<input type="button" value="글수정" />
+						<input type="submit" value="글수정"/>
 						<input type="button" value="글목록으로" id="list1" /></td>
 				</tr>
 			</tbody>

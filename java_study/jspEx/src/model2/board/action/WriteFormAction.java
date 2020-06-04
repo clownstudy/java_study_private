@@ -1,11 +1,8 @@
 package model2.board.action;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import board.BoardDTO;
 
 public class WriteFormAction implements CommandAction {
 
