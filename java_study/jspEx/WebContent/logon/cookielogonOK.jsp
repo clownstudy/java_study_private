@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원 인증 확인</title>
 </head>
 <body>
 <!--  id, passwd 받기 -->
@@ -21,7 +21,8 @@
 		// 쿠키를 생성해서 저장하고 (클라이언트에 생성됨)
 		Cookie ck = new Cookie("memId",id);
 		// 쿠키가 살아있는 시간
-		ck.setMaxAge(10*60);
+		ck.setMaxAge(0*60);
+		response.addCookie(ck);
 		response.sendRedirect("ckLogonConfirm.jsp");
 		
 	} else {
