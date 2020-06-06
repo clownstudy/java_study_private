@@ -41,6 +41,22 @@ public class LogonDAO {
 			e.printStackTrace();
 		}
 		// try 밖에서 close();
+		try {
+			rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		try {
+			pstmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	
 		return x;
 	}
 	
