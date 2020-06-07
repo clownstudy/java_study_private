@@ -16,7 +16,7 @@ table {
 $(function(){
 	$('#submit').click(function(){
 	
-		if($('#id').val() == null || $('#id').val() == ''){
+		if($('#id').val() == null || $('#id').val() == ''){ // #id의 value가 null, ''인 상황을 고려해야한다.
 			alert("아이디를 입력하세요");
 			$('#id').focus();
 			return;
@@ -26,7 +26,7 @@ $(function(){
 			$('#passwd').focus();
 			return;
 		};
-	$('#logonForm').submit();
+	$('#logonForm').submit(); // cookielogonOK.jsp로 이동(id, passwd값 post로 전달)
 	});
 })
 </script>

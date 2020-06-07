@@ -31,8 +31,8 @@ public class LogonDAO {
 			rs = pstmt.executeQuery();
 		
 			if(rs.next()) {
-				if(rs.getString("memno") != null ||
-						rs.getString("memno").length()!=0)
+				if(rs.getString("memno") != null || 
+						rs.getString("memno").length()!=0) // 예외적인 상황(null이나, length가 0일)을 배제.
 					x = 1;
 			}
 		} catch (NamingException e) {
@@ -56,7 +56,7 @@ public class LogonDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	
+	// 각각 발생한 연결을 거꾸로 닫아준다.
 		return x;
 	}
 	

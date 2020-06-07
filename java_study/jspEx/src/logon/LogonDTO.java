@@ -1,7 +1,7 @@
 package logon;
 
 public class LogonDTO {
-	
+	// member테이블에서 가져올 변수 선언.
 	private String id      ;
 	private String passwd  ;
 	private String name    ;

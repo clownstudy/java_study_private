@@ -28,7 +28,7 @@ $(function(){
 		// memId가 있는지 확인해서 해당 id가져오기
 		for (Cookie ck : cookies) {
 			if (ck.getName().equals("memId")) {
-				ck.setMaxAge(0);
+				ck.setMaxAge(0); // 쿠키의 life time을 0으로 지정, 해당 쿠키는 소멸됨.
 				response.addCookie(ck);
 			}
 		}
