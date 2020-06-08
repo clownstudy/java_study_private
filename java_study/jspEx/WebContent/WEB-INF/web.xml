@@ -26,10 +26,10 @@
 		<servlet-class>model2.board.ControllerAction</servlet-class>
 		<init-param>
 		<param-name>configProperty</param-name>
-		<param-value>C:\workspace\JSP\src\model2\board\Command.properties</param-value>
+		<param-value>C:/Users/tw/Documents/java_study_private/java_study/jspEx/src/model2/board/Command.properties</param-value>
 		</init-param>
 	</servlet>
-	
+	<!-- 
 	<error-page>
 		<error-code>404</error-code>
 		<location>/error/error404.jsp</location>
@@ -39,11 +39,11 @@
 		<error-code>500</error-code>
 		<location>/error/error500.jsp</location>
 	</error-page>
-
-	<!-- <error-page>
+	<error-page>
 		<exception-type>java.lang.Exception</exception-type>
 		<location>/error/errorType.jsp</location>
-	</error-page> -->
+	</error-page>
+	 -->
 	 <filter>
         <filter-name>Encoding Filter</filter-name>
         <filter-class>common.dbutil.CommonEncodingFilter</filter-class>

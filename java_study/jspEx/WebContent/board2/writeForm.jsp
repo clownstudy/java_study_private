@@ -15,10 +15,12 @@
 </head>
 <body>
 	<form action="writePro.do" method="post" name="writeForm" onsubmit="return sendData()">
-	     <input type="text" name="num" value = "${num}" />
-         <input type="text" name="ref" value = "${ref}" />
-         <input type="text" name="re_step" value = "${re_step}" />
-         <input type="text" name="re_level" value = "${re_level}" />
+	     <input type="hidden" name="num" value = "${num}" />
+         <input type="hidden" name="ref" value = "${ref}" />
+         <input type="hidden" name="re_step" value = "${re_step}" />
+         <input type="hidden" name="re_level" value = "${re_level}" />
+         <input type="text" name="currentPage" value='<c:out value="${pdto.currentPage}" />'/>   
+		 <input type="text" name="currentPageBlock" value='<c:out value="${pdto.currentPageBlock}" />'/> 
 	
 	
 	
@@ -67,7 +69,6 @@
 				</tr>
 			</tbody>
 		</table>
-<!-- 	<form action="updateForm.do" name="parent" -->
 	</form>
 </body>
 </html>

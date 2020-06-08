@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>글목록</title>
-<link href="./board2/css/board.css" rel="stylesheet">
+<link href="./board/css/board.css" rel="stylesheet">
 <script type="text/javascript">
 function callContent(num){
 	document.content.num.value = num;
@@ -19,7 +19,9 @@ function callContent(num){
 <body>
    <!-- 글목록 출력 -->
 
-   		 <h3>게시글목록</h3>
+   <h3 align="center">게시글목록</h3>
+   
+   <h4 align="center">전체 글 개수 <c:out value="${pdto.allCount}" />&nbsp;건</h4>
    <c:choose>
    <c:when test="${list.size()==0}">
    <table border="1">
@@ -81,20 +83,20 @@ function callContent(num){
          </tr>
       </tbody>
    </table>
-   
+   <h1 style="text-align: center">
+  	 	<c:if test="${pdto.startPage>pdto.pageBlock}"><a href="/jspEx/list.do?currentPage=${pdto.startPage-pdto.pageBlock}&currentPageBlock=${pdto.currentPageBlock-1}">[이전]</a></c:if>
+   		<c:forEach var="i" begin="${pdto.startPage}" end="${pdto.endPage}">
+			<a href="/jspEx/list.do?currentPage=${i}&currentPageBlock=${pdto.currentPageBlock}"> <c:out value="[${i}]"/></a>
+  	 	</c:forEach>
+  	 	<c:if test="${pdto.allPage>pdto.endPage}"><a href="/jspEx/list.do?currentPage=${pdto.endPage+1}&currentPageBlock=${pdto.currentPageBlock+1}">[다음]</a></c:if>
+   </h1>
    </c:when>
    </c:choose>
-   <form action="content.do" name="content" method="post">
-	<input type="hidden" name="num" value='<c:out value="${dto.num}" />'/>
-   </form>
-<%--       
-   
-   <c:forEach var="dto" items="${list}">
-      <c:out value="${dto.writer}"/>
-   </c:forEach>    --%>
-   
-   
    <!-- 해당 리스트를 출력 jstl사용 -->
-   
+   <form action="content.do" name="content" method="post">
+	<input type="hidden" name="currentPage" value='<c:out value="${pdto.currentPage}" />'/>   
+	<input type="hidden" name="currentPageBlock" value='<c:out value="${pdto.currentPageBlock}" />'/>   
+	<input type="hidden" name="num" /> <!-- value='<c:out value="${dto.num}" />' 지운 이유 : 위에서 onclick 시 num 보내줌 -->
+   </form>
 </body>
 </html>

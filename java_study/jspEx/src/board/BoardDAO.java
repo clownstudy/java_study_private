@@ -91,32 +91,16 @@ public class BoardDAO {
 			sql+="select rownum rr, rboard.* from ";
 			sql+="(select num, writer, subject, email, content, passwd, reg_date, readcnt, ref, re_step, re_level, attachnm from ";
 			sql+="board order by ref desc, re_step asc) rboard) A ";
-			sql+="-- where A.rr between 1 and 20"; 
-		
+			sql+="where A.rr between ? and ?"; 
 
-
-		
-//		String sql="select NUM";
-//				sql+=",WRITER"; 
-//				sql+=",SUBJECT";
-//				sql+=",EMAIL";
-//				sql+=",CONTENT";
-//				sql+=",PASSWD"; 
-//				sql+=",REG_DATE"; 
-//				sql+=",READCNT";
-//				sql+=",REF"; 
-//				sql+=",RE_STEP";
-//				sql+=",RE_LEVEL"; 
-//				sql+=",ATTACHNM"; 
-//				sql+=" from board";
-//				sql+=" where rownum between 1 and 20";
-//				sql+=" order by ref desc"; 
 		Connection conn = DBConnection.getConnection();
 		List<BoardDTO> articles = new ArrayList<BoardDTO>(20);
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, sRow);
+		pstmt.setInt(2, pageSize);
 		rs = pstmt.executeQuery();
 		while(rs.next()) {
 			// 하나의 정보를 저장하는 작업
@@ -269,4 +253,38 @@ public class BoardDAO {
 		   }
 		   return r;
 	   }
+
+
+	public int getAllCount() {
+			// Conn, pstmt, rs
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			int allCnt = 0;
+			try {
+				conn = DBConnection.getConnection();
+				String sql = "select count(num) cnt from board";
+				pstmt = conn.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					allCnt = rs.getInt("cnt");
+				}
+			} catch (NamingException e) {
+				e.printStackTrace();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+			
+			try {
+				if(rs!=null) { rs.close(); }
+				if(pstmt!=null) { pstmt.close(); }
+				if(conn!=null) { conn.close(); }
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			// rs, pstmt, Conn 닫기
+		return allCnt;
+	}
 }

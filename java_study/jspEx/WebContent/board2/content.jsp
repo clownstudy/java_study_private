@@ -59,10 +59,12 @@
          </tbody>
       </table>
       <form action="" name = "parentForm" method="post">
+     	 <input type="text" id="currentPage" name="currentPage" value='<c:out value="${pdto.currentPage}" />'/>   
+		 <input type="text" id="currentPageBlock" name="currentPageBlock" value='<c:out value="${pdto.currentPageBlock}" />'/>   
          <input type="text" name="passwd" value = "${dto.passwd}" />
          <input type="hidden" name="cpass" value = "" />
          <input type="hidden" name="num" value = "${dto.num}" />
-         <input type="text" name="ref" value = "${dto.ref}" />
+         <input type="hidden" name="ref" value = "${dto.ref}" />
          <input type="hidden" name="re_step" value = "${dto.re_step}" />
          <input type="hidden" name="re_level" value = "${dto.re_level}" />
       </form>
