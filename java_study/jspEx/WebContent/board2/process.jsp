@@ -43,7 +43,7 @@
 			out.println("저장 파일 이름 : " + filename + "<br>");
 			out.println("파일 콘텐트  : " + type + "<br>");
 			
-			if (file != null){
+			if (file != null){ // 업로드에 성공했을 경우
 				out.println("파일 크기 : "+file.length()); // (바이트 단위) 파일 크기를 반환
 			}
 		}
