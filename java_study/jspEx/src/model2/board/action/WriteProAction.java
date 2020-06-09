@@ -29,7 +29,20 @@ public class WriteProAction implements CommandAction {
 			dto.setPasswd(req.getParameter("passwd"));
 			dto.setAttachnm(req.getParameter("attachnm"));
 			dto.setEmail(req.getParameter("eamil"));
+			if(req.getParameter("attachnm")!=null) {
+				// dto.setAttachnm(req.getParameter("attachnm"));
+				String at = req.getParameter("attachnm");
+				System.out.println(at);
+			} else {
+				dto.setAttachnm("");
+			}
 			
+			// DAO를 통해서 받은 데이터 저장하기
+			BoardDAO dao = BoardDAO.getInstance();
+			// DAO에 해당 데이터 저장하는 로직을 만들고
+			// 그 로직을 사용한 후
+			dao.boardWrite(dto);
+
 			// pdto 저장 시작
 			int currentPage = Integer.parseInt(req.getParameter("currentPage"));
 			int currentPageBlock = Integer.parseInt(req.getParameter("currentPageBlock"));
@@ -49,11 +62,6 @@ public class WriteProAction implements CommandAction {
 			pdto.setCurrentPageBlock(currentPageBlock);
 			req.setAttribute("pdto",pdto);
 			// pdto 저장 끝
-		// DAO를 통해서 받은 데이터 저장하기
-			BoardDAO dao = BoardDAO.getInstance();
-	 		// DAO에 해당 데이터 저장하는 로직을 만들고
-	 		// 그 로직을 사용한 후
-			dao.boardWrite(dto);
 			
 		return "/board2/writePro.jsp";
 	}

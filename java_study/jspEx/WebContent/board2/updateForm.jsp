@@ -15,9 +15,11 @@
 <link href="./board2/css/board.css" rel="stylesheet" >
 </head>
 <body>
-<form action="updatePro.do" method="post" name="writeForm" onsubmit="return sendData()">
+<form action="updatePro.do" method="post" name="updateForm" onsubmit="return sendData()">
 	<input type="hidden" name="re_step" value="${dto.re_step}" />
 	<input type="hidden" name="re_level" value="${dto.re_level}" />
+	<input type="hidden" name="currentPage" value='<c:out value="${pdto.currentPage}" />'/>   
+	<input type="hidden" name="currentPageBlock" value='<c:out value="${pdto.currentPageBlock}" />'/> 
 	
 		<table border="1">
 			<thead>
@@ -58,7 +60,7 @@
 				<tr>
 					<td colspan="2" align="center">
 						<input type="submit" value="글수정"/>
-						<input type="button" value="글목록으로" id="list1" /></td>
+						<input type="button" value="글목록으로" id="list3" /></td>
 				</tr>
 			</tbody>
 		</table>

@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import board.BoardDAO;
 import board.BoardDTO;
+import board.PageDTO;
 
 public class UpdateProAction implements CommandAction {
 
@@ -23,7 +24,24 @@ public class UpdateProAction implements CommandAction {
 			dto.setEmail(req.getParameter("email"));
 			dto.setContent(req.getParameter("content"));
 			dto.setPasswd(req.getParameter("passwd"));
-
+			int currentPage;
+			int currentPageBlock;
+			if(req.getParameter("currentPage")==null) {
+				currentPage = 1;
+			} else {
+				currentPage = Integer.parseInt(req.getParameter("currentPage"));
+			}
+			if(req.getParameter("currentPageBlock")==null) {
+				currentPageBlock=1;
+			} else {
+				currentPageBlock= Integer.parseInt(req.getParameter("currentPageBlock"));
+			}
+			
+			PageDTO pdto = new PageDTO();
+			pdto.setCurrentPage(currentPage);
+			pdto.setCurrentPageBlock(currentPageBlock);
+			req.setAttribute("pdto",pdto);
+			
 		// DAO를 통해서 받은 데이터 저장하기
 			// DAO에 해당 데이터 저장하는 로직을 만들고
 			BoardDAO dao = BoardDAO.getInstance();

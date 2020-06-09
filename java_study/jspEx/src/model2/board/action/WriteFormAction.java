@@ -11,6 +11,7 @@ public class WriteFormAction implements CommandAction {
 	@Override
 	public String requestPro(HttpServletRequest req, HttpServletResponse res) throws Throwable {
 		// 답글인지 아닌지 확인
+//		req.setCharacterEncoding("UTF-8");
 		int num= 0, ref=0, re_step=1, re_level=1;
 		if(req.getParameter("num")!=null) {
 			num = Integer.parseInt(req.getParameter("num"));

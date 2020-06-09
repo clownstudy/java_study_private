@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-	
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,11 +13,11 @@
 <link href="./board2/css/board.css" rel="stylesheet">
 </head>
 <body>
-	<form action="writePro.do" method="post" name="writeForm" onsubmit="return sendData()">
-	     <input type="hidden" name="num" value = "${num}" />
-         <input type="hidden" name="ref" value = "${ref}" />
-         <input type="hidden" name="re_step" value = "${re_step}" />
-         <input type="hidden" name="re_level" value = "${re_level}" />
+	<form action="writePro.do" method="post" name="writeForm" onsubmit="return sendData()" enctype="multipart/form-data">
+	     <input type="text" name="num" value = "${num}" />
+         <input type="text" name="ref" value = "${ref}" />
+         <input type="text" name="re_step" value = "${re_step}" />
+         <input type="text" name="re_level" value = "${re_level}" />
          <input type="text" name="currentPage" value='<c:out value="${pdto.currentPage}" />'/>   
 		 <input type="text" name="currentPageBlock" value='<c:out value="${pdto.currentPageBlock}" />'/> 
 	
@@ -65,7 +64,7 @@
 				<tr>
 					<td colspan="2" align="center">
 						<input type="submit" value="등록" />
-						<input type="button" value="글목록"  id="list1" /></td>
+						<input type="button" value="글목록"  id="list2" /></td>
 				</tr>
 			</tbody>
 		</table>
