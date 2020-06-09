@@ -1,7 +1,6 @@
 package common.dbutil;
 
 import java.io.IOException;
-
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -61,7 +60,7 @@ public class CommonEncodingFilter implements Filter {
 	public void init(FilterConfig filterConfig) throws ServletException {
 	    this.filterConfig = filterConfig;
 	    this.encoding = filterConfig.getInitParameter("encoding");
-
+	    System.out.println(encoding);
 	}
 
 }
