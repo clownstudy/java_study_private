@@ -6,7 +6,9 @@
 <%
 	MultipartRequest multi = new MultipartRequest(request,
 			"C:/TmaxOS",1024*1024*10,"utf-8",new DefaultFileRenamePolicy());
-
+// 업로드 폴더 경로가 C:/TmaxOS, 파일 최대 크기, 인코딩타입, 파일명재정의정책 객체(직접 수정해도 되고, 새로운 객체를 만들어서 써도 됨.)
+		// 각각 input의 name을 받아온다.(type이 file인 경우 제외.)
+		
 		String name1 = multi.getParameter("name1");
 		String subject1 = multi.getParameter("subject1");
 		String name2 = multi.getParameter("name2");
@@ -43,30 +45,3 @@
 			%>
 						
 		</table>		
-// 		Enumeration params = multi.getParameterNames();
-// 		while(params.hasMoreElements()){
-// 			String name = (String) params.nextElement();
-// 			String value = multi.getParameter(name);
-// 			out.println(name+" = "+value+"<br>");
-// 		}
-// 		out.println("------------------------------------<br>");
-		
-// 		// Enumeration files = multi.getFileNames();
-		
-// 		while(files.hasMoreElements()){
-// 			String name = (String) files.nextElement();
-// 			String filename = multi.getFilesystemName(name);
-// 			String original = multi.getOriginalFileName(name);
-// 			String type = multi.getContentType(name);
-// 			File file = multi.getFile(name);
-			
-// 			out.println("요청 파라미터 이름 : " + name + "<br>");
-// 			out.println("subject 이름 : " + name + "<br>");
-// 			out.println("실제 파일 이름 : " + original + "<br>");
-// 			out.println("저장 파일 이름 : " + filename + "<br>");
-// 			out.println("파일 콘텐트  : " + type + "<br>");
-			
-// 			if (file != null){
-// 				out.println("파일 크기 : "+file.length());
-// 			}
-// 		}
