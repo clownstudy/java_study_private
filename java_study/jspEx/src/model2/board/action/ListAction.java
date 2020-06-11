@@ -34,7 +34,7 @@ public class ListAction implements CommandAction {
 		pdto.setStartPage(startPage);
 		pdto.setEndPage(endPage);
 		int currentPage = 0;
-		if (req.getParameter("currentPage") == null) {
+		if (req.getParameter("currentPage") == null || req.getParameter("currentPage").equals("0")) {
 			currentPage = 1;
 		} else {
 			currentPage = Integer.parseInt(req.getParameter("currentPage"));
@@ -42,7 +42,7 @@ public class ListAction implements CommandAction {
 
 		// 현재 블럭 받아오기.
 		int currentPageBlock = 0;
-		if (req.getParameter("currentPageBlock") == null) {
+		if (req.getParameter("currentPageBlock") == null || req.getParameter("currentPageBlock").equals("0")) {
 			currentPageBlock = 1;
 		} else {
 			currentPageBlock = Integer.parseInt(req.getParameter("currentPageBlock"));

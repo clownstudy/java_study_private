@@ -51,20 +51,20 @@
 				</tr>
 				<tr>
 					<th>작성자:</th>
-					<td><input type="text" placeholder="이름을 입력해봐라" name="writer" /></td>
+					<td><input type="text" placeholder="이름을 입력해봐라" name="writer" id = "writer"/></td>
 				</tr>
 				<tr>
 					<th>이메일:</th>
-					<td><input type="text" placeholder="메일 주소를 입력해봐라" name="email" /></td>
+					<td><input type="text" placeholder="메일 주소를 입력해봐라" name="email" id = "email"/></td>
 				</tr>
 				<tr>
 					<th>비밀번호:</th>
-					<td><input type="password" placeholder="비밀번호를 입력하세요" name="passwd" /></td>
+					<td><input type="password" placeholder="비밀번호를 입력하세요" name="passwd" id = "passwd"/></td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center">
-						<input type="submit" value="등록" />
-						<input type="button" value="글목록"  id="list2" /></td>
+						<input type="submit" name ="submit" value="등록" />
+						<input type="button" name ="list_btn" value="글목록" id="list2" /></td>
 				</tr>
 			</tbody>
 		</table>

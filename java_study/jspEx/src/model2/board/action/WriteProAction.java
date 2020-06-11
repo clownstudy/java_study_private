@@ -1,19 +1,23 @@
 package model2.board.action;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import board.BoardDAO;
 import board.BoardDTO;
 import board.PageDTO;
+import common.ServletUpload;
 
 
 public class WriteProAction implements CommandAction {
 
 	@Override
 	public String requestPro(HttpServletRequest req, HttpServletResponse res) throws Throwable {
+/* 
 		// 한글 확인을 위해 utf-8로 전환
-//		req.setCharacterEncoding("UTF-8");
+		// req.setCharacterEncoding("UTF-8");
 		// writeForm에서 보내준 데이터 모두 받기
 			BoardDTO dto = new BoardDTO();
 			//num, ref, re_step, re_level
@@ -38,10 +42,10 @@ public class WriteProAction implements CommandAction {
 			}
 			
 			// DAO를 통해서 받은 데이터 저장하기
-			BoardDAO dao = BoardDAO.getInstance();
 			// DAO에 해당 데이터 저장하는 로직을 만들고
+			PageDTO pdto = new PageDTO();
+			BoardDAO dao = BoardDAO.getInstance();
 			// 그 로직을 사용한 후
-			dao.boardWrite(dto);
 
 			// pdto 저장 시작
 			int currentPage = Integer.parseInt(req.getParameter("currentPage"));
@@ -56,11 +60,11 @@ public class WriteProAction implements CommandAction {
 			} else {
 				currentPageBlock= Integer.parseInt(req.getParameter("currentPageBlock"));
 			}
-			
-			PageDTO pdto = new PageDTO();
-			pdto.setCurrentPage(currentPage);
-			pdto.setCurrentPageBlock(currentPageBlock);
-			req.setAttribute("pdto",pdto);
+*/ // 기존 코드
+			Map<String, Object> multiDTO = ServletUpload.uploadEx(req, res);
+			BoardDAO dao = BoardDAO.getInstance();
+			dao.boardWrite((BoardDTO)multiDTO.get("dto"));
+			req.setAttribute("pdto",(PageDTO)multiDTO.get("pdto"));
 			// pdto 저장 끝
 			
 		return "/board2/writePro.jsp";
