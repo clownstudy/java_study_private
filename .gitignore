@@ -29,3 +29,8 @@ hs_err_pid*
 java_study/jspEx/.settings/org.eclipse.wst.common.component
 java_study/jspEx/.classpath
 java_study/jspEx/.settings/org.eclipse.wst.common.component
+java_study/SpringTest/.project
+*.prefs
+*.component
+java_study/SpringTest/.settings/org.eclipse.wst.common.project.facet.core.xml
+java_study/SpringTest/.classpath
