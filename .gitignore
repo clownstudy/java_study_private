@@ -2,7 +2,6 @@
 *.class
 .metadata/
 /.metadata/
-
 # Log file
 *.log
 
@@ -27,3 +26,6 @@ hs_err_pid*
 /.metadata
 .metadata
 /calender
+java_study/jspEx/.settings/org.eclipse.wst.common.component
+java_study/jspEx/.classpath
+java_study/jspEx/.settings/org.eclipse.wst.common.component
