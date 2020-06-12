@@ -22,7 +22,7 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET) // 겟 방식으로 루트라는게 들어오면
+	@RequestMapping(value = "/h.sp", method = RequestMethod.GET) // 겟 방식으로 루트라는게 들어오면
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale); // 콘솔창에 로그 찍어주기.
 		

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="model2.board">
+<select id="allCnt" resultType="int"> <!-- 보내줄 인자의 타입을 resultType으로 선언 -->
+	select count(num) cnt from board
+</select>
+
+<select id="boardList" parameterType="hashmap" resultType="bdto">
+	select A.*
+	from (select rownum rr, rboard.*
+		from (select num, writer, subject, email, content, passwd, reg_date, readcnt, ref, re_step, re_level, attachnm
+			from board order by ref desc, re_step asc) rboard) A
+	<if test="start!=null">
+	where A.rr between #{start} and #{end};
+	</if>
+</select>
+</mapper>
