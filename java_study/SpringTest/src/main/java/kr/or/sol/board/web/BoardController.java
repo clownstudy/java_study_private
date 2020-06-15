@@ -1,11 +1,11 @@
 package kr.or.sol.board.web;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.ibatis.logging.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,14 +16,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import kr.or.sol.board.dto.BoardDTO;
 import kr.or.sol.board.dto.PageDTO;
 import kr.or.sol.board.service.BoardListService;
+import kr.or.sol.board.service.BoardWriteService;
 
 @Controller
 public class BoardController {
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 	
+	// DI. boardListService를 injection해서 올린다
 	@Autowired
-	private BoardListService boardListService; // boardListService를 injection해서 올린다
-
+	private BoardListService boardListService; // getArticle(s): boardList, content
+	// write에 해당하는 것
+	@Autowired
+	private BoardWriteService boardWriteService;
+	// 갱신과 관계된거 update, delete
 	
 	@RequestMapping(value = "/boardList.sp")
 	public String boardList(HttpServletRequest req, HttpServletResponse res, Model model, BoardDTO dto, PageDTO pdto) {
@@ -35,8 +40,27 @@ public class BoardController {
 		pdto.setAllCount(boardListService.getAllCount());
 		logger.info("전체 레코드 수 : "+pdto.getAllCount());
 		List<BoardDTO> list = boardListService.getArticles(pdto);
+		model.addAttribute("pdto",pdto); // 전체 글 개수 나옴
+		model.addAttribute("list",list);
 		return "/board2/boardList";
 		
+	}
+
+	@RequestMapping(value="/content.sp")
+	public String content(HttpServletRequest req, HttpServletResponse res, Model model, BoardDTO bdto, PageDTO pdto) {
+		// list 와 hashmap 두가지로 보낼 수 있다.
+		Map<String, Object> cmap = boardListService.getArticle(bdto,pdto); // 누군지 모르기 때문에 object로  
+
+		return "board2/content";
+	}
+	
+	@RequestMapping(value="/writeForm.sp")
+	public String writeForm(HttpServletRequest req, HttpServletResponse res, Model model, BoardDTO bdto, PageDTO pdto) {
+		
+		PageDTO pdto2 = boardWriteService.writeArticle(pdto);
+		model.addAttribute("pdto",pdto2);
+		model.addAttribute("bdto",bdto); // 받아온거 다시 넣어주기.
+		return "board2/writeForm";
 	}
 	
 }

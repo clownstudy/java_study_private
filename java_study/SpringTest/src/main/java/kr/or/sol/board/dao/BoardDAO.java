@@ -1,8 +1,13 @@
 package kr.or.sol.board.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import kr.or.sol.board.dto.BoardDTO;
 
 @Repository("boardDao")
 public class BoardDAO {
@@ -13,7 +18,15 @@ public class BoardDAO {
 	String prens = "model2.board.";
 	public int getAllCount() {
 		
-//		 return sqlsession.selectOne(prens+"allCnt");
-		 return sqlsession.selectOne("model2.board.allCnt");
+		 return sqlsession.selectOne(prens+"allCnt");
+	}
+	public List<BoardDTO> getArticles(Map<String, Integer> hmap) {
+		
+		
+		return sqlsession.selectList(prens+"getArticles",hmap);
+	}
+	public BoardDTO getArticle(BoardDTO bdto) {
+		// TODO Auto-generated method stub
+		return sqlsession.selectOne(prens+"getArticles");
 	}
 }

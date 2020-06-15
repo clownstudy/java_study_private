@@ -58,8 +58,8 @@ function callContent(num){
             </c:if>
             <c:if test="${dto.re_level > 1}">
             <td align="left">
-            	<img src="./board2/content/images/level.gif" width="${dto.re_level*5}">
-            	<img src="./board2/content/images/re.gif">
+            	<img src="/resources/board2/content/images/level.gif" width="${dto.re_level*5}">
+            	<img src="/resources/board2/content/images/re.gif">
              	<a href="javascript:callContent('<c:out value="${dto.num}" />')">
             	<c:out value="${dto.subject}"/>
             	</a>
@@ -75,7 +75,7 @@ function callContent(num){
       </c:forEach>
          <tr>
          	<td colspan="2" align="right">
-         		<a href="writeForm.do">
+         		<a href="writeForm.sp">
          		<input type="button" value="글쓰기">
          	</a>
          	</td>
@@ -83,16 +83,16 @@ function callContent(num){
       </tbody>
    </table>
    <h1 style="text-align: center">
-  	 	<c:if test="${pdto.startPage>pdto.pageBlock}"><a href="/jspEx/list.do?currentPage=${pdto.startPage-pdto.pageBlock}&currentPageBlock=${pdto.currentPageBlock-1}">[이전]</a></c:if>
+  	 	<c:if test="${pdto.startPage>pdto.pageBlock}"><a href="boardList.sp?currentPage=${pdto.startPage-pdto.pageBlock}&currentPageBlock=${pdto.currentPageBlock-1}">[이전]</a></c:if>
    		<c:forEach var="i" begin="${pdto.startPage}" end="${pdto.endPage}">
-			<a href="/jspEx/list.do?currentPage=${i}&currentPageBlock=${pdto.currentPageBlock}"> <c:out value="[${i}]"/></a>
+			<a href="boardList.sp?currentPage=${i}&currentPageBlock=${pdto.currentPageBlock}"> <c:out value="[${i}]"/></a>
   	 	</c:forEach>
-  	 	<c:if test="${pdto.allPage>pdto.endPage}"><a href="/jspEx/list.do?currentPage=${pdto.endPage+1}&currentPageBlock=${pdto.currentPageBlock+1}">[다음]</a></c:if>
+  	 	<c:if test="${pdto.allPage>pdto.endPage}"><a href="boardList.sp?currentPage=${pdto.endPage+1}&currentPageBlock=${pdto.currentPageBlock+1}">[다음]</a></c:if>
    </h1>
    </c:when>
    </c:choose>
    <!-- 해당 리스트를 출력 jstl사용 -->
-   <form action="content.do" name="content" method="post">
+   <form action="content.sp" name="content" method="post">
 	<input type="hidden" name="currentPage" value='<c:out value="${pdto.currentPage}" />'/>   
 	<input type="hidden" name="currentPageBlock" value='<c:out value="${pdto.currentPageBlock}" />'/>   
 	<input type="hidden" name="num" /> <!-- value='<c:out value="${dto.num}" />' 지운 이유 : 위에서 onclick 시 num 보내줌 -->

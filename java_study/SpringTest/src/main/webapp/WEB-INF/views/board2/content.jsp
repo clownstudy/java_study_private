@@ -27,23 +27,23 @@
          <tbody>
             <tr>
                <th>제목 : </th>
-               <td><c:out value="${dto.subject}"/></td>
+               <td><c:out value="${bdto.subject}"/></td>
             </tr>
             <tr>
                <th>내용 : </th>
-               <td><textarea cols="80" rows="20" readonly="readonly"><c:out value="${dto.content}"/></textarea></td>
+               <td><textarea cols="80" rows="20" readonly="readonly"><c:out value="${bdto.content}"/></textarea></td>
             </tr>
             <tr>
                <th>첨부파일 :</th>
-               <td><c:out value="${dto.attachnm}"/></td>
+               <td><c:out value="${bdto.attachnm}"/></td>
             </tr>
             <tr>
                <th>작 성 자 :</th>
-               <td><a href = 'mailto:<c:out value="${dto.email}"/>'><c:out value="${dto.writer}"/></a></td>
+               <td><a href = 'mailto:<c:out value="${bdto.email}"/>'><c:out value="${bdto.writer}"/></a></td>
             </tr>
             <tr>
                <th>이 메 일 :</th>
-               <td><c:out value="${dto.email}"/></td>
+               <td><c:out value="${bdto.email}"/></td>
             </tr>
             <tr>
                <td colspan="2" align = "center">
@@ -58,12 +58,12 @@
       <form action="" name = "parentForm" method="post">
      	 <input type="text" id="currentPage" name="currentPage" value='<c:out value="${pdto.currentPage}" />'/>   
 		 <input type="text" id="currentPageBlock" name="currentPageBlock" value='<c:out value="${pdto.currentPageBlock}" />'/>   
-         <input type="text" name="passwd" value = "${dto.passwd}" />
+         <input type="text" name="passwd" value = "${bdto.passwd}" />
          <input type="hidden" name="cpass" value = "" />
-         <input type="hidden" name="num" value = "${dto.num}" />
-         <input type="hidden" name="ref" value = "${dto.ref}" />
-         <input type="hidden" name="re_step" value = "${dto.re_step}" />
-         <input type="hidden" name="re_level" value = "${dto.re_level}" />
+         <input type="hidden" name="num" value = "${bdto.num}" />
+         <input type="hidden" name="ref" value = "${bdto.ref}" />
+         <input type="hidden" name="re_step" value = "${bdto.re_step}" />
+         <input type="hidden" name="re_level" value = "${bdto.re_level}" />
       </form>
 
 </body>

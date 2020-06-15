@@ -1,10 +1,12 @@
 package todo;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Calendar;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,34 +18,33 @@ import javax.swing.JPanel;
 import javax.swing.JToolBar;
 public class Main extends JFrame{
 		// 사용할 변수 선언
-		private JPanel top, bottom, center;
+		private JPanel bottom, tb;
+		JButton btn1, btn2, btn3;
 		private int rows = 7;
 		private int cols = 5;
+		Calendar cal = Calendar.getInstance();
+		int[] monDay = {31,28,31,30,31,30,31,31,30,31,30,31};
 		
 		public Main(){
 			setTitle("Menu Test");
-			this.setLayout(new GridLayout(6,1));
-			top = new JPanel();
-				this.add(top);
-			center = new JPanel();
-				this.add(center);	
-			bottom = new JPanel();
-				this.add(bottom);
+			this.setLayout(new BorderLayout(30,30));
+//			top.setPreferredSize(new Dimension(MAXIMIZED_HORIZ,top_height));	
+//			bottom.setPreferredSize(new Dimension(MAXIMIZED_HORIZ,MAXIMIZED_VERT-top_height));
 			// 각 패널 레이아웃 구성
-			top.setLayout(new FlowLayout(1,10,10));
-			center.setLayout(new GridLayout(10,10));
-			bottom.setLayout(new GridLayout(rows,cols,5,5));
 		
-			
 			// top panel
 			
-			JLabel lb = new JLabel("글자 변경 테스트");
-			top.add(lb);
-			JToolBar tb = new JToolBar();
-			JButton btn1 = new JButton("<");
-			JButton btn2 = new JButton("월");
-			JButton btn3 = new JButton(">");
-			top.add(tb, BorderLayout.CENTER);
+			int month = cal.get(Calendar.MONTH)+1;
+			
+			JLabel lb = new JLabel("글자 추가 테스트");
+			lb.setHorizontalAlignment(JLabel.CENTER);
+			lb.setPreferredSize(new Dimension(600,200));
+			this.add(lb);
+			
+			tb = new JPanel();
+			btn1 = new JButton("<");
+			btn2 = new JButton(month+"월");
+			btn3 = new JButton(">");
 			tb.add(btn1);
 			tb.add(btn2);
 			tb.add(btn3);
@@ -53,16 +54,26 @@ public class Main extends JFrame{
 					lb.setText(lb.getText()+"<");
 				}
 			});
-			top.add(tb);
+			btn2.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					btn2.setText(8+"월");
+				}
+			});
+			tb.setPreferredSize(new Dimension(300,50));
+			this.add(tb, BorderLayout.NORTH);
 			// bottom panel 
+			bottom = new JPanel();
+			bottom.setLayout(new GridLayout(rows,cols,5,5));
 			JButton[] btn = new JButton[rows*cols];
 			for(int i=0;i<rows*cols;i++) {
 				btn[i] = new JButton(""+(i+1));
 				bottom.add(btn[i]);
 			}
+			this.add(bottom, "South");
 			
 			
-			this.setSize(500,1000);
+			this.setSize(600,400);
 			setVisible(true);
 			}
 				

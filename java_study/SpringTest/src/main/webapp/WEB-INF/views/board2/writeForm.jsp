@@ -13,15 +13,13 @@
 <link href="/resources/board2/css/board.css" rel="stylesheet">
 </head>
 <body>
-	<form action="writePro.do" method="post" name="writeForm" onsubmit="return sendData()" enctype="multipart/form-data">
-	     <input type="text" name="num" value = "${num}" />
-         <input type="text" name="ref" value = "${ref}" />
-         <input type="text" name="re_step" value = "${re_step}" />
-         <input type="text" name="re_level" value = "${re_level}" />
+	<form action="writePro.sp" method="post" name="writeForm" onsubmit="return sendData()" enctype="multipart/form-data">
+	     <input type="text" name="num" value = "${bdto.num}" />
+         <input type="text" name="ref" value = "${bdto.ref}" />
+         <input type="text" name="re_step" value = "${bdto.re_step}" />
+         <input type="text" name="re_level" value = "${bdto.re_level}" />
          <input type="text" name="currentPage" value='<c:out value="${pdto.currentPage}" />'/>   
 		 <input type="text" name="currentPageBlock" value='<c:out value="${pdto.currentPageBlock}" />'/> 
-	
-	
 	
 		<table>
 			<thead>
@@ -32,11 +30,11 @@
 			<tbody>
 				<tr>
 					<th>제목:</th>
-					<c:if test="${num==0}">
+					<c:if test="${bdto.num==0}">
 					<td><input type="text" size="70%" placeholder="제목을 입력하세요"
 						id="subject" name="subject"/></td>
 					</c:if>
-					<c:if test="${num!=0}">
+					<c:if test="${bdto.num!=0}">
 					<td><input type="text" size="70%" placeholder="제목을 입력하세요"
 						id="subject" name="subject" value="[답글]"/></td>
 					</c:if>

@@ -5,13 +5,16 @@
 	select count(num) cnt from board
 </select>
 
-<select id="boardList" parameterType="hashmap" resultType="bdto">
+<select id="getArticles" parameterType="hashmap" resultType="bdto">
 	select A.*
 	from (select rownum rr, rboard.*
 		from (select num, writer, subject, email, content, passwd, reg_date, readcnt, ref, re_step, re_level, attachnm
 			from board order by ref desc, re_step asc) rboard) A
 	<if test="start!=null">
-	where A.rr between #{start} and #{end};
+	where A.rr between #{start} and #{end}
+	</if>
+	<if test="num!=null">
+		where num = #{num}
 	</if>
 </select>
 </mapper>

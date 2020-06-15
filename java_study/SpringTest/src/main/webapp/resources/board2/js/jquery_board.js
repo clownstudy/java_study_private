@@ -1,13 +1,13 @@
 $(function(){
 	$('#reply').click(function(){
-		document.parentForm.action='writeForm.do';
+		document.parentForm.action='writeForm.sp';
 		document.parentForm.submit();
 	});
 
 	$('#list1').click(function(){// content.jsp
 		// javascript:location.href='list.do';
 		
-		document.parentForm.action='list.do';
+		document.parentForm.action='boardList.sp';
 		document.parentForm.submit();
 	});
 	
@@ -15,14 +15,14 @@ $(function(){
 //		document.writeForm.action='list.do';
 //		document.writeForm.submit();
 		
-				 javascript:location.href='list.do';
+				 javascript:location.href='boardList.sp';
 		//		document.writeForm.submit();
 	});
 	
 	$('#list3').click(function(){// content.jsp
 		// javascript:location.href='list.do';
 		
-		document.updateForm.action='list.do';
+	document.updateForm.action='boardList.sp';
 		document.updateForm.submit();
 	});
-})
+} )
