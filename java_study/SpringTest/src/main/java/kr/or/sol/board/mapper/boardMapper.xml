@@ -17,4 +17,11 @@
 		where num = #{num}
 	</if>
 </select>
+<select id="NewNum" resultType="int">
+select nvl(max(num),0)+1 cnt from board
+</select>
+<insert id="boardWrite" parameterType="bdto">
+			insert into board(NUM,WRITER,SUBJECT,EMAIL,CONTENT,PASSWD,REG_DATE,READCNT,REF,RE_STEP,RE_LEVEL,ATTACHNM)
+			values(#{num},#{writer},#{subject},#{email},#{content},#{passwd},sysdate,0,#{ref},#{re_step},#{re_level},#{attachnm})
+</insert>
 </mapper>

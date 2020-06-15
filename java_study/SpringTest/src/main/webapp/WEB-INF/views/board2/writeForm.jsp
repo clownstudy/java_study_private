@@ -13,7 +13,8 @@
 <link href="/resources/board2/css/board.css" rel="stylesheet">
 </head>
 <body>
-	<form action="writePro.sp" method="post" name="writeForm" onsubmit="return sendData()" enctype="multipart/form-data">
+	<form action="writePro.sp" method="post" name="writeForm" onsubmit="return sendData()">
+<!-- 	enctype="multipart/form-data"> -->
 	     <input type="text" name="num" value = "${bdto.num}" />
          <input type="text" name="ref" value = "${bdto.ref}" />
          <input type="text" name="re_step" value = "${bdto.re_step}" />

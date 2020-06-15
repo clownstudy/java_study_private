@@ -52,14 +52,12 @@ public class BoardListServiceImpl implements BoardListService {
 			pdto.setCurrentPageBlock(1);
 		} 
 
-		int endPage = 1;
 		int startPage = 1;
-		
+		int endPage = 1;
 		startPage = ((pdto.getCurrentPageBlock() - 1) * (pdto.getPageBlock())) + 1;
-		endPage = pdto.getCurrentPageBlock() * pdto.getPageBlock() > pdto.getAllPage() ? endPage : pdto.getPageBlock() * pdto.getCurrentPageBlock();
+		endPage = pdto.getCurrentPageBlock() * pdto.getPageBlock() > pdto.getAllPage() ? pdto.getAllPage() : pdto.getPageBlock() * pdto.getCurrentPageBlock();
 		pdto.setStartPage(startPage);
 		pdto.setEndPage(endPage);
-
 		// 가져올 start 레코드와 end레코드를 해시맵으로 저장
 		int start = (pdto.getCurrentPage() - 1) * pdto.getLinePerPage() + 1;
 		int end = pdto.getCurrentPage()*pdto.getLinePerPage();

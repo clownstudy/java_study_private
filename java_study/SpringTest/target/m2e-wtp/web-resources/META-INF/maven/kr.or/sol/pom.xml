@@ -157,9 +157,26 @@
 		</dependency>
 		
 	<!-- jdbc and mybatis end -->
-
-	
-	
+	<!--  by upload start -->
+		<dependency>
+		    <groupId>commons-fileupload</groupId>
+		    <artifactId>commons-fileupload</artifactId>
+		    <version>1.4</version>
+		</dependency>
+		<dependency>
+		    <groupId>commons-io</groupId>
+		    <artifactId>commons-io</artifactId>
+		    <version>2.7</version>
+		</dependency>
+	<!--  by upload end -->
+	<!--  thumbnail start -->
+		<dependency>
+		    <groupId>servlets.com</groupId>
+		    <artifactId>cos</artifactId>
+		    <version>05Nov2002</version>
+		</dependency>
+	<!--  thumbnail end -->
+		
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>

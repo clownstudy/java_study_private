@@ -59,11 +59,11 @@
      	 <input type="text" id="currentPage" name="currentPage" value='<c:out value="${pdto.currentPage}" />'/>   
 		 <input type="text" id="currentPageBlock" name="currentPageBlock" value='<c:out value="${pdto.currentPageBlock}" />'/>   
          <input type="text" name="passwd" value = "${bdto.passwd}" />
-         <input type="hidden" name="cpass" value = "" />
-         <input type="hidden" name="num" value = "${bdto.num}" />
-         <input type="hidden" name="ref" value = "${bdto.ref}" />
-         <input type="hidden" name="re_step" value = "${bdto.re_step}" />
-         <input type="hidden" name="re_level" value = "${bdto.re_level}" />
+         <input type="text" name="cpass" value = "" />
+         <input type="text" name="num" value = "${bdto.num}" />
+         <input type="text" name="ref" value = "${bdto.ref}" />
+         <input type="text" name="re_step" value = "${bdto.re_step}" />
+         <input type="text" name="re_level" value = "${bdto.re_level}" />
       </form>
 
 </body>

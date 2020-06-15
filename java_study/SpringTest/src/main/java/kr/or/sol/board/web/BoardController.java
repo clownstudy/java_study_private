@@ -1,5 +1,6 @@
 package kr.or.sol.board.web;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -50,17 +51,36 @@ public class BoardController {
 	public String content(HttpServletRequest req, HttpServletResponse res, Model model, BoardDTO bdto, PageDTO pdto) {
 		// list 와 hashmap 두가지로 보낼 수 있다.
 		Map<String, Object> cmap = boardListService.getArticle(bdto,pdto); // 누군지 모르기 때문에 object로  
-
+		Map<String,Object> bdto2 = new HashMap<String,Object>();
+		bdto2.put("bdto", cmap.get("bdto"));
+		Map<String,Object> pdto2 = new HashMap<String,Object>();
+		pdto2.put("pdto",cmap.get("pdto"));
+		model.addAttribute("bdto",bdto2);
+		model.addAttribute("pdto",pdto2);
 		return "board2/content";
 	}
 	
 	@RequestMapping(value="/writeForm.sp")
-	public String writeForm(HttpServletRequest req, HttpServletResponse res, Model model, BoardDTO bdto, PageDTO pdto) {
+	public String writeForm(HttpServletRequest request, HttpServletResponse response, Model model, BoardDTO bdto, PageDTO pdto) {
 		
 		PageDTO pdto2 = boardWriteService.writeArticle(pdto);
 		model.addAttribute("pdto",pdto2);
 		model.addAttribute("bdto",bdto); // 받아온거 다시 넣어주기.
 		return "board2/writeForm";
+	}
+	@RequestMapping(value="/writePro.sp")
+	public String writePro(HttpServletRequest request, HttpServletResponse response, Model model, BoardDTO bdto, PageDTO pdto) {
+		
+		boardWriteService.writeProArticle(bdto,request, response);
+		if(pdto.getCurrentPage()==0) {
+			pdto.setCurrentPage(1);
+		}
+		if(pdto.getCurrentPageBlock()==0) {
+			pdto.setCurrentPageBlock(1);
+		}
+		
+		model.addAttribute("pdto",pdto);
+		return "board2/writePro";
 	}
 	
 }

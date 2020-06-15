@@ -26,7 +26,13 @@ public class BoardDAO {
 		return sqlsession.selectList(prens+"getArticles",hmap);
 	}
 	public BoardDTO getArticle(BoardDTO bdto) {
-		// TODO Auto-generated method stub
-		return sqlsession.selectOne(prens+"getArticles");
+		return null;
+	}
+	public void boardWrite(BoardDTO bdto) {
+		System.out.println("-----------"+bdto.getRef());
+		sqlsession.insert(prens+"boardWrite",bdto); // 새글만 저장?
+	}
+	public int getNewNum() {
+		return sqlsession.selectOne(prens+"NewNum");
 	}
 }

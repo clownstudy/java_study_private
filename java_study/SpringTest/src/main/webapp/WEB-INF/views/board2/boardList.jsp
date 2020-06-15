@@ -74,7 +74,7 @@ function callContent(num){
          </tr>
       </c:forEach>
          <tr>
-         	<td colspan="2" align="right">
+         	<td colspan="5" align="right">
          		<a href="writeForm.sp">
          		<input type="button" value="글쓰기">
          	</a>
@@ -87,7 +87,9 @@ function callContent(num){
    		<c:forEach var="i" begin="${pdto.startPage}" end="${pdto.endPage}">
 			<a href="boardList.sp?currentPage=${i}&currentPageBlock=${pdto.currentPageBlock}"> <c:out value="[${i}]"/></a>
   	 	</c:forEach>
-  	 	<c:if test="${pdto.allPage>pdto.endPage}"><a href="boardList.sp?currentPage=${pdto.endPage+1}&currentPageBlock=${pdto.currentPageBlock+1}">[다음]</a></c:if>
+  	 	<c:if test="${pdto.allPage>pdto.endPage}"><a href="boardList.sp?currentPage=${pdto.endPage+1}&currentPageBlock=${pdto.currentPageBlock+1}">[다음]</a>
+  	 		<input type="text" value="${pdto.allPage}" />
+  	 	</c:if>
    </h1>
    </c:when>
    </c:choose>
