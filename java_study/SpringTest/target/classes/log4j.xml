@@ -38,7 +38,7 @@
  </appender>
  
  <!-- Application Loggers -->
- <logger name="kr.co.atecap">
+ <logger name="kr.or.sol">
   <level value="info" />
  </logger>
  
@@ -80,14 +80,16 @@
   <appender-ref ref="dailyout" />
  </logger>
 <!-- 들어가기 전에 로그 찍힘 --> 
-<!--   <logger name="jdbc.audit" additivity="false">
+<!--
+	<logger name="jdbc.audit" additivity="false">
 	        <level value="trace" />
 	        <appender-ref ref="console" />
 	        <appender-ref ref="dailyout"/>
-   </logger> -->
+	</logger>
 	
+  -->
 <!-- 들어간 후에 로그 찍힘 --> 
-    <logger name="jdbc.sqltiming" additivity="false">
+     		<logger name="jdbc.sqltiming" additivity="false">
 	        <level value="trace" />
 	        <appender-ref ref="console" /> 
 	        <appender-ref ref="dailyout"/>
@@ -101,4 +103,3 @@
  </root>
  
 </log4j:configuration>
-

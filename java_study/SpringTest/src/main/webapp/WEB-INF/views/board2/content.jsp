@@ -64,6 +64,7 @@
          <input type="text" name="ref" value = "${bdto.ref}" />
          <input type="text" name="re_step" value = "${bdto.re_step}" />
          <input type="text" name="re_level" value = "${bdto.re_level}" />
+<%--          <input type="text" name="writer" value="${bdto.writer}" /> --%>
       </form>
 
 </body>

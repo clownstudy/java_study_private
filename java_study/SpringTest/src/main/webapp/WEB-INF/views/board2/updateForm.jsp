@@ -15,9 +15,9 @@
 <link href="/resources/board2/css/board.css" rel="stylesheet" >
 </head>
 <body>
-<form action="updatePro.do" method="post" name="updateForm" onsubmit="return sendData()">
-	<input type="hidden" name="re_step" value="${dto.re_step}" />
-	<input type="hidden" name="re_level" value="${dto.re_level}" />
+<form action="updatePro.sp" method="post" name="updateForm" onsubmit="return sendData()">
+	<input type="hidden" name="re_step" value="${bdto.re_step}" />
+	<input type="hidden" name="re_level" value="${bdto.re_level}" />
 	<input type="hidden" name="currentPage" value='<c:out value="${pdto.currentPage}" />'/>   
 	<input type="hidden" name="currentPageBlock" value='<c:out value="${pdto.currentPageBlock}" />'/> 
 	
@@ -31,30 +31,28 @@
 				<tr>
 					<th>제목:</th>
 					<td><input type="text" size="95%" placeholder="제목을 입력하세요"
-						id="subject" name="subject" value="${dto.subject}" /></td>
+						id="subject" name="subject" value="${bdto.subject}" /></td>
 				</tr>
 				<tr>
 					<th>내용:</th>
-					<td><textarea rows="20" cols="50" placeholder="????" name="content" id="content">
-					<c:out value="${dto.content}"/>
-					</textarea></td>
+					<td><textarea rows="20" cols="50" placeholder="????" name="content" id="content"><c:out value="${bdto.content}"/></textarea></td>
 				</tr>
 				<tr>
 					<th>첨부파일:</th>
-					<td><input type="file" value="파일 선택" name="attachnm" id="attachnm" value="${dto.attachnm}" /></td>
+					<td><input type="file" value="파일 선택" name="attachnm" id="attachnm" value="${bdto.attachnm}" /></td>
 				</tr>
 				<tr>
 					<th>작성자:</th>
-					<td><input type="text" name="writer" value='<c:out value="${dto.writer}"/>' /></td>
+					<td><input type="text" name="writer" value='<c:out value="${bdto.writer}"/>' /></td>
 				</tr>
 				<tr>
 					<th>이메일:</th>
-					<td><input type="text" placeholder="메일 주소를 입력해봐라" name="email" value="${dto.email}" /></td>
+					<td><input type="text" placeholder="메일 주소를 입력해봐라" name="email" value="${bdto.email}" /></td>
 				</tr>
 				<tr>
 					<th>비밀번호:</th>
-					<td><input type="password" placeholder="비밀번호를 입력하세요" name="passwd" value="${dto.passwd}" />
-					<input type ="hidden" name="num" value="${dto.num}" />
+					<td><input type="password" placeholder="비밀번호를 입력하세요" name="passwd" value="${bdto.passwd}" />
+					<input type ="hidden" name="num" value="${bdto.num}" />
 					</td>
 				</tr>
 				<tr>

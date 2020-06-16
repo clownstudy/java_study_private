@@ -1,5 +1,4 @@
 package todo;
-// originally uploaded to http://blog.naver.com/azure0777
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -103,7 +102,7 @@ public class MemoCalendar extends CalendarDataManager{
 		JLabel bottomInfo = new JLabel("Welcome to Memo Calendar!");
 
 	final String WEEK_DAY_NAME[] = { "SUN", "MON", "TUE", "WED", "THR", "FRI", "SAT" };
-	final String title = "�޸� �޷� ver 1.0";
+	final String title = "Fuck↗ You↘";
 	final String SaveButMsg1 = "�� MemoData������ �����Ͽ����ϴ�.";
 	final String SaveButMsg2 = "�޸� ���� �ۼ��� �ּ���.";
 	final String SaveButMsg3 = "<html><font color=red>ERROR : ���� ���� ����</html>";

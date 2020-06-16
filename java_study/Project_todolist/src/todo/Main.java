@@ -23,7 +23,9 @@ public class Main extends JFrame{
 		private int rows = 7;
 		private int cols = 5;
 		Calendar cal = Calendar.getInstance();
+		int[] ArrMonth = {1,2,3,4,5,6,7,8,9,10,11,12};
 		int[] monDay = {31,28,31,30,31,30,31,31,30,31,30,31};
+		public int month = cal.get(Calendar.MONTH)+1;
 		
 		public Main(){
 			setTitle("Menu Test");
@@ -34,7 +36,6 @@ public class Main extends JFrame{
 		
 			// top panel
 			
-			int month = cal.get(Calendar.MONTH)+1;
 			
 			JLabel lb = new JLabel("글자 추가 테스트");
 			lb.setHorizontalAlignment(JLabel.CENTER);
@@ -51,13 +52,21 @@ public class Main extends JFrame{
 			btn1.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					lb.setText(lb.getText()+"<");
+					--month;
+					if(month<1) {
+						month = 12;
+					} 						
+					btn2.setText(month+"월");
 				}
 			});
-			btn2.addActionListener(new ActionListener() {
+			btn3.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					btn2.setText(8+"월");
+					++month;
+					if(month>12) {
+						month = 1;
+					}
+					btn2.setText(month+"월");
 				}
 			});
 			tb.setPreferredSize(new Dimension(300,50));

@@ -195,13 +195,13 @@ public class BoardDAO {
 			conn = DBConnection.getConnection();
 
 			try {
-				String sql ="update board set ";
-				sql+="subject = ?,";
-				sql+="email = ?,";
-				sql+="content = ?,";
-				sql+="passwd = ?,";
-				sql+="attachnm = ? ";
-				sql+="where num = ?";
+			String sql ="update board set ";
+				   sql+="subject = ?,";
+				   sql+="email = ?,";
+				   sql+="content = ?,";
+				   sql+="passwd = ?,";
+				   sql+="attachnm = ? ";
+				   sql+="where num = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, dto.getSubject());
 			pstmt.setString(2, dto.getEmail());

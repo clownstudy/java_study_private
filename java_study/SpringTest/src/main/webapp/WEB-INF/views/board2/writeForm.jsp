@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -21,7 +22,6 @@
          <input type="text" name="re_level" value = "${bdto.re_level}" />
          <input type="text" name="currentPage" value='<c:out value="${pdto.currentPage}" />'/>   
 		 <input type="text" name="currentPageBlock" value='<c:out value="${pdto.currentPageBlock}" />'/> 
-	
 		<table>
 			<thead>
 				<tr>
@@ -50,11 +50,11 @@
 				</tr>
 				<tr>
 					<th>작성자:</th>
-					<td><input type="text" placeholder="이름을 입력해봐라" name="writer" id = "writer"/></td>
+					<td><input type="text" placeholder="이름을 입력해봐라" name="writer" id="writer"/></td>
 				</tr>
 				<tr>
 					<th>이메일:</th>
-					<td><input type="text" placeholder="메일 주소를 입력해봐라" name="email" id = "email"/></td>
+					<td><input type="text" placeholder="메일 주소를 입력해봐라" name="email" id="email"/></td>
 				</tr>
 				<tr>
 					<th>비밀번호:</th>

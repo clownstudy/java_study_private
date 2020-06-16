@@ -28,7 +28,7 @@ function pwCheck(s) {
 	} else if (s == 'd') {
 		document.parentForm.action = 'deletePro.sp';
 	}
-	window.open("/board2/idCheck.jsp", "idCheck",
+	window.open("idCheck.sp", "idCheck",
 			"width=500, height=200, location=no, menubar=no, resizable=no, scrollbar=no");
 }
 

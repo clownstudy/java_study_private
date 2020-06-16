@@ -9,6 +9,6 @@ import kr.or.sol.board.dto.PageDTO;
 public interface BoardWriteService {
 	public PageDTO writeArticle(PageDTO pdto);
 	public void writeProArticle(BoardDTO bdto, HttpServletRequest request, HttpServletResponse response);
-	
-	
+	public PageDTO updatePro(PageDTO pdto, BoardDTO bdto, HttpServletRequest request, HttpServletResponse response);
+	public PageDTO deletePro(PageDTO pdto, int num);
 }
