@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- db  connection info. -->
+	<bean id="dataSourceOR" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:xe"/>
+		<property name="username" value="user2"/>
+		<property name="password" value="soldesk"/>
+	</bean>
+<!-- 데이터베이스에 접근하면 해당 내역 로그로 남겨주기 위한 코드 -->
+	<bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
+		<constructor-arg ref="dataSourceOR"/> <!-- 생성자에 집어넣어라 -->
+		<property name="logFormatter">
+			<bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter">
+				<property name="loggingType" value="MULTI_LINE"/>	
+				<property name="sqlPrefix" value="[SQL]: "/>
+			</bean>
+		</property>
+	</bean>
+			
+	<!-- db  connection info. Day -->
+	<!-- 1. mybatis framework에 db connection. -->
+	<!-- 2. sql file loaction 세팅. -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/> <!--  dataSource 이름 적기. 여러개 사용 가능. 즉 위의 basicDataSource를 쓴다는거 -->
+		<property name="configLocation" value="/WEB-INF/spring/Mybatis-Config.xml"/>
+		<property name="mapperLocations" value="classpath*:**/mapper/*Mapper.xml" />
+		<!-- 중간 경로에 mapper라는 폴더가 무조건 있어야하고, 해당 파일은 Mapper로 끝나는 xml이어야함. -->
+	</bean>
+	<!-- DBConnection 역할을 하는 녀석. connection 정보를 갖고 있음. -->
+	<bean id="sqlsession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory"/>
+	</bean>
+</beans>
