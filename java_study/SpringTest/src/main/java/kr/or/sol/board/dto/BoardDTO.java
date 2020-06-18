@@ -14,9 +14,31 @@ public class BoardDTO {
 	private String 	passwd;
 	private String 	reg_date;
     private String  attachnm;
+    private int fileNo;
+    private long fileSize;
+    private String orgFileNm;
+    
+    public int getFileNo() {
+		return fileNo;
+	}
+	public void setFileNo(int fileNm) {
+		this.fileNo = fileNm;
+	}
+	public long getFileSize() {
+		return fileSize;
+	}
+	public void setFileSize(long fileSize) {
+		this.fileSize = fileSize;
+	}
 	   
 
     
+	public String getOrgFileNm() {
+		return orgFileNm;
+	}
+	public void setOrgFileNm(String orgFileNm) {
+		this.orgFileNm = orgFileNm;
+	}
 	public int getRr() {
 		return rr;
 	}

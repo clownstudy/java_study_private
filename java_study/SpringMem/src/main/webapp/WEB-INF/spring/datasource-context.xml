@@ -20,7 +20,7 @@
 			</bean>
 		</property>
 	</bean>
-			
+	<!--  한세트 구성 시작 -->
 	<!-- db  connection info. Day -->
 	<!-- 1. mybatis framework에 db connection. -->
 	<!-- 2. sql file loaction 세팅. -->
@@ -30,8 +30,9 @@
 		<property name="mapperLocations" value="classpath*:**/mapper/*Mapper.xml" />
 		<!-- 중간 경로에 mapper라는 폴더가 무조건 있어야하고, 해당 파일은 Mapper로 끝나는 xml이어야함. -->
 	</bean>
-	<!-- DBConnection 역할을 하는 녀석. connection 정보를 갖고 있음. -->
+	<!-- DAO에서 사용. DBConnection 역할을 하는 녀석. connection 정보를 갖고 있음. -->
 	<bean id="sqlsession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory"/>
 	</bean>
+	<!-- 세트 끝 -->
 </beans>

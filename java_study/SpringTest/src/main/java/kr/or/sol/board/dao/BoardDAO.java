@@ -34,9 +34,7 @@ public class BoardDAO {
 		return sqlsession.selectOne(prens+"getArticles",numMap);
 	}
 	public void boardWrite(BoardDTO bdto) {
-		System.out.println("1."+bdto.getWriter());
 		sqlsession.insert(prens+"boardWrite",bdto); // 새글만 저장?
-		System.out.println("2"+bdto.getWriter());
 	}
 	public int getNewNum() {
 		return sqlsession.selectOne(prens+"NewNum");

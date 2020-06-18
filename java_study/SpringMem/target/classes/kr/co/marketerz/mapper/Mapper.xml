@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memMapper">
+<insert id="join" parameterType="mdto">
+	<selectKey keyProperty="memseq" resultType="int" order="BEFORE">
+		SELECT nvl(max(memseq),0)+1 memseq from memtb
+	</selectKey>
+		 insert into 
+	     memtb(memid
+	           ,memseq
+	           ,memname
+	           ,memtel
+	           ,membirth
+	           ,mememail
+	           ,memgender
+	           ,mempass)
+	     values(#{memid}
+	           ,#{memseq}
+	           ,#{memname}
+	           ,#{memtel}
+	           ,#{membirth}
+	           ,#{mememail}
+	           ,#{memgender}
+	           ,#{mempass})
+</insert>
+<select id="memberList" parameterType="hashmap" resultType="mdto">
+	select A.*
+	from (select rownum rr, rmember.*
+		from (select memid, memseq, memname, memtel,membirth,regdate, mememail,memgender, mempass
+			from memtb order by memseq desc) rmember) A
+	<choose>
+	<when test="memid!=null and memid!=0">
+		where memid = #{memid}
+	</when>
+<!-- 	<otherwise> -->
+<!-- 		<if test="start!=null and start!=0"> -->
+<!-- 			where A.rr between #{start} and #{end} -->
+<!-- 		</if> -->
+<!-- 	</otherwise> -->
+	</choose>		
+</select>
+<select id="allCount" resultType="int">
+	select count(memid) allCnt from memtb
+</select>
+<update id="memberUpdate" parameterType="hashmap">
+update memtb set
+ memid    =#{memid}
+,memname  =#{memname}
+,memtel   =#{memtel}
+,membirth =#{membirth}
+,mememail =#{mememail}
+,memgender=#{memgender}
+,mempass  =#{mempass}
+where
+ memseq = #{memseq}
+</update>
+<delete id="memberDelete" parameterType="int">
+delete from memtb where memseq = #{memseq}
+</delete>
+</mapper>
