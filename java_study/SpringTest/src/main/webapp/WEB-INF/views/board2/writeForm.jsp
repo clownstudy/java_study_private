@@ -8,14 +8,13 @@
 <meta charset="UTF-8">
 <title>게시판 글쓰기</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="/resources/board2/js/jquery.js"></script>
 <script type="text/javascript" src="/resources/board2/js/boardScript.js"></script>
 <script type="text/javascript" src="/resources/board2/js/jquery_board.js"></script>
-<script src="/resources/board2/js/jquery.js"></script>
 <link href="/resources/board2/css/board.css" rel="stylesheet">
 </head>
 <body>
-	<form action="writePro.sp" method="post" name="writeForm" onsubmit="return sendData()">
-<!-- 	enctype="multipart/form-data"> -->
+	<form action="writePro.sp" method="post" name="writeForm" onsubmit="return sendData()" enctype="multipart/form-data">
 	     <input type="text" name="num" value = "${bdto.num}" />
          <input type="text" name="ref" value = "${bdto.ref}" />
          <input type="text" name="re_step" value = "${bdto.re_step}" />
@@ -46,7 +45,7 @@
 				</tr>
 				<tr>
 					<th>첨부파일:</th>
-					<td><input type="file" value="파일 선택" name="attachnm" id="attachnm" /></td>
+					<td><input type="file" value="파일 선택" name="afile" id="attachnm" /></td>
 				</tr>
 				<tr>
 					<th>작성자:</th>
@@ -62,8 +61,9 @@
 				</tr>
 				<tr>
 					<td colspan="2" align="center">
-						<input type="submit" name ="submit" value="등록" />
-						<input type="button" name ="list_btn" value="글목록" id="list2" /></td>
+						<button type="submit" name ="submit" >등록</button>
+						<button type="button" name ="list_btn" id="list2" >글목록</button>
+					</td>
 				</tr>
 			</tbody>
 		</table>

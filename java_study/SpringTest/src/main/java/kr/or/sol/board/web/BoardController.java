@@ -9,17 +9,15 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import kr.or.sol.board.dto.BoardDTO;
 import kr.or.sol.board.dto.PageDTO;
 import kr.or.sol.board.service.BoardListService;
 import kr.or.sol.board.service.BoardWriteService;
-import kr.or.sol.board.service.impl.BoardListServiceImpl;
 
 @Controller
 public class BoardController {
@@ -84,9 +82,10 @@ public class BoardController {
 		return "/board2/writeForm";
 	}
 	@RequestMapping(value="/writePro.sp")
-	public String writePro(HttpServletRequest request, HttpServletResponse response, Model model, BoardDTO bdto, PageDTO pdto) {
+	public String writePro(Model model, BoardDTO bdto, PageDTO pdto, MultipartHttpServletRequest mpRequest) {
 		
-		boardWriteService.writeProArticle(bdto,request, response);
+		boardWriteService.writeProArticle(bdto,mpRequest);
+		logger.info("f"+bdto.getFileNo());
 		if(pdto.getCurrentPage()==0) {
 			pdto.setCurrentPage(1);
 		}
@@ -115,9 +114,9 @@ public class BoardController {
 	}
 	//updatePro 처리용 하나 생성 필요
 	@RequestMapping(value="/updatePro.sp")
-	public String updatePro(HttpServletRequest request, HttpServletResponse response, Model model, BoardDTO bdto, PageDTO pdto) {
+	public String updatePro(MultipartHttpServletRequest mpRequest, Model model, BoardDTO bdto, PageDTO pdto) {
 		// 서비스 호출
-		PageDTO pdto2 = boardWriteService.updatePro(pdto, bdto, request, response);
+		PageDTO pdto2 = boardWriteService.updatePro(pdto, bdto, mpRequest);
 		model.addAttribute("pdto",pdto2);
 	return "redirect:/boardList.sp";
 	}

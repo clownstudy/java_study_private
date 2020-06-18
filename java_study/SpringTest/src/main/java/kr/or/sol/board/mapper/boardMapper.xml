@@ -7,7 +7,7 @@
 <select id="getArticles" parameterType="hashmap" resultType="bdto">
 	select A.*
 	from (select rownum rr, rboard.*
-		from (select num, writer, subject, email, content, passwd, reg_date, readcnt, ref, re_step, re_level, attachnm
+		from (select num, writer, subject, email, content, passwd, reg_date, readcnt, ref, re_step, re_level, attachnm, fileno, filesize, orgfilenm
 			from board order by ref desc, re_step asc) rboard) A
 	<choose>
 	<when test="num!=null">
@@ -26,17 +26,51 @@ update board set readcnt = readcnt+1 where num = #{num}
 <select id="NewNum" resultType="int">
 select nvl(max(num),0)+1 cnt from board
 </select>
-<insert id="boardWrite" parameterType="bdto">
-			insert into board(NUM,WRITER,SUBJECT,EMAIL,CONTENT,PASSWD,REG_DATE,READCNT,REF,RE_STEP,RE_LEVEL,ATTACHNM)
-			values(#{num},#{writer},#{subject},#{email},#{content},#{passwd},sysdate,0,#{ref},#{re_step},#{re_level},#{attachnm})
-</insert>
+<insert id="boardWrite" parameterType="bdto" >
+     <selectKey keyProperty="fileNo" resultType="int" order="BEFORE">
+	       select nvl(max(FILENO),0)+1 FILENO from board
+	 </selectKey>
+      <choose>
+       <when test="fileSize!=0">
+        INSERT INTO 
+ 		 BOARD(NUM,WRITER,
+ 		       SUBJECT,EMAIL,
+ 		       CONTENT, PASSWD, 
+ 		       REG_DATE,READCNT, 
+ 		       REF,RE_STEP, RE_LEVEL, 
+ 		       ATTACHNM,FILENO, 
+ 		       FILESIZE, ORGFILENM) 
+		 VALUES(#{num},#{writer},#{subject},#{email},
+		        #{content}, #{passwd}, sysdate, 0,
+		        #{ref}, #{re_step}, #{re_level}, 
+		        #{attachnm},#{fileNo}, 
+		        #{fileSize},#{orgFileNm}) 
+       </when>
+       <otherwise>
+     	 INSERT INTO 
+ 		 BOARD(NUM,WRITER,
+ 		       SUBJECT,EMAIL,
+ 		       CONTENT, PASSWD, 
+ 		       REG_DATE,READCNT, 
+ 		       REF,RE_STEP, RE_LEVEL) 
+		 VALUES(#{num},#{writer},#{subject},#{email},
+		        #{content}, #{passwd}, sysdate, 0,
+		        #{ref}, #{re_step}, #{re_level}) 
+       </otherwise>
+    </choose>
+ </insert>
 <update id="updatePro" parameterType="bdto"> <!-- 알아서 숫자로 리턴 -->
 update  board set
 	 subject 	= #{subject}  	 
 	,email 		= #{email} 		
 	,content 	= #{content} 	
 	,passwd 	= #{passwd} 	
-	,attachnm 	= #{attachnm} 
+	<if test="fileNo!=null and fileSize>0 and orgFileNm!=null">
+	  ,attachnm	= #{attachnm}
+      ,FILENO   =  #{fileNo}
+      ,FILESIZE =  #{fileSize}
+      ,ORGFILENM = #{orgFileNm}
+    </if> 
 	 where num 	= #{num}
 </update>
 <delete id="deleteArticle" parameterType="int">

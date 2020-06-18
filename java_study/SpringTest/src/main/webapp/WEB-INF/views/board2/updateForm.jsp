@@ -15,7 +15,7 @@
 <link href="/resources/board2/css/board.css" rel="stylesheet" >
 </head>
 <body>
-<form action="updatePro.sp" method="post" name="updateForm" onsubmit="return sendData()">
+<form action="updatePro.sp" method="post" name="updateForm" onsubmit="return sendData()" enctype="multipart/form-data">>
 	<input type="hidden" name="re_step" value="${bdto.re_step}" />
 	<input type="hidden" name="re_level" value="${bdto.re_level}" />
 	<input type="hidden" name="currentPage" value='<c:out value="${pdto.currentPage}" />'/>   
@@ -39,7 +39,7 @@
 				</tr>
 				<tr>
 					<th>첨부파일:</th>
-					<td><input type="file" value="파일 선택" name="attachnm" id="attachnm" value="${bdto.attachnm}" /></td>
+					<td><input type="file" value="파일 선택" name="afile" id="attachnm" value="${bdto.attachnm}" /></td>
 				</tr>
 				<tr>
 					<th>작성자:</th>
@@ -57,8 +57,9 @@
 				</tr>
 				<tr>
 					<td colspan="2" align="center">
-						<input type="submit" value="글수정"/>
-						<input type="button" value="글목록으로" id="list3" /></td>
+						<button type="submit" >글수정</button>
+						<button type="button" id="list3" >글목록으로</button>
+					</td>
 				</tr>
 			</tbody>
 		</table>
