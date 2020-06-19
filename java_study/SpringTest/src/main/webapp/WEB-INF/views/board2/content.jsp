@@ -35,7 +35,7 @@
             </tr>
             <tr>
                <th>첨부파일 :</th>
-               <td><c:out value="${bdto.attachnm}"/></td>
+               <td><c:out value="${bdto.attachnm}"/><button onclick="</td>
             </tr>
             <tr>
                <th>작 성 자 :</th>

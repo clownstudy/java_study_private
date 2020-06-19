@@ -23,8 +23,6 @@ public class BoardDAO {
 		 return sqlsession.selectOne(prens+"allCnt");
 	}
 	public List<BoardDTO> getArticles(Map<String, Integer> hmap) {
-		
-		
 		return sqlsession.selectList(prens+"getArticles",hmap);
 	}
 	public BoardDTO getArticle(BoardDTO bdto) {

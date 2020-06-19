@@ -1,7 +1,6 @@
 package kr.co.marketerz;
 
 import java.util.List;
-
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.marketerz.memtb.MemberDTO;
 import kr.co.marketerz.memtb.PageDTO;
@@ -27,36 +27,50 @@ public class MemberController {
 	MemberService memberService;
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
-	@RequestMapping(value="/joinForm.mg")
-	public String joinForm(HttpServletRequest request, HttpServletResponse response, Model model, MemberDTO mdto, PageDTO pdto) {
-		return "joinForm";
-	}
-
-	@RequestMapping(value="/joinPro.mg")
-	public String joinPro(HttpServletRequest request, HttpServletResponse response, Model model, MemberDTO mdto, PageDTO pdto) {
-		int r = memberService.joinMember(mdto, pdto);
-		logger.info("=========================="+mdto.getMemid());
-		if(r>0) {
-			model.addAttribute("message","도전 성공!");
-		} else {
-			model.addAttribute("message","도전 실패!");
-		}
-		return "joinPro";
-	}
-	
 	@RequestMapping(value="/memberList.mg")
 	public String memberList(HttpServletRequest request, HttpServletResponse response, Model model, MemberDTO mdto, PageDTO pdto) {
-		Map<String, Object> map = memberService.memberList(mdto, pdto);
-		System.out.println("-----------"+map.get("allCnt"));
-		model.addAttribute("list",(List<MemberDTO>) map.get("list"));
-		model.addAttribute("allCnt",map.get("allCnt"));
+		List<MemberDTO> list = memberService.memberList(pdto);
+		int allCnt = memberService.allCount();
+		model.addAttribute("list",list);
+		model.addAttribute("pdto",pdto);
+		model.addAttribute("mdto",mdto);
+		model.addAttribute("allCnt",allCnt);
 		return "memberList";
 	}
-	
-	@RequestMapping(value="/content.mg")
-	public String content(HttpServletRequest req, HttpServletResponse res, Model model, MemberDTO mdto, PageDTO pdto) {
+	@RequestMapping(value="/joinForm.mg")
+	public String joinForm(Model model, MemberDTO mdto) {
+		return "joinForm";
+	}
+	@RequestMapping(value="/joinPro.mg")
+	public String joinPro(HttpServletRequest request, HttpServletResponse response, Model model, MemberDTO mdto, PageDTO pdto) {
+		memberService.joinMember(mdto);
+		logger.info("===================="+mdto.getMemid());
+		model.addAttribute("pdto",pdto);
+		model.addAttribute("mdto",mdto);
+		
+		return "joinPro";
+	}
+//
+//	@RequestMapping(value="/joinPro.mg")
+//	public String joinPro(HttpServletRequest request, HttpServletResponse response, Model model, MemberDTO mdto, PageDTO pdto) {
+//		if(pdto.getCurrentPage()==0) {
+//			pdto.setCurrentPage(1);
+//		}
+//		if(pdto.getCurrentPageBlock()==0) {
+//			pdto.setCurrentPageBlock(1);
+//		}
+//		
+//		PageDTO r = memberService.joinMember(pdto);
+//		model.addAttribute("pdto",pdto);
+//		model.addAttribute("mdto",mdto);
+//		return "joinPro";
+//	}
+//	
+//	
+	@RequestMapping(value="/memInfo.mg")
+	public String memInfo(HttpServletRequest request, HttpServletResponse response, Model model, MemberDTO mdto, PageDTO pdto) {
 		// list 와 hashmap 두가지로 보낼 수 있다.
-		Map<String, Object> cmap = memberService.memberContent(mdto, pdto); // 누군지 모르기 때문에 object로  
+//		Map<String, Object> cmap = memberService.memberInfo(mdto, pdto); // 누군지 모르기 때문에 object로  
 		/*
 		모델과 뷰 동시에 갖고 있음. 아래와 같은 형식으로 만들 수 있음.
 		ModelAndView mav = new ModelAndView();
@@ -64,21 +78,46 @@ public class MemberController {
 		mav.setView("board2/content");
 		return mav;
 		 */
-		model.addAttribute("pdto",(PageDTO)cmap.get("pdto"));
-		model.addAttribute("mdto",(MemberDTO)cmap.get("mdto"));
-		return "content";
+//		model.addAttribute("pdto",(PageDTO)cmap.get("pdto"));
+//		model.addAttribute("mdto",(MemberDTO)cmap.get("mdto"));
+		// 데이터 받아오기.
+		mdto = memberService.memberInfo(mdto);
+		logger.info("091328409124---"+mdto.getMemid());
+		
+		// 받아온 데이터 모델에 저장하기.
+		model.addAttribute("pdto",pdto);
+		model.addAttribute("mdto",memberService.memberInfo(mdto));
+		model.addAttribute("allCnt",memberService.allCount());
+		return "memInfo";
 	}
+	
+	  @RequestMapping(value = "/idcheck.mg")
+	  @ResponseBody
+	  public int idCheck(MemberDTO mdto, HttpServletRequest request, sHttpServletResponse response) {
+		  System.out.println(mdto.getMemid());
+		  int cnt = 0;
+		  String id = mdto.getMemid();
+		  if(mdto.getMemid()!=null) {
+	 	  cnt = memberService.idCheck(id);
+		  }
+		  return cnt;
+	  }
 	
 	@RequestMapping(value="/memberUpdate.mg")
 	public String memberUpdate(HttpServletRequest request, HttpServletResponse response, Model model, MemberDTO mdto, PageDTO pdto) {
-		MemberDTO mdto2 = memberService.memberUpdate(mdto, pdto);
+		MemberDTO mdto2 = memberService.memberUpdate(mdto);
 		model.addAttribute("mdto",mdto2);
-		return "memberUpdate";
+		logger.info("*******update******"+mdto2.getMemid());
+		return "memInfo";
 	}
 	@RequestMapping(value="/memberDelete.mg")
 	public String memberDelete(HttpServletRequest request, HttpServletResponse response, Model model, MemberDTO mdto, PageDTO pdto) {
-		memberService.memberDelete(mdto, pdto);
-		model.addAttribute("mdto",mdto);
-	return "memeberDelete";
+		memberService.memberDelete(mdto);
+	return "memeberList";
+	}
+	
+	@RequestMapping(value="pwCheck.mg")
+	public String idCheck() {
+		return "member/pwCheck";
 	}
 }

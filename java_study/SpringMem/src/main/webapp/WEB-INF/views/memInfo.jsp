@@ -9,9 +9,10 @@
 <meta charset="UTF-8">
 <title>글내용 </title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script type="text/javascript" src="/resources/js/boardScript.js"></script>
-<script type="text/javascript" src="/resources/js/boardjquery.js"></script>
-<script type="text/javascript" src="/resources/js/jquery_board.js"></script>
+<!-- <script type="text/javascript" src="/resources/js/idCheckScript.js"></script> -->
+<script type="text/javascript" src="/resources/js/jquery_member.js"></script>
+<!-- <script type="text/javascript" src="/resources/js/jquery_join.js"></script> -->
+<script type="text/javascript" src="/resources/js/memberScript.js"></script> 
 <link href="/resources/css/board.css" rel="stylesheet" />
 </head>
 <body>
@@ -19,34 +20,34 @@
          <thead>
             <tr>
                <th colspan=2>
-                  <h3>글쓰기</h3>
+                  <h3>회원가입</h3>
                </th>
             </tr>
          </thead>
          <tbody>
             <tr>
                <th>아이디 : </th>
-               <td><input type="text" value='<c:out value="${mdto.memid}"/>'/></td>
+               <td>${mdto.memid}</td>
             </tr>
             <tr>
                <th>비밀번호 : </th>
-               <td><input type="password" value='<c:out value="${mdto.mempass}"/>'/></td>
+               <td>${mdto.mempass}</td>
             </tr>
             <tr>
                <th>이름 : </th>
-               <td><input type="text" value='<c:out value="${mdto.memname}"/>'/></td>
+               <td>${mdto.memname}</td>
             </tr>
             <tr>
                <th>연락처:</th>
-               <td><input type="text" value='<c:out value="${mdto.memtel}"/>'/></td>
+               <td>${mdto.memtel}</td>
             </tr>
             <tr>
                <th>생일:</th>
-               <td><input type="text" value='<c:out value="${mdto.membirth}"/>'/></td>
+               <td>${mdto.membirth}</td>
             </tr>
             <tr>
                <th>이메일 :</th>
-               <td><input type="text" value='<c:out value="${mdto.mememail}"/>'/></td>
+               <td>${mdto.mememail}</td>
             </tr>
             <tr>
                <th>가입일 :</th>
@@ -54,7 +55,7 @@
             </tr>
             <tr>
                <th>성별 :</th>
-               <td><input type="text" value='<c:out value="${mdto.memgender}"/>'/></td>
+               <td>${mdto.memgender}</td>
             </tr>
             <tr>
                <td colspan="2" align = "center">
@@ -69,6 +70,7 @@
      	 <input type="text" id="currentPage" name="currentPage" value='<c:out value="${pdto.currentPage}" />'/>   
 		 <input type="text" id="currentPageBlock" name="currentPageBlock" value='<c:out value="${pdto.currentPageBlock}" />'/>   
          <input type="text" name="mempass" value = "${mdto.mempass}" />
+         <input type="text" name="cpass" value = "" />
          <input type="text" name="memid" value = "${mdto.memid}" />
          <input type="text" name="memseq" value = "${mdto.memseq}" />
       </form>

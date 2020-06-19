@@ -12,14 +12,15 @@
 </head>
 <body>
 	<form name="joinForm" method="post" action="joinPro.mg">
-	<input type="hidden" value="${pdto.currentPage}" />
-	<input type="hidden" value="${pdto.currentPageBlock}" />
+<%-- 	<input type="hidden" value="${pdto.currentPage}" /> --%>
+<%-- 	<input type="hidden" value="${pdto.currentPageBlock}" /> --%>
 		<table>
 			<tr>
 				<td>아이디</td>
 				<td colspan="2">
 					<input type="text" title="아이디" name="memid" id="memid" class="chk" placeholder="아이디를 입력하세요"/>
-					<button type="button" onclick="return idVerify()">중복확인</button>
+					<font id="warning" size="2" color=""></font>
+<!-- 					<button type="button" onclick="return idVerify()">중복확인</button> -->
 				</td>
 			</tr>
 			<tr>

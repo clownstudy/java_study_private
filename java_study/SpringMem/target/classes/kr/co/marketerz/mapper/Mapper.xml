@@ -23,24 +23,27 @@
 	           ,#{memgender}
 	           ,#{mempass})
 </insert>
-<select id="memberList" parameterType="hashmap" resultType="mdto">
+<select id="getMember" parameterType="mdto" resultType="mdto">
 	select A.*
 	from (select rownum rr, rmember.*
 		from (select memid, memseq, memname, memtel,membirth,regdate, mememail,memgender, mempass
 			from memtb order by memseq desc) rmember) A
-	<choose>
-	<when test="memid!=null and memid!=0">
-		where memid = #{memid}
-	</when>
+<!-- 	<choose> -->
+	<if test="memseq!=null and memseq!=0">
+		where memseq = #{memseq}
+	</if>
 <!-- 	<otherwise> -->
 <!-- 		<if test="start!=null and start!=0"> -->
 <!-- 			where A.rr between #{start} and #{end} -->
 <!-- 		</if> -->
 <!-- 	</otherwise> -->
-	</choose>		
+<!-- 	</choose>		 -->
 </select>
 <select id="allCount" resultType="int">
 	select count(memid) allCnt from memtb
+</select>
+<select id="idCheck" parameterType="String" resultType="Integer">
+select count(*) from memtb where memid = #{userid}
 </select>
 <update id="memberUpdate" parameterType="hashmap">
 update memtb set
@@ -54,7 +57,7 @@ update memtb set
 where
  memseq = #{memseq}
 </update>
-<delete id="memberDelete" parameterType="int">
+<delete id="memberDelete" parameterType="mdto">
 delete from memtb where memseq = #{memseq}
 </delete>
 </mapper>
