@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: kr.co.sol.BoardControllerTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.102 s <<< FAILURE! - in kr.co.sol.BoardControllerTest
+testHello  Time elapsed: 0.067 s  <<< ERROR!
+org.springframework.web.util.NestedServletException: Request processing failed; nested exception is java.lang.NullPointerException
+	at kr.co.sol.BoardControllerTest.testHello(BoardControllerTest.java:34)
+Caused by: java.lang.NullPointerException
+	at kr.co.sol.BoardControllerTest.testHello(BoardControllerTest.java:34)
+
