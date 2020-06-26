@@ -24,7 +24,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 	@Override
 	public Board2 getBoard(Board2 board) {
-		return null;
+		return boardRepo.findById(board.getSeq()).get();
 	}
 	@Override
 	public void updateBoard(Board2 board) {

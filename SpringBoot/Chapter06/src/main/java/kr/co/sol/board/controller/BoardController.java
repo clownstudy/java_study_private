@@ -1,6 +1,7 @@
 package kr.co.sol.board.controller;
 
 import java.util.ArrayList;
+
 import java.util.Date;
 import java.util.List;
 
@@ -51,14 +52,14 @@ public class BoardController {
 		return "getBoard";
 	}
 	
-	@GetMapping("/insertBoard")
-	public String insertBoardView() {
-		return "insertBoard";
-	}
 	@PostMapping("/insertBoard")
 	public String insertBoard(Board2 board) {
 		boardService.insertBoard(board);
 		return "redirect:getBoardList";
+	}
+	@GetMapping("/insertBoard")
+	public String insertBoard() {
+		return "insertBoard";
 	}
 	
 	

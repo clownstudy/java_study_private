@@ -24,7 +24,7 @@
 	<td>${board2.seq }</td>
 	<td align="left"><a href="getBoard?seq=${board2.seq }">${board2.title }</a></td>
 	<td>${board2.writer }</td>
-	<td><fmt:formatDate value="${board2.createDate }" pattern="yyyy-MM-dd"></fmt:formatDate>
+	<td><fmt:formatDate value="${board2.create_date }" pattern="yyyy-MM-dd"></fmt:formatDate>
 	<td>${board2.cnt }</td>
 </tr>
 </c:forEach>
