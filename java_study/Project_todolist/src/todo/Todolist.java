@@ -1,7 +1,7 @@
 package todo;
 
 import java.awt.EventQueue;
-
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Label;
 import java.awt.List;
@@ -20,62 +20,99 @@ import javax.swing.border.EmptyBorder;
 
 public class Todolist extends JFrame {
 	private final static Calendar cal = Calendar.getInstance();
-	private final JPanel contentPane;
+	private final JPanel contentPane, calendar_bottom;
+	private static JButton nextYear, preYear, nextMonth, preMonth;
 	private static int nowDay;
 	private static int nowMonth;
 	private static int nowYear;
+	private static int startDay;
 	private static int endDay;
+	private static int[] endDays = {31,28,31,30,31,30,31,31,30,31,30,31};
+	private static String[] test = {"일","월","화","수","목","금","토"};
 	private static String nowDate() {
 		switch (getNowMonth()) {
 		case 0:
 			setNowMonth(12);
+			setNowYear(getNowYear()-1);
 			break;
 		case 13:
 			setNowMonth(1);
+			setNowYear(getNowYear()+1);
 		default:
 			break;
 		}
 		return getNowYear()+"."+getNowMonth()+"."+getNowDay();
 	};
 	
-	
-	
 	public static int getNowDay() {
 		return nowDay;
 	}
 
-
-
 	public static void setNowDay(int nowDay) {
+//		cal.set(Calendar.DATE,nowDay);
+//		Todolist.nowDay = cal.get(Calendar.DATE);
 		Todolist.nowDay = nowDay;
 	}
-
-
 
 	public static int getNowMonth() {
 		return nowMonth;
 	}
 
-
-
 	public static void setNowMonth(int nowMonth) {
+//		cal.set(Calendar.MONTH,nowMonth);
+//		Todolist.nowMonth = (cal.get(Calendar.MONTH));
 		Todolist.nowMonth = nowMonth;
 	}
-
-
 
 	public static int getNowYear() {
 		return nowYear;
 	}
 
-
-
 	public static void setNowYear(int nowYear) {
+//		cal.set(Calendar.YEAR, nowYear);
+//		Todolist.nowYear = cal.get(Calendar.YEAR);
 		Todolist.nowYear = nowYear;
 	}
+	
+	/* 
+	 캘린더 구현
+	 1. 현재월을 받아온다.int m = getNowMonth();
+	 2. 현재월의 시작 일자를 정한다. setNowDay(startDay);
+	 3. 1일의 요일을 계산한다. cal.get(Calendar.
+	 3. 현재월의 마지막 날짜를 가져온다. endDay = endDays[m-1]
+	 4. 현재 날짜를 마지막 날짜로 넣는다.
+	 4. 마지막 날짜의 주차를 계산 cal.get(Calendar.
+	 
+	 */
+	
+	public void today() {
+		setNowDay(cal.get(Calendar.DATE));
+		setNowMonth(cal.get(Calendar.MONTH));
+		setNowYear(cal.get(Calendar.YEAR));
+	} // 오늘 날짜로 연월일 지정(setter)
+	public void makeCal() {
+//		setNowDay(startDay);
+//		setNowMonth(5);
+		System.out.println("오늘 날짜 : "+getNowDay());
+		System.out.println("이번 달1 :"+getNowMonth());
+		System.out.println("이번 달 2:"+cal.get(Calendar.MONTH));
+		System.out.println("1일이 몇주차??"+cal.get(Calendar.DAY_OF_WEEK_IN_MONTH));
+		System.out.println("1일이 무슨 요일?"+cal.get(Calendar.DAY_OF_WEEK));
+		JLabel testLB;
 
-
-
+		for(int i=0;i<test.length;i++) {
+			testLB = new JLabel(test[i]);
+			testLB.setHorizontalAlignment(JLabel.CENTER);
+			calendar_bottom.add(testLB);
+		}
+		int a = endDays[getNowMonth()-1];
+		System.out.println(a);
+		for(int j=1;j<a+1;j++) {
+			JButton testBtn = new JButton(""+j);
+			calendar_bottom.add(testBtn);
+		}
+	}
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -88,8 +125,6 @@ public class Todolist extends JFrame {
 			}
 		});
 	}
-
-
 
 	public Todolist() {
 		// 기본값 설정
@@ -107,7 +142,7 @@ public class Todolist extends JFrame {
 		listPan.setBounds(0, 55, 145, 298);
 		contentPane.add(listPan);
 
-		List list = new List();
+		List list = new List(18, true);
 		listPan.add(list);
 		// 일정 목록 패널 끝
 
@@ -163,7 +198,7 @@ public class Todolist extends JFrame {
 
 		// 기본 캘린더 상단 패널 시작
 		JPanel calendar_top = new JPanel();
-		calendar_top.setBounds(145, 55, 437, 75);
+		calendar_top.setBounds(145, 55, 437, 57);
 		contentPane.add(calendar_top);
 		calendar_top.setLayout(null);
 
@@ -172,9 +207,17 @@ public class Todolist extends JFrame {
         nowMonth = (cal.get(Calendar.MONTH)+1);
         nowYear = cal.get(Calendar.YEAR);
 		JLabel selectedDate = new JLabel(nowDate());
+		String[] days = {"일","월","화","수","목","금","토"};
+		
+		JLabel daysLb = null;
+		for(int i=0;i<7;i++) {
+			daysLb= new JLabel(days[i]);
+		}
+		daysLb.setHorizontalAlignment(JLabel.CENTER);
+		calendar_top.add(daysLb);
 		
         // 클릭시 전년 출력
-		JButton preYear = new JButton("<<");
+		preYear = new JButton("<<");
 		preYear.setBounds(14, 20, 55, 25);
 		calendar_top.add(preYear);
 		preYear.addActionListener(new ActionListener() {
@@ -187,7 +230,7 @@ public class Todolist extends JFrame {
 		
 
         // 클릭시 내년 출력
-		JButton nextYear = new JButton(">>");
+		nextYear = new JButton(">>");
 		nextYear.setBounds(368, 20, 55, 25);
 		calendar_top.add(nextYear);
 		nextYear.addActionListener(new ActionListener() {
@@ -199,7 +242,7 @@ public class Todolist extends JFrame {
 		});
 
         // 클릭시 전월 출력
-		JButton preMonth = new JButton("<");
+		preMonth = new JButton("<");
 		preMonth.setBounds(83, 20, 55, 25);
 		calendar_top.add(preMonth);
 		preMonth.addActionListener(new ActionListener() {
@@ -210,7 +253,7 @@ public class Todolist extends JFrame {
 		});
 
         // 클릭시 다음월 출력
-		JButton nextMonth = new JButton(">");
+		nextMonth = new JButton(">");
 		nextMonth.setBounds(299, 20, 55, 25);
 		calendar_top.add(nextMonth);
 		nextMonth.addActionListener(new ActionListener() {
@@ -227,20 +270,15 @@ public class Todolist extends JFrame {
 		// 기본 캘린더 상단 패널 끝
 
 		// 기본 캘린더 하단 패널 시작
-		// 기본 캘린더 하단 패널 끝
 
-
-		JPanel calendar_bottom = new JPanel();
-		calendar_bottom.setBounds(145, 130, 437, 223);
-		// 기본 노출.
+		calendar_bottom = new JPanel();
+		
+		calendar_bottom.setBounds(145, 112, 437, 240);
+		calendar_bottom.setLayout(new GridLayout(6, 7, 5, 5));
 		calendar_bottom.setVisible(true);
-		calendar_bottom.setLayout(new GridLayout(5, 7, 5, 5));
-		String[] days = {"일","월","화","수","목","금","토"};
-		for(int i=0;i<7;i++) {
-			JButton daysBtn = new JButton(days[i]);
-			calendar_bottom.add(daysBtn);
-		}
-
+		makeCal();
+		
+		// 기본 캘린더 하단 패널 끝
 		// 현재 월 가져와서, 총 일수를 계산한 후,
 		// 해당 일자들을 배열로 가져옴.
 		
@@ -248,39 +286,45 @@ public class Todolist extends JFrame {
 
 
 		// 상단 버튼 시작
+		
+		JPanel calTopPan = new JPanel();
+		calTopPan.setBounds(0, 0, 582, 55);
+		calTopPan.setLayout(new FlowLayout(FlowLayout.CENTER,10,20));
+		contentPane.add(calTopPan);
+		
 		JButton addTaskBtn = new JButton("일정 추가");
 		addTaskBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				calendar_top.setVisible(false);
+				calendar_bottom.setVisible(false); 
 				addTaskPan.setVisible(true);
 			}
 		});
-		addTaskBtn.setBounds(14, 15, 102, 30);
-		contentPane.add(addTaskBtn);
+		calTopPan.add(addTaskBtn);
 
 		JButton delTaskBtn = new JButton("일정 삭제");
 		delTaskBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		delTaskBtn.setBounds(126, 15, 102, 30);
-		contentPane.add(delTaskBtn);
+//		delTaskBtn.setBounds(126, 15, 102, 30);
+		calTopPan.add(delTaskBtn);
 
 		JButton allTaskBtn = new JButton("전체 일정");
 		allTaskBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		allTaskBtn.setBounds(240, 15, 102, 30);
-		contentPane.add(allTaskBtn);
+//		allTaskBtn.setBounds(240, 15, 102, 30);
+		calTopPan.add(allTaskBtn);
 
 		JButton completeTaskBtn = new JButton("완료 처리");
 		completeTaskBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		completeTaskBtn.setBounds(354, 15, 102, 30);
-		contentPane.add(completeTaskBtn);
+//		completeTaskBtn.setBounds(354, 15, 102, 30);
+		calTopPan.add(completeTaskBtn);
 
 		JButton supportBtn = new JButton("후원 하기");
 		supportBtn.addActionListener(new ActionListener() {
@@ -288,12 +332,10 @@ public class Todolist extends JFrame {
 				
 		}
 		});
-		supportBtn.setBounds(468, 15, 102, 30);
-		contentPane.add(supportBtn);
+//		supportBtn.setBounds(468, 15, 102, 30);
+		calTopPan.add(supportBtn);
 
-		JPanel calTopPan = new JPanel();
-		calTopPan.setBounds(0, 0, 582, 55);
-		contentPane.add(calTopPan);
+		
 
 
 		// 상단 끝
