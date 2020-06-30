@@ -2,16 +2,22 @@ package todo;
 
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Label;
 import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.ImageProducer;
+import java.io.IOException;
 import java.util.Calendar;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -20,15 +26,18 @@ import javax.swing.border.EmptyBorder;
 
 public class Todolist extends JFrame {
 	private final static Calendar cal = Calendar.getInstance();
+	static Calendar cal2; // today() 전용
+	JButton[] testBtn = new JButton[35];
 	private final JPanel contentPane, calendar_bottom;
 	private static JButton nextYear, preYear, nextMonth, preMonth;
 	private static int nowDay;
 	private static int nowMonth;
 	private static int nowYear;
 	private static int startDay;
+	private static int DayOfWeek;
 	private static int endDay;
 	private static int[] endDays = {31,28,31,30,31,30,31,31,30,31,30,31};
-	private static String[] test = {"일","월","화","수","목","금","토"};
+	private static String[] dayName = {"일","월","화","수","목","금","토"};
 	private static String nowDate() {
 		switch (getNowMonth()) {
 		case 0:
@@ -43,14 +52,25 @@ public class Todolist extends JFrame {
 		}
 		return getNowYear()+"."+getNowMonth()+"."+getNowDay();
 	};
+	private String nowDate2() {
+		switch (cal2.get(Calendar.MONTH)) {
+		case 0:
+			cal2.set(Calendar.MONTH,12);
+			cal2.set(Calendar.YEAR,(cal2.get(Calendar.YEAR)-1));
+		case 13:
+			cal2.set(Calendar.MONTH,1);
+			cal2.set(Calendar.YEAR,(cal2.get(Calendar.YEAR)+1));
+		default:
+			break;
+		}
+		return cal2.get(Calendar.YEAR)+"."+cal2.get(Calendar.MONTH)+"."+cal2.get(Calendar.DATE);
+	};
 	
 	public static int getNowDay() {
 		return nowDay;
 	}
 
 	public static void setNowDay(int nowDay) {
-//		cal.set(Calendar.DATE,nowDay);
-//		Todolist.nowDay = cal.get(Calendar.DATE);
 		Todolist.nowDay = nowDay;
 	}
 
@@ -59,8 +79,6 @@ public class Todolist extends JFrame {
 	}
 
 	public static void setNowMonth(int nowMonth) {
-//		cal.set(Calendar.MONTH,nowMonth);
-//		Todolist.nowMonth = (cal.get(Calendar.MONTH));
 		Todolist.nowMonth = nowMonth;
 	}
 
@@ -69,47 +87,45 @@ public class Todolist extends JFrame {
 	}
 
 	public static void setNowYear(int nowYear) {
-//		cal.set(Calendar.YEAR, nowYear);
-//		Todolist.nowYear = cal.get(Calendar.YEAR);
 		Todolist.nowYear = nowYear;
 	}
 	
 	/* 
 	 캘린더 구현
 	 1. 현재월을 받아온다.int m = getNowMonth();
-	 2. 현재월의 시작 일자를 정한다. setNowDay(startDay);
-	 3. 1일의 요일을 계산한다. cal.get(Calendar.
+	 2. 현재월의 시작 일자를 정한다. startDay = cal.get(Calendar.DATE);
+	 3. 1일의 요일을 계산한다. cal.get(Calendar.Day_Of_Week);
 	 3. 현재월의 마지막 날짜를 가져온다. endDay = endDays[m-1]
 	 4. 현재 날짜를 마지막 날짜로 넣는다.
 	 4. 마지막 날짜의 주차를 계산 cal.get(Calendar.
 	 
 	 */
 	
-	public void today() {
-		setNowDay(cal.get(Calendar.DATE));
-		setNowMonth(cal.get(Calendar.MONTH));
-		setNowYear(cal.get(Calendar.YEAR));
-	} // 오늘 날짜로 연월일 지정(setter)
+//	public void today() {
+//		nowDate2();
+//	} // 오늘 날짜로 연월일 지정(setter)
+	
+	
 	public void makeCal() {
-//		setNowDay(startDay);
-//		setNowMonth(5);
-		System.out.println("오늘 날짜 : "+getNowDay());
-		System.out.println("이번 달1 :"+getNowMonth());
-		System.out.println("이번 달 2:"+cal.get(Calendar.MONTH));
-		System.out.println("1일이 몇주차??"+cal.get(Calendar.DAY_OF_WEEK_IN_MONTH));
-		System.out.println("1일이 무슨 요일?"+cal.get(Calendar.DAY_OF_WEEK));
+		startDay = getNowDay();
+		DayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
+		cal.set(Calendar.DATE,startDay);
 		JLabel testLB;
 
-		for(int i=0;i<test.length;i++) {
-			testLB = new JLabel(test[i]);
+		for(int i=0;i<dayName.length;i++) {
+			testLB = new JLabel(dayName[i]);
 			testLB.setHorizontalAlignment(JLabel.CENTER);
 			calendar_bottom.add(testLB);
 		}
 		int a = endDays[getNowMonth()-1];
-		System.out.println(a);
+//		JButton[] testBtn = new JButton[35];
+		for(int k=0;k<DayOfWeek;k++) {
+			JButton spaceBtn = new JButton("");
+			calendar_bottom.add(spaceBtn);
+		}
 		for(int j=1;j<a+1;j++) {
-			JButton testBtn = new JButton(""+j);
-			calendar_bottom.add(testBtn);
+			testBtn[j] = new JButton(""+j);
+			calendar_bottom.add(testBtn[j]);
 		}
 	}
 	
@@ -134,7 +150,9 @@ public class Todolist extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
+		
+		
+		
 		// 각 패널 설정
 
 		// 일정 목록 패널 시작
@@ -238,6 +256,7 @@ public class Todolist extends JFrame {
 				
 				setNowYear(getNowYear()+1);
 				selectedDate.setText(nowDate());
+				
 			}
 		});
 
@@ -248,7 +267,15 @@ public class Todolist extends JFrame {
 		preMonth.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setNowMonth(getNowMonth()-1);
+				
 				selectedDate.setText(nowDate());
+				for(int j=1;j<endDays[getNowMonth()-1]+1;j++) {
+					calendar_bottom.remove(testBtn[j]);
+				}
+				calendar_bottom.removeAll();
+				calendar_bottom.revalidate();
+				makeCal();
+
 			}
 		});
 
@@ -260,6 +287,7 @@ public class Todolist extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				setNowMonth(getNowMonth()+1);
 				selectedDate.setText(nowDate());
+				calendar_bottom.removeAll();
 			}
 		});
 		
@@ -291,7 +319,15 @@ public class Todolist extends JFrame {
 		calTopPan.setBounds(0, 0, 582, 55);
 		calTopPan.setLayout(new FlowLayout(FlowLayout.CENTER,10,20));
 		contentPane.add(calTopPan);
-		
+		JButton todayB = new JButton("Today");
+		todayB.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				selectedDate.setText(nowDate2());
+				
+			}
+		});
+		calTopPan.add(todayB);
 		JButton addTaskBtn = new JButton("일정 추가");
 		addTaskBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -310,30 +346,35 @@ public class Todolist extends JFrame {
 //		delTaskBtn.setBounds(126, 15, 102, 30);
 		calTopPan.add(delTaskBtn);
 
-		JButton allTaskBtn = new JButton("전체 일정");
-		allTaskBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-//		allTaskBtn.setBounds(240, 15, 102, 30);
-		calTopPan.add(allTaskBtn);
-
-		JButton completeTaskBtn = new JButton("완료 처리");
-		completeTaskBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+//		JButton allTaskBtn = new JButton("전체 일정");
+//		allTaskBtn.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//			}
+//		});
+////		allTaskBtn.setBounds(240, 15, 102, 30);
+//		calTopPan.add(allTaskBtn);
+//
+//		JButton completeTaskBtn = new JButton("완료 처리");
+//		completeTaskBtn.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//			}
+//		});
 //		completeTaskBtn.setBounds(354, 15, 102, 30);
-		calTopPan.add(completeTaskBtn);
+//		calTopPan.add(completeTaskBtn);
 
 		JButton supportBtn = new JButton("후원 하기");
 		supportBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				Runtime runtime = Runtime.getRuntime();
+				try {
+					runtime.exec("explorer.exe http://angelos.dothome.co.kr/");
+				} catch (IOException ex) { 
+				}
 		}
 		});
 //		supportBtn.setBounds(468, 15, 102, 30);
 		calTopPan.add(supportBtn);
+		
 
 		
 
