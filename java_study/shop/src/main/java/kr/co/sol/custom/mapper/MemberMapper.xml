@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.sol.custom.dao.MemberDAO">
+	<select id="idCheck" parameterType="String" resultType="Integer">
+		select count(mem_id) cnt from member where  mem_id = #{mem_id}
+	</select>
+	<select id="loginPro" parameterType="mdto" resultType="String">
+		select mem_id idKey from member where mem_id = #{mem_id} and m_passwd = #{m_passwd}
+	</select>
+	<select id="memberSelect" parameterType="mdto" resultType="mdto">
+		select * from member where mem_id = #{mem_id}
+	</select>
+	<update id="memberUpdate" parameterType="mdto">
+		update member set 
+		m_passwd = #{m_passwd},
+		m_name = #{m_name},
+		m_email = #{m_email},
+		m_phone = #{m_phone},
+		zipcode = #{zipcode},
+		address = #{address},
+		address2 = #{address2},
+		m_job =	#{m_job}
+		where
+		mem_id = #{mem_id}
+	</update>
+	
+	<insert id="memberJoin" parameterType="mdto">
+		insert into member(MEM_ID,M_PASSWD,M_NAME,M_EMAIL,M_PHONE,ZIPCODE,ADDRESS,ADDRESS2,M_JOB)
+		values(
+			#{mem_id},
+			#{m_passwd},
+			#{m_name},
+			#{m_email},
+			#{m_phone},
+			#{zipcode},
+			#{address},
+			#{address2},
+			#{m_job})
+	</insert>
+</mapper>

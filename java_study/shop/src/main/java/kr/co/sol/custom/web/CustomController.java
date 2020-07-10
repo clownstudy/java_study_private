@@ -1,31 +1,118 @@
 package kr.co.sol.custom.web;
 
 import javax.servlet.http.HttpServletRequest;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import kr.co.sol.order.dto.MemberDTO;
+import kr.co.sol.custom.dao.MemberDAO;
+import kr.co.sol.custom.dto.MemberDTO;
+import kr.co.sol.service.MemberService;
 
 @Controller
 public class CustomController {
+	
+	@Autowired
+	MemberService memberService;
+	
 	@GetMapping("/")
 	public String index(HttpServletRequest request, HttpServletResponse response, Model model) {
-		
+				
 		// 세션을 생성해서 받아서
 		HttpSession session = request.getSession();
 		// 회원 정보가 있으면 회원 정보를 저장
 		String mem_id = (String)session.getAttribute("idKey");
 		MemberDTO member = new MemberDTO();
-		member.setId(mem_id);
+		member.setMem_id(mem_id);
 		return "index";
 	}
 	
 	@GetMapping("/register")
 	public String register(HttpServletRequest request, HttpServletResponse response, Model model) {
 		return "register";
+	}
+	
+	@RequestMapping(value="/idCheck")
+	@ResponseBody
+	public int idCheck(MemberDTO mdto, HttpServletRequest request, HttpServletResponse response, Model model) {
+		int cnt = 0;
+		String id = mdto.getMem_id();
+		if(mdto.getMem_id()!=null) {
+			cnt = memberService.idCheck(id);
+			System.out.println("Mem_id가져왔을 때.");
+		}
+		return cnt;
+	}
+	@RequestMapping(value="registerProc")
+	public String registerProc(MemberDTO mdto, HttpServletRequest request, HttpServletResponse response, Model model) {
+		//memberJoin
+		int r = memberService.memberJoin(mdto);
+		if(r>0) {
+			model.addAttribute("msg","회원 가입 성공"); // 저장 결과를 확인
+		} else {
+			model.addAttribute("msg","회원 가입 실패");
+		}
+		return "MsgPage";
+	}
+	
+	@RequestMapping(value="Login")
+	public String Login(MemberDTO mdto, HttpServletRequest request, HttpServletResponse response, Model model) {
+		return "Login";
+	}
+	
+	@RequestMapping(value="loginPro")
+	public String loginPro(MemberDTO mdto, HttpServletRequest request, HttpServletResponse response, Model model) {
+		String id=memberService.loginPro(mdto);
+		HttpSession session = request.getSession();
+		session.setAttribute("idKey", id);
+		if(id==null) {
+			model.addAttribute("msg","id 또는 password 오류입니다.");
+		} 
+		model.addAttribute("url","/");
+		return "MsgPage";
+	}
+	
+	@RequestMapping(value="logout")
+	// logout만 기능하면 되기때문에 request만 있어도 됨
+	public String logout(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		session.removeAttribute("idKey");
+		session.invalidate();
+		return "index";
+	}
+	@RequestMapping(value="memberUpdate")
+	public String memberSelect(MemberDTO mdto, HttpServletRequest request, HttpServletResponse response, Model model) {
+		// 이걸해야 다음번에 id로 불러오지..
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("idKey");
+		mdto.setMem_id(id);
+		// 서비스 호출
+		mdto = memberService.memberSelect(mdto);
+		model.addAttribute("mdto",mdto);
+		return "memberUpdate";
+	}
+	@RequestMapping(value="memberUpdatePro")
+	public String memberUpdatePro(MemberDTO mdto, HttpServletRequest request, HttpServletResponse response, Model model) {
+		// 서비스 호출
+		// 서비스에서 받은 정보 DB에 저장
+		// 메시지 저장, 이동할 페이지 저장.
+		System.out.println("----------------test------------");
+		int r = memberService.memberUpdate(mdto);
+		// 서비스에서 받은 정보 저장(모델에)
+		if(r>0) {
+			model.addAttribute("msg","회원정보수정완료");
+		} else {
+			
+			model.addAttribute("msg","회원정보수정실패");
+		}
+		model.addAttribute("url","/");
+		return "memberUpdate";
 	}
 }

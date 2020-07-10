@@ -1,4 +1,4 @@
-package kr.co.sol.order.dto;
+package kr.co.sol.admin.dto;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -15,7 +15,7 @@
 
 <body>
     <c:import url="Top.jsp"/>
-	<form name="regForm" method="post" action="registerProc">
+	<form name="regForm" method="post" action="memberUpdateProc">
 	<table class="tableclass2">
 	<thead>
 	     <tr> <th colspan=3  class="theadstyle"> 회원가입 </th></tr>
@@ -23,11 +23,10 @@
 	<tbody >
 		<tr> 
 			<td  class="tbodystyle" >아이디</td>
-			<td style="width: 57%"  class="tbodystyle">
-			<input type="text" name="mem_id" size="30" id="idchk" class="chk" title="아이디"   placeholder="아이디를 입력하시오." > 
-			&nbsp; &nbsp; &nbsp; &nbsp; <font id="warning" size="2" color="red"></font>
+			<td style="width: 60%"  class="tbodystyle">
+			<input type="text" name="mem_id" size="30" class="chk" title="아이디"  readonly="readonly" 
+			   value="${mdto.mem_id}"> 
 			</td>
-			<td  class="tbodystyle">아이디를 적어 주세요.</td>
 		</tr>
 		<tr> 
 			<td  class="tbodystyle">패스워드</td>
@@ -35,52 +34,46 @@
 			 <input type="password"  id= "passwd" name="m_passwd" size="30" class="chk" title="패스워드" placeholder="패스워드를 입력하시오.">
 			  <font id="check" size="2" color="red"></font> 
 			</td>
-			<td  class="tbodystyle">패스워드를 적어주세요.</td>
 		</tr>
 		<tr> 
 			<td class="tbodystyle">패스워드 확인</td>
 			<td class="tbodystyle">
 			<input type="password" id= "passwd2" name="m_repasswd" size="30" class="chk" title="패스워드 확인" placeholder="패스워드를  확인하시오."> </td>
-			<td class="tbodystyle">패스워드를 확인합니다.</td>
 		</tr>
 		<tr> 
 			<td class="tbodystyle">이름</td>
-			<td class="tbodystyle"><input type="text" name="m_name" size="30" class="chk" title="이름" placeholder="이름을 입력하시오." > </td>
-			<td class="tbodystyle">고객실명을 적어주세요.</td>
+			<td class="tbodystyle"><input type="text" name="m_name" size="30" class="chk" title="이름" value="${mdto.m_name }" > </td>
 		</tr>
 		<tr> 
 		<td class="tbodystyle">이메일</td>
 			<td class="tbodystyle">
-			<input type="text" name="m_email" size="50" class="chk" title="이메일" placeholder="이메일 입력하시오."> </td>
-			<td class="tbodystyle">이메일을 적어주세요.</td>
+			<input type="text" name="m_email" size="50" class="chk" title="이메일" value="${mdto.m_email}"> </td>
 		</tr>
 		<tr>  
 			<td class="tbodystyle">전화번호</td>
 			<td class="tbodystyle">
-			<input type="text" name="m_phone" size="40" class="chk" title="전화번호" placeholder="전화번호를 입력하시오.(010-1111-2222)"> </td>
-			<td class="tbodystyle">연락처를 적어 주세요.</td>
+			<input type="text" name="m_phone" size="40" class="chk" title="전화번호" value="${mdto.m_phone}"> </td>
 		</tr>
 		
 		 <tr>
                 <td class="tbodystyle">우편번호</td>
                 <td class="tbodystyle">
-                <input type="text" name="zipcode" id="sample6_postcode" readonly placeholder="우편번호를 검색하시오."> 
+                <input type="text" name="zipcode" id="sample6_postcode" readonly="readonly" value="${mdto.zipcode}"> 
                 <input type="button" onclick="zipCheck()" class="chk" title="우편번호" value="우편번호 찾기">
                 </td>
-                <td class="tbodystyle">우편번호를 검색 하세요.</td>
             </tr>
  
             <tr>
                 <td class="tbodystyle">주소</td>
                 <td class="tbodystyle">
-                <input type="text" size="100" name="address" id="sample6_address" readonly class="chk" title="주소" placeholder="주소를  검색하시오"></td>
-                <td class="tbodystyle">주소를 적어 주세요.</td>
+                <input type="text" size="100" name="address" id="sample6_address" 
+                      class="chk" title="주소" readonly="readonly" value="${mdto.address}"></td>
             </tr>
             <tr>
                 <td class="tbodystyle">주소상세</td>
                 <td class="tbodystyle">
-                <input type="text" size="100" name="address2" id="sample6_address2" class="chk" title="상세주소" placeholder="상세주소를 입력하시오" ></td>
-                <td class="tbodystyle">상세주소를 적어 주세요.</td>
+                <input type="text" size="100" name="address2" id="sample6_address2" 
+                   class="chk" title="상세주소" readonly="readonly" value="${mdto.address2}"></td>
             </tr>
 		<tr>  
 			<td class="tbodystyle">직업</td>
@@ -101,13 +94,12 @@
 					<option value="기타">기타
 				</select>
 			</td>
-			<td class="tbodystyle">직업을 선택 하세요.</td>
 		</tr>
 		<tr> 
 			<td colspan="3"  class="theadstyle"> 
-			<button type="submit" id ="inputCheck">회원가입</button> 
+			<button type="submit" id ="inputCheck">정보수정</button> 
 			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-			<button type="reset">다시쓰기 </button>
+			<button type="reset" onclick="javascript:location.href='/'"> 취소 </button>
 			</td>
 		</tr>
 	</tbody>
