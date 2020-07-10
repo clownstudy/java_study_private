@@ -6,7 +6,9 @@
 </head>
 <body th:align="center">
 	<h1>게시글 목록</h1>
-	<table th:align="center" boarder="1" th:cellpadding="0" th:cellspacing="0" th:width="700">
+	<h3><font color="red" th:text="${session['member'].name}"></font>님 게시판 입장을 환영합니다.</h3>
+	<a th:href="@{/logout}">LOG_OUT</a>
+	<table th:align="center" border="1" th:cellpadding="0" th:cellspacing="0" th:width="700">
 	<tr>
 		<th bgcolor="orange" width="100">번호</th>
 		<th bgcolor="orange" width="200">제목</th>

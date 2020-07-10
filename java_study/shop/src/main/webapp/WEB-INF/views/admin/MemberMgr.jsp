@@ -46,8 +46,8 @@
 	</table>
      <c:import url="Bottom.jsp"/>
 
-	<form name="update" method="post" action="MemberUpdate.jsp">
-	<input type=hidden name="mem_id">
+	<form name="update" method="post" action="/memberUpdate.jsp">
+	<input type="hidden" name="mem_id">
 	</form>
 
 </body>

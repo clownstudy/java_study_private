@@ -18,8 +18,8 @@
 <form action="updatePro.sp" method="post" name="updateForm" onsubmit="return sendData()" enctype="multipart/form-data">>
 	<input type="hidden" name="re_step" value="${bvo.re_step}" />
 	<input type="hidden" name="re_level" value="${bvo.re_level}" />
-	<input type="hidden" name="currentPage" value='<c:out value="${pdto.currentPage}" />'/>   
-	<input type="hidden" name="currentPageBlock" value='<c:out value="${pdto.currentPageBlock}" />'/> 
+	<input type="hidden" name="currentPage" value='<c:out value="${pvo.currentPage}" />'/>   
+	<input type="hidden" name="currentPageBlock" value='<c:out value="${pvo.currentPageBlock}" />'/> 
 	
 		<table border="1">
 			<thead>
@@ -39,7 +39,7 @@
 				</tr>
 				<tr>
 					<th>첨부파일:</th>
-					<td><input type="file" value="파일 선택" name="afile" id="attachnm" value="${bvo.attachnm}" /></td>
+					<td><input type="file" value="파일 선택" name="afile" id="attachNm" value="${bvo.attachNm}" /></td>
 				</tr>
 				<tr>
 					<th>작성자:</th>

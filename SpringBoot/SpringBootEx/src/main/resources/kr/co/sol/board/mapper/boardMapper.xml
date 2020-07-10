@@ -23,7 +23,12 @@
  		       FILESIZE, ORGFILENM) 
 		 VALUES((select nvl(max(num),0)+1 from board),#{writer},#{subject},#{email},
 		        #{content}, #{passwd}, sysdate, 0,
-		        #{ref}, #{re_step}, #{re_level}, 
+		        <if test="ref!=0">
+		        #{ref}, 
+		        </if>
+		        <if test="ref==0">
+		        (select nvl(max(num),0)+1 from board),
+		        </if> #{re_step}, #{re_level}, 
 		        #{attachNm},#{fileNo}, 
 		        #{fileSize},#{orgFileNm}) 
        </when>
@@ -36,7 +41,13 @@
  		       REF,RE_STEP, RE_LEVEL) 
 		 VALUES((select nvl(max(num),0)+1 from board),#{writer},#{subject},#{email},
 		        #{content}, #{passwd}, sysdate, 0,
-		        #{ref}, #{re_step}, #{re_level}) 
+		        <if test="ref!=0">
+		        #{ref}, 
+		        </if>
+		        <if test="ref==0">
+		        (select nvl(max(num),0)+1 from board),
+		        </if>
+		        #{re_step}, #{re_level}) 
        </otherwise>
     </choose>
  </insert>
@@ -70,10 +81,10 @@
  </update>
  
  
- <select id="newNum" resultType="int">
+ <select id="getNewNum" resultType="int">
   select nvl(max(num),0)+1 num from board
  </select>
- <update id="updatePro" parameterType="bvo">
+ <update id="boardUpdate" parameterType="bvo">
 	UPDATE BOARD SET  
        SUBJECT  =  #{subject}
       ,EMAIL    =  #{email}

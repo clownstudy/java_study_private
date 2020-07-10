@@ -19,14 +19,16 @@
            ) 
    </insert> -->
    
-    <select id="logon" parameterType="adto" 
+    <select id="adminLoginPro" parameterType="adto" 
                  resultType="string">
       SELECT ADMIN_ID idKey 
       FROM ADMIN 
       WHERE ADMIN_ID = #{admin_id} 
       AND ADMIN_passwd = #{admin_passwd}
    </select>
-   
+   <select id="getMembers" parameterType="mdto" resultType="mdto">
+   	select mem_id, m_passwd, m_name, m_email, m_phone, zipcode, address, address2, m_job from member
+   </select>
    <!-- <select id="memberSelect" parameterType="mdto" resultType="mdto">
 	   SELECT MEM_ID, M_PASSWD, M_NAME, M_EMAIL, M_PHONE, 
 	          ZIPCODE, ADDRESS, ADDRESS2, M_JOB

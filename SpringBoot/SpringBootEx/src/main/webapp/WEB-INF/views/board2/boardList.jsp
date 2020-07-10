@@ -20,7 +20,7 @@ function callContent(num){
 
    <h3 align="center">게시글목록</h3>
    
-   <h4 align="center">전체 글 개수 <c:out value="${pdto.allCount}" />&nbsp;건</h4>
+   <h4 align="center">전체 글 개수 <c:out value="${pvo.allCount}" />&nbsp;건</h4>
    <c:choose>
    <c:when test="${list.size()==0}">
    <table border="1">
@@ -83,20 +83,20 @@ function callContent(num){
       </tbody>
    </table>
    <h1 style="text-align: center">
-  	 	<c:if test="${pdto.startPage>pdto.pageBlock}"><a href="boardList.sp?currentPage=${pdto.startPage-pdto.pageBlock}&currentPageBlock=${pdto.currentPageBlock-1}">[이전]</a></c:if>
-   		<c:forEach var="i" begin="${pdto.startPage}" end="${pdto.endPage}">
-			<a href="boardList.sp?currentPage=${i}&currentPageBlock=${pdto.currentPageBlock}"> <c:out value="[${i}]"/></a>
+  	 	<c:if test="${pvo.startPage>pvo.pageBlock}"><a href="boardList.sp?currentPage=${pvo.startPage-pvo.pageBlock}&currentPageBlock=${pvo.currentPageBlock-1}">[이전]</a></c:if>
+   		<c:forEach var="i" begin="${pvo.startPage}" end="${pvo.endPage}">
+			<a href="boardList.sp?currentPage=${i}&currentPageBlock=${pvo.currentPageBlock}"> <c:out value="[${i}]"/></a>
   	 	</c:forEach>
-  	 	<c:if test="${pdto.allPage>pdto.endPage}"><a href="boardList.sp?currentPage=${pdto.endPage+1}&currentPageBlock=${pdto.currentPageBlock+1}">[다음]</a>
-  	 		<input type="text" value="${pdto.allPage}" />
+  	 	<c:if test="${pvo.allPage>pvo.endPage}"><a href="boardList.sp?currentPage=${pvo.endPage+1}&currentPageBlock=${pvo.currentPageBlock+1}">[다음]</a>
+  	 		<input type="text" value="${pvo.allPage}" />
   	 	</c:if>
    </h1>
    </c:when>
    </c:choose>
    <!-- 해당 리스트를 출력 jstl사용 -->
    <form action="content.sp" name="content" method="post">
-	<input type="hidden" name="currentPage" value='<c:out value="${pdto.currentPage}" />'/>   
-	<input type="hidden" name="currentPageBlock" value='<c:out value="${pdto.currentPageBlock}" />'/>   
+	<input type="text" name="currentPage" value='<c:out value="${pvo.currentPage}" />'/>   
+	<input type="text" name="currentPageBlock" value='<c:out value="${pvo.currentPageBlock}" />'/>   
 	<input type="hidden" name="num" /> <!-- value='<c:out value="${dto.num}" />' 지운 이유 : 위에서 onclick 시 num 보내줌 -->
    </form>
 </body>

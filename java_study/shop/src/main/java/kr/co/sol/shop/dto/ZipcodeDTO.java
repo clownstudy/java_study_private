@@ -8,9 +8,9 @@ import lombok.ToString;
 @Setter
 @ToString
 public class ZipcodeDTO {
-	private char Zipcode;
-	private String Area1;
-	private String Area2;
-	private String Area3;
-	private String Area4;
+	private char zipcode;
+	private String area1;
+	private String area2;
+	private String area3;
+	private String area4;
 }

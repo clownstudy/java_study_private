@@ -7,7 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -26,8 +30,13 @@ public class Board2 {
 	private String writer;
 	private String title;
 	private String content;
-	@Column(insertable=false,updatable=false,columnDefinition="date default sysdate")
+//	@Column(insertable=false,updatable=false,columnDefinition="date default sysdate")
+	@Temporal(value=TemporalType.TIMESTAMP)
 	private Date create_date;
-	@Column(insertable=false, updatable=false,columnDefinition="number default 0")
+//	@Column(insertable=false, updatable=false,columnDefinition="number default 0")
 	private int cnt;
+	
+	@ManyToOne
+	@JoinColumn(name="MEMBER_ID")
+	private Member2 member;
 } 

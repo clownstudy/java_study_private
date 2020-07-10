@@ -20,14 +20,14 @@
     </appender>
     
     <!-- Loggers -->
-    <logger name="org.apache.catalina" level="ERROR">
-    </logger>
+<!--     <logger name="org.apache.catalina" level="ERROR"> -->
+<!--     </logger> -->
     
-    <logger name="org.apache.commons" level="ERROR">
-    </logger>
+<!--     <logger name="org.apache.commons" level="ERROR"> -->
+<!--     </logger> -->
     
-    <logger name="org.springframework" level="DEBUG" >
-    </logger>
+<!--     <logger name="org.springframework" level="DEBUG" > -->
+<!--     </logger> -->
     
     <logger name="java.sql" level="DEBUG">
     </logger>

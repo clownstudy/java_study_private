@@ -12,7 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import kr.co.sol.board.dto.Board2;
+import kr.co.sol.board.dto.Member;
 import kr.co.sol.persistence.BoardRepository;
 
 @RunWith(SpringRunner.class)
@@ -88,16 +88,16 @@ public class QueryMethodTest {
 	@Test
 	public void testFindByTitleContaining() {
 		Pageable paging = PageRequest.of(0,20,Sort.Direction.DESC,"seq");
-		Page<Board2> pageInfo = boardRepo.findByTitleContaining("제목", paging);
+		Page<Member> pageInfo = boardRepo.findByTitleContaining("제목", paging);
 		System.out.println("PAGE SIZE : "+pageInfo.getSize());
 		System.out.println("TOTAL PAGES : "+pageInfo.getTotalPages());
 		System.out.println("TOTAL COUNT : "+pageInfo.getTotalElements());
 		System.out.println("NEXT : "+pageInfo.nextPageable());
 		
-		List<Board2> boardList = pageInfo.getContent();
+		List<Member> boardList = pageInfo.getContent();
 
 		System.out.println("실행 결과");
-		for (Board2 board : boardList) {
+		for (Member board : boardList) {
 			System.out.println("----> "+board.toString());
 		}
 	}

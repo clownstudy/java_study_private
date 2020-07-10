@@ -14,7 +14,14 @@
 </head>
 
 <body>
-    <c:import url="Top.jsp"/>
+	<c:choose>
+		<c:when test='${mdto.m_role == "admin"}'>
+			<c:import url="./admin/Top.jsp" />
+		</c:when>
+		<c:otherwise>
+		    <c:import url="Top.jsp"/>
+		</c:otherwise>
+	</c:choose>
 	<form name="regForm" method="post" action="memberUpdateProc">
 	<table class="tableclass2">
 	<thead>
@@ -105,7 +112,14 @@
 	</tbody>
 	</table>
 	</form>
-   <c:import url="Bottom.jsp"/>
+	<c:choose>
+		<c:when test='${mdto.m_role == "admin"}'>
+			<c:import url="./admin/Bottom.jsp" />
+		</c:when>
+		<c:otherwise>
+		    <c:import url="Bottom.jsp"/>
+		</c:otherwise>
+	</c:choose>
 </body>
 </html> 
 

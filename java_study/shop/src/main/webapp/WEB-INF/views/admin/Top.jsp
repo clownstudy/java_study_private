@@ -15,7 +15,7 @@
     <c:otherwise>
     <th><b><a href="/admin/index">홈</a></b></th>
     <th><b><a href="/logout">로그아웃</a></b></th>
-    <th><b><a href="/mamberMgr">회원관리</a></b></th>
+    <th><b><a href="/memberMgr">회원관리</a></b></th>
     <th><b><a href="/productMgr">상품관리</a></b></th>
     <th><b><a href="/orderMgr">주문관리</a></b></th>
     </c:otherwise>

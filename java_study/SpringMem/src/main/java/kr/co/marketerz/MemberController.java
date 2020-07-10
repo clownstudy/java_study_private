@@ -93,7 +93,7 @@ public class MemberController {
 	
 	  @RequestMapping(value = "/idcheck.mg")
 	  @ResponseBody
-	  public int idCheck(MemberDTO mdto, HttpServletRequest request, sHttpServletResponse response) {
+	  public int idCheck(MemberDTO mdto, HttpServletRequest request, HttpServletResponse response) {
 		  System.out.println(mdto.getMemid());
 		  int cnt = 0;
 		  String id = mdto.getMemid();

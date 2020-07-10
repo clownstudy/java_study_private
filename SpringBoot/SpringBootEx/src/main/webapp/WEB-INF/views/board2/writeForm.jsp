@@ -19,8 +19,8 @@
          <input type="text" name="ref" value = "${bvo.ref}" />
          <input type="text" name="re_step" value = "${bvo.re_step}" />
          <input type="text" name="re_level" value = "${bvo.re_level}" />
-         <input type="text" name="currentPage" value='<c:out value="${pdto.currentPage}" />'/>   
-		 <input type="text" name="currentPageBlock" value='<c:out value="${pdto.currentPageBlock}" />'/> 
+         <input type="text" name="currentPage" value='<c:out value="${pvo.currentPage}" />'/>   
+		 <input type="text" name="currentPageBlock" value='<c:out value="${pvo.currentPageBlock}" />'/> 
 		<table>
 			<thead>
 				<tr>
@@ -45,7 +45,7 @@
 				</tr>
 				<tr>
 					<th>첨부파일:</th>
-					<td><input type="file" value="파일 선택" name="afile" id="attachnm" /></td>
+					<td><input type="file" value="파일 선택" name="afile" id="attachNm" /></td>
 				</tr>
 				<tr>
 					<th>작성자:</th>

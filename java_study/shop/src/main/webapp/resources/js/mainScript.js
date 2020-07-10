@@ -1,39 +1,21 @@
 $(function(){
 	var regFormObj = $("form[name='regForm']");
-	var idck=false;
+	var idck;
    $('#inputCheck').click(function(){
-	    if(idck==1){
-			alert('아이디 체크 필요');
-			return false;
-		}
-	   	
+	   if(idck==1 ) {
+		   alert("아이디 중복");
+		   return false;
+	   }
 		if(fn_valiChk()){
 			return false;
 		}
-		
 	 regFormObj.submit();
 	});
-   
-   $("#login").click(function(){
-	   var loginObj = $("form[name='loginForm']");
-	   if($("input[name='mem_id']").val()==""){
-		   alert("아이디를 입력해주세요.");
-		   $("input[name='mem_id']").focus();
-		   		return false;
-	   }
-	   if($("input[name='m_passwd']").val()==""){
-		   alert("패스워드를 입력해 주세요.");
-		   $("input[name='m_passwd']").focus();
-		   		return false;
-	   }
-	   loginObj.submit();
-   });
    
    $('#passwd').keyup(function(){
      $('font[id=check]').text('');
      if($('#passwd').val()!=$('#passwd2').val()){
          $('font[id=check]').text('');
-         $('font[id=check]').text("비밀번호 다름");
         }else{
          $('font[id=check]').text('');
          $('font[id=check]').text("비밀번호 같음");
@@ -64,6 +46,7 @@ $(function(){
                         $('font[id=warning]').attr('color','red');
                         $('font[id=warning]').text('이미 존재하는 아이디 입니다.');
                         $("#idchk").focus();
+                        idck=1;//
                     } else {
                     	$('font[id=warning]').text('');
                         $('font[id=warning]').attr('color','blue');
@@ -74,7 +57,24 @@ $(function(){
               }
          });
     });
+     
+     $("#login").click( function(){
+    	 var loginObj = $("form[name='loginForm']");
+		   if($("input[name='mem_id']").val() == ""){
+		       alert("아이디를 입력해 주세요.");
+		       $("input[name='mem_id']").focus();
+					return false;
+		       }
+		   if($("input[name='m_passwd']").val() == ""){
+		       alert("패스워드를 입력해 주세요.");
+		       $("input[name='m_passwd']").focus();
+					return false;
+		       }
+			loginObj.submit();	
+     });
+     
   });
+   
 
 	function fn_valiChk(){
 			var regForm = $("form[name='regForm'] .chk").length;
@@ -98,9 +98,10 @@ $(function(){
 			else {
 				  alert('E-mail주소 형식이 잘못되었습니다.\n\r다시 입력해 주세요!');
 				  document.regForm.m_email.focus();
-				  return false;
+				  return ;
 			}		
 		}
+
 
 /*	function loginCheck(){
 		if(document.login.mem_id.value==""){
@@ -188,27 +189,6 @@ $(function(){
 		else if(total==11)
 			total=1;
 
-		if(document.regForm.mem_email.value==""){
-			alert("이메일을 입력해 주세요.");
-			document.regForm.mem_email.focus();
-			return;
-		}
-
-		var str=document.regForm.mem_email.value;	   
-		var atPos = str.indexOf('@');
-		var atLastPos = str.lastIndexOf('@');
-		var dotPos = str.indexOf('.'); 
-		var spacePos = str.indexOf(' ');
-		var commaPos = str.indexOf(',');
-		var eMailSize = str.length;
-		if (atPos > 1 && atPos == atLastPos && 
-		   dotPos > 3 && spacePos == -1 && commaPos == -1 
-		   && atPos + 1 < dotPos && dotPos + 1 < eMailSize);
-		else {
-			  alert('E-mail주소 형식이 잘못되었습니다.\n\r다시 입력해 주세요!');
-			  document.regForm.mem_email.focus();
-			  return;
-		}
 
 		document.regForm.submit();
 	}
@@ -223,16 +203,22 @@ $(function(){
 		}
 	}
 	*/
-	function zipCheck(){
+	/*function zipCheck(){
 			url="zipCheck?check=y";
 			window.open(url,"post","toolbar=no ,width=500 ,height=300 ,directories=no,status=yes,scrollbars=yes,menubar=no");
 	}
-
+*/
+	
 	function productDetail(no) {
 		document.detail.no.value=no;
 		document.detail.submit();
 	}
-
+	
+	function Update(mem_id){
+		document.Update.mem_id.value=mem_id;
+		document.Update.m_role.value=m_role;
+		document.Update.submit();
+	}
 	function cartUpdate(form){
 		form.flag.value="update"
 		form.submit();

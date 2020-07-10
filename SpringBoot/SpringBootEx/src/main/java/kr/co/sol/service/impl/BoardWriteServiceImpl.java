@@ -60,14 +60,14 @@ public class BoardWriteServiceImpl implements BoardWriteService {
 		// 답글 => num!=0
 		
 		if(bvo.getNum()==0) {
-			bvo.setRef(number);
+//			bvo.setRef(number);
 			bvo.setRe_level(1);
 			bvo.setRe_step(1);
 		} else {
 			bvo.setRe_level(bvo.getRe_level()+1);
 			bvo.setRe_step(bvo.getRe_step()+1);
 		}
-		bvo.setNum(number);
+//		bvo.setNum(number);
 		
 		Map<String, Object> fileMap = null;
 			try {
@@ -78,12 +78,12 @@ public class BoardWriteServiceImpl implements BoardWriteService {
 			if(fileMap!=null) {
 				bvo.setFileNo((int)fileMap.get("fileNo"));
 				bvo.setFileSize((long) fileMap.get("fileSize"));
-				bvo.setAttachnm((String) fileMap.get("stored_file_name"));
+				bvo.setAttachNm((String) fileMap.get("stored_file_name"));
 				bvo.setOrgFileNm((String) fileMap.get("org_file_name"));
 				logger.info((String) fileMap.get("org_file_name"));
 				logger.info("fileno: "+bvo.getFileNo());
 				logger.info("fileSize: "+bvo.getFileSize());
-				logger.info("setAttachnm: "+bvo.getAttachnm());
+				logger.info("setAttachNm: "+bvo.getAttachNm());
 			}
 		logger.info("boardWriteSerIM"+bvo.getWriter());
 		boardDao.boardWrite(bvo);
@@ -107,12 +107,8 @@ public class BoardWriteServiceImpl implements BoardWriteService {
 		if(fileMap!=null) {
 			bvo.setFileNo((int)fileMap.get("fileNo"));
 			bvo.setFileSize((long) fileMap.get("fileSize"));
-			bvo.setAttachnm((String) fileMap.get("stored_file_name"));
+			bvo.setAttachNm((String) fileMap.get("stored_file_name"));
 			bvo.setOrgFileNm((String) fileMap.get("org_file_name"));
-			logger.info((String) fileMap.get("org_file_name"));
-			logger.info("fileno: "+bvo.getFileNo());
-			logger.info("fileSize: "+bvo.getFileSize());
-			logger.info("setAttachnm: "+bvo.getAttachnm());
 		}
 		boardDao.boardUpdate(bvo);
 		return pvo;
@@ -126,7 +122,7 @@ public class BoardWriteServiceImpl implements BoardWriteService {
 		if(pvo.getCurrentPageBlock()==0) {
 			pvo.setCurrentPageBlock(1);
 		}
-		boardDao.deletePro(num);
+		boardDao.deleteArticle(num);
 		return pvo;
 	}
 	

@@ -35,7 +35,7 @@
             </tr>
             <tr>
                <th>첨부파일 :</th>
-               <td><c:out value="${bvo.attachnm}"/><button onclick=""></td>
+               <td><c:out value="${bvo.attachNm}"/><button onclick=""></td>
             </tr>
             <tr>
                <th>작 성 자 :</th>
@@ -56,8 +56,8 @@
          </tbody>
       </table>
       <form action="" name = "parentForm" method="post">
-     	 <input type="text" id="currentPage" name="currentPage" value='<c:out value="${pdto.currentPage}" />'/>   
-		 <input type="text" id="currentPageBlock" name="currentPageBlock" value='<c:out value="${pdto.currentPageBlock}" />'/>   
+     	 <input type="text" id="currentPage" name="currentPage" value='<c:out value="${pvo.currentPage}" />'/>   
+		 <input type="text" id="currentPageBlock" name="currentPageBlock" value='<c:out value="${pvo.currentPageBlock}" />'/>   
          <input type="text" name="passwd" value = "${bvo.passwd}" />
          <input type="text" name="cpass" value = "" />
          <input type="text" name="num" value = "${bvo.num}" />

@@ -99,20 +99,20 @@ public class MemoCalendar extends CalendarDataManager{
 		JButton clearBut;
 	
 	JPanel frameBottomPanel;
-		JLabel bottomInfo = new JLabel("Welcome to Memo Calendar!");
+		JLabel bottomInfo = new JLabel("");
 
-	final String WEEK_DAY_NAME[] = { "SUN", "MON", "TUE", "WED", "THR", "FRI", "SAT" };
-	final String title = "Fuck↗ You↘";
-	final String SaveButMsg1 = "�� MemoData������ �����Ͽ����ϴ�.";
-	final String SaveButMsg2 = "�޸� ���� �ۼ��� �ּ���.";
-	final String SaveButMsg3 = "<html><font color=red>ERROR : ���� ���� ����</html>";
-	final String DelButMsg1 = "�޸� �����Ͽ����ϴ�.";
-	final String DelButMsg2 = "�ۼ����� �ʾҰų� �̹� ������ memo�Դϴ�.";
-	final String DelButMsg3 = "<html><font color=red>ERROR : ���� ���� ����</html>";
-	final String ClrButMsg1 = "�Էµ� �޸� ������ϴ�.";
+	final String WEEK_DAY_NAME[] = { "일", "월", "화", "수", "목", "금", "토" };
+	final String title = "";
+	final String SaveButMsg1 = "MemoData가 저장되었습니다.";
+	final String SaveButMsg2 = "빈 내용은 저장이 되지 않습니다.";
+	final String SaveButMsg3 = "<html><font color=red>ERROR : 저장에 실패했습니다.</html>";
+	final String DelButMsg1 = "삭제되었습니다.";
+	final String DelButMsg2 = "삭제할 메모가 없습니다.";
+	final String DelButMsg3 = "<html><font color=red>ERROR : 삭제에 실패했습니다.</html>";
+	final String ClrButMsg1 = "메모 내용이 삭제되었습니다.";
 
 	public static void main(String[] args){
-		SwingUtilities.invokeLater(new RunnaRble(){
+		SwingUtilities.invokeLater(new Runnable(){
 			public void run(){
 				new MemoCalendar();
 			}

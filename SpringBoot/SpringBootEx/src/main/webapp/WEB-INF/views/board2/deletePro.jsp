@@ -8,6 +8,6 @@
 <title>글쓰기 처리</title>
 </head>
 <body>
-<c:redirect url="boardList.sp?currentPage=${pdto.currentPage}&currentPageBlock=${pdto.currentPageBlock}"></c:redirect>
+<c:redirect url="boardList.sp?currentPage=${pvo.currentPage}&currentPageBlock=${pvo.currentPageBlock}"></c:redirect>
 </body>
 </html>

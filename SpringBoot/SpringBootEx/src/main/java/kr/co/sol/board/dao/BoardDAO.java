@@ -11,11 +11,10 @@ import kr.co.sol.board.dto.BoardVO;
 public interface BoardDAO {
 	public int getAllCount();
 	public List<BoardVO> getArticles(Map<String, Integer> hmap);
-	public BoardVO getArticle(BoardVO bvo);
+	public BoardVO getArticles(BoardVO bvo);
 	public void boardWrite(BoardVO bvo);
 	public void boardUpdate(BoardVO bvo);
 	public void updateReadCount(BoardVO bvo);
 	public int getNewNum();
 	public void deleteArticle(int num);
-	public void deletePro(int num);
 }

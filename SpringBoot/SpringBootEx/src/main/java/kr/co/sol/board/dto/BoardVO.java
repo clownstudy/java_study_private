@@ -20,7 +20,7 @@ public class BoardVO {
 	private String 	content;
 	private String 	passwd;
 	private String 	reg_date;
-    private String  attachnm;
+    private String  attachNm;
     private int fileNo;
     private long fileSize;
     private String orgFileNm;

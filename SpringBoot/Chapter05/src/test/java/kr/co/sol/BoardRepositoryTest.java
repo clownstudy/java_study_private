@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import kr.co.sol.board.dto.Board2;
+import kr.co.sol.board.dto.Member;
 import kr.co.sol.persistence.BoardRepository;
 
 @RunWith(SpringRunner.class)

@@ -8,9 +8,9 @@ import lombok.ToString;
 @Setter
 @ToString
 public class OrderDTO {
-	private int No;
-	private String Quantity;
-	private String Or_date;
-	private String State;
-	private String Id;
+	private int no;
+	private String quantity;
+	private String or_date;
+	private String state;
+	private String id;
 }

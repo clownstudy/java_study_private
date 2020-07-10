@@ -13,12 +13,12 @@
     <c:import url="Top.jsp"/>
 	<table class="tableclass1">
 	 <c:choose>
-	  <c:when test="${idKey!=null}">
+	  <c:when test="${mdto.mem_id!=null}">
 	     <tr > 
       	  <td style="background-color: #F1F8E0;">${mdto.m_name}님 방문해 주셔서 감사합니다.</td>
   	     </tr>
 	  </c:when>
-	  <c:when test="${idKey==null}">
+	  <c:when test="${mdto.mem_id==null}">
 	  <tr>
 	   <td style="background-color: #F1F8E0;"> 로그인 하신 후 이용해 주세요</td>
 	  </tr>

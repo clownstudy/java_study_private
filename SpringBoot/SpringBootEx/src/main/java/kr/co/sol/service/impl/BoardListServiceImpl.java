@@ -82,7 +82,7 @@ public class BoardListServiceImpl implements BoardListService {
 			pvo.setCurrentPageBlock(1);
 		}
 		// 해당 게시글 가져오기.
-		BoardVO bvo2 = boardDao.getArticle(bvo);
+		BoardVO bvo2 = boardDao.getArticles(bvo);
 		//처리된 결과를 controller에게 전달하기 위해 담기.
 		Map<String, Object> cmap = new HashMap<String, Object>();
 		cmap.put("pvo",pvo);
