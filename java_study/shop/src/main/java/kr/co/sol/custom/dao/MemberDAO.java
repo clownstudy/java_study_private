@@ -11,5 +11,6 @@ public interface MemberDAO {
 	MemberDTO logonProc(MemberDTO mdto);
 	MemberDTO memberSelect(MemberDTO mdto);
 	int memberUpdate(MemberDTO mdto);
+	int memberDelete(MemberDTO mdto);
 
 }

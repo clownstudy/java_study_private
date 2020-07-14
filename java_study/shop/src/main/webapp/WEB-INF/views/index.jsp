@@ -26,6 +26,14 @@
 	 </c:choose>
 	
 	</table>
+	<form name="postF" method="post" action="">
+	</form>
+	<form name="postForm">
+		<input type="hidden" name="cpass">
+		<input type="hidden" name="passwd" value="${mdto.m_passwd}">
+	</form>
+	
+	
   <c:import url="Bottom.jsp"/>
  
 </body>

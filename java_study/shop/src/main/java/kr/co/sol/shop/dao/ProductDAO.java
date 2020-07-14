@@ -8,6 +8,9 @@ import kr.co.sol.shop.dto.ProductDTO;
 @Mapper
 public interface ProductDAO {
 
+
 	List<ProductDTO> getProduct();
+
+	int insertProduct(ProductDTO pdto);
 
 }

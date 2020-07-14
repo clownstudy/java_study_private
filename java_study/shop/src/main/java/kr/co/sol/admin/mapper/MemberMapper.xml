@@ -40,6 +40,7 @@
    </select>
    <update id="memberUpdate">
 	   UPDATE  MEMBER SET 
+	     M_NAME    = #{m_name},
 		 M_PASSWD  = #{m_passwd}
 		,M_EMAIL   = #{m_email }
 		,M_PHONE   = #{m_phone }
@@ -49,4 +50,7 @@
 		,M_JOB     = #{m_job   }
 		WHERE MEM_ID = #{mem_id} 
    </update>
+   <delete id="memberDelete">
+   		delete from member where mem_id = #{mem_id}
+   </delete>
 </mapper>

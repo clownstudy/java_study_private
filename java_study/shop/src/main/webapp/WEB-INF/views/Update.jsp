@@ -4,8 +4,7 @@
 <html>
 <head>
 <title>Simple Shopping Mall</title>
-<link href="./resources/css/main.css" 
-             rel="stylesheet" type="text/css">
+<link href="./resources/css/main.css" rel="stylesheet" type="text/css">
 <script src="./resources/js/jquery-1.10.2.min.js"></script>
 <script src="./resources/js/mainScript.js" charset="utf-8" 
           type="text/javascript"></script>
@@ -22,7 +21,7 @@
 		    <c:import url="Top.jsp"/>
 		</c:otherwise>
 	</c:choose>
-	<form name="regForm" method="post" action="memberUpdateProc">
+	<form name="updateForm" method="post" action="memberUpdateProc">
 	<table class="tableclass2">
 	<thead>
 	     <tr> <th colspan=3  class="theadstyle"> 회원가입 </th></tr>
@@ -107,13 +106,36 @@
 			<button type="submit" id ="inputCheck">정보수정</button> 
 			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
 			<button type="reset" onclick="javascript:location.href='/'"> 취소 </button>
+			<button onclick="javascript:location.href='/deleteMember'"> 회원 탈퇴 </button>
 			</td>
 		</tr>
 	</tbody>
 	</table>
 	</form>
+	<form name="postF" action="" method="post">
 	<c:choose>
-		<c:when test='${mdto.m_role == "admin"}'>
+		<c:when test="${adminDto!=null}">
+			<input type="hidden" name="mem_id" value="${mdto.mem_id}">
+			<c:set var="adminDto" value="${adminDto}" />
+		</c:when>
+		<c:when test="${adminDto==null}">
+			<input type="hidden" name="mem_id" value="${mdto.mem_id}">
+		</c:when>
+	</c:choose>
+	</form>
+	<form name="postForm">
+		<input type="hidden" name="cpass">
+		<c:choose>
+			<c:when test="${adminDto!=null}">
+				<input type="hidden" name="passwd" value="${adminDto.m_passwd}">
+			</c:when>
+			<c:when test="${adminDto==null}">
+				<input type="hidden" name="passwd" value="${mdto.m_passwd}">
+			</c:when>
+		</c:choose>
+	</form>
+	<c:choose>
+		<c:when test="${adminDto!=null}">
 			<c:import url="./admin/Bottom.jsp" />
 		</c:when>
 		<c:otherwise>

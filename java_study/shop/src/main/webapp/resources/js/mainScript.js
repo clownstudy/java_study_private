@@ -228,3 +228,37 @@ $(function(){
 		form.flag.value="del";
 		form.submit();
 	}
+	
+	
+	function pwCheck(s) {
+		window.name = "update";
+		if (s == 'u') {
+			document.postF.action = 'memberUpdate';
+		} else if (s == 'd') {
+			document.updateForm.action = 'deleteMember';
+		}
+		
+		window.open("/idCheck", "idCheck",
+				"width=500, height=200, toolbar=no, location=no, menubar=no, resizable=no, scrollbar=no");
+	}
+
+	function setParentText() {
+		opener.document.postForm.cpass.value = document.getElementById("pwCheck").value;
+		window.close();
+		compare();
+	}
+
+	function compare() {
+		var pw = opener.document.postForm.passwd.value;
+		var cpw = opener.document.postForm.cpass.value;
+		// alert(pw+":"+cpw)
+		if (pw == cpw) {
+			var f = opener.document.postF;
+
+			f.submit();
+			idCheck.window.close()
+		} else {
+			alert("비밀번호 오류");
+			idCheck.window.close();
+		}
+	}

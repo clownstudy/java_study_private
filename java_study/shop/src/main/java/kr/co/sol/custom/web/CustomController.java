@@ -37,17 +37,17 @@ public class CustomController {
 	}
 	
 	
-	 @RequestMapping(value = "/idcheck")
-	  @ResponseBody
-	  public int idCheck(MemberDTO mdto, HttpServletRequest request, HttpServletResponse response,Model model ) {
-		  int cnt = 0;
-		  String id = mdto.getMem_id();
-		  if(mdto.getMem_id()!=null) {
-	 	  cnt = memberService.idCheck(id);
-		  }
-		  return cnt;
-	  }
-	 
+//	 @RequestMapping(value = "/idcheck")
+//	  @ResponseBody
+//	  public int idCheck(MemberDTO mdto, HttpServletRequest request, HttpServletResponse response,Model model ) {
+//		  int cnt = 0;
+//		  String id = mdto.getMem_id();
+//		  if(mdto.getMem_id()!=null) {
+//	 	  cnt = memberService.idCheck(id);
+//		  }
+//		  return cnt;
+//	  }
+//	 
 	  @RequestMapping(value="/registerProc")
 		 public String registerProc(MemberDTO mdto, 
 				  HttpServletRequest request, 
@@ -84,14 +84,18 @@ public class CustomController {
 			  mem_id= mdto.getMem_id();
 		    if(mdto.getM_role()!=null) {
 		    	//해당 롤에 해당 메뉴로 갖고 온다
+		    	// 관리자인 경우 해당되는 관리자용 세션만들기.
+		    	session.setAttribute("adminDto", mdto);
 		    	url="/admin/index";
+			  } else {
+				  //일반 회원정보
+				  session.setAttribute("mdto", mdto);
 			  }
 		   }
 		  if(mem_id==null) 
 			  model.addAttribute("msg", "id 또는 password 오류 입니다.");
 		  if(mem_id!=null) {
 		   // 회원정보	  
-		  session.setAttribute("mdto", mdto);
 		  //세션객체
 		  session.setAttribute("idKey", mem_id);
 		  }
@@ -114,9 +118,18 @@ public class CustomController {
 			  HttpServletResponse response,
 			  Model model) {
 		  HttpSession session = request.getSession();
+		  MemberDTO sdto = (MemberDTO) session.getAttribute("mdto");
+		  MemberDTO adminDto = (MemberDTO) session.getAttribute("mdto");
+		  if(mdto.getMem_id()==null) 
+			 mdto=sdto;
+		  mdto=memberService.memberSelect(mdto);
+		  model.addAttribute("mdto",mdto);
+		  if(sdto.getM_role()!=null && sdto.getM_role().equals("adminDto")) {
+			  model.addAttribute("adminDto",sdto);
+		  }
 		  String id = (String) session.getAttribute("idKey");
 		  // 일반 회원에서 들어오는 경우 처리
-		  // mdto.setMem_id(id);
+		   mdto.setMem_id(id);
 		  
 		  //admin에서 들어온 경우, 해당 id를 보내야 됨
 		  
@@ -143,13 +156,43 @@ public class CustomController {
 		   }
 		   HttpSession session = request.getSession();
 		   MemberDTO sdto = (MemberDTO) session.getAttribute("mdto");
+		   MemberDTO adminDto = (MemberDTO) session.getAttribute("mdto");
 		   if(sdto.getM_role()==null) {
 			   model.addAttribute("url","/");
-		   } else if(sdto.getM_role().equals("admin")) {
+		   }else if(adminDto.getM_role().equals("admin")) {
 			   model.addAttribute("url","/memberMgr");
 		   }
 		   model.addAttribute("url","/");
 		  return "MsgPage"; 
+	  }
+	  @RequestMapping("/idCheck")
+	  public String idCheck(MemberDTO mdto, 
+			  HttpServletRequest request, 
+			  HttpServletResponse response,
+			  Model model) {
+		  HttpSession session = request.getSession();
+		  session.setAttribute("mdto", (MemberDTO)session.getAttribute("mdto"));
+//		  String id = (String) session.getAttribute("idKey");
+//		  memberService.memberDelete(id);
+//		  session.removeAttribute("idKey");
+		  return "idCheck";
+	  }
+	  
+	  @RequestMapping("/deleteMember")
+	  public String deleteMember(MemberDTO mdto, HttpServletRequest request, 
+			  HttpServletResponse response, Model model) {
+		  
+		  HttpSession session = request.getSession();
+		  MemberDTO adminDto = (MemberDTO) session.getAttribute("mdto");
+		  if(adminDto==null && mdto.getM_role()==null) {
+			  model.addAttribute("url","/");
+			  session.removeAttribute("mdto");
+			  session.invalidate();
+		  }if(adminDto!=null) {
+			  model.addAttribute("url","/memberMgr");
+			  session.setAttribute("adminDto", adminDto);
+		  }
+		  return "MsgPage";
 	  }
 	  
 }

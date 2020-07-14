@@ -11,12 +11,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.sol.shop.dto.ProductDTO;
-import kr.co.sol.shop.service.ProductService;
+import kr.co.sol.shop.service.ProductMgrService;
 
 @Controller
 public class ProcutMgrController {
 	@Autowired
-	ProductService productService;
+	ProductMgrService productService;
 	
 	 @RequestMapping("/productMgr")
 	 public String productMgr(HttpServletRequest request, HttpServletResponse response, ProductDTO pdto, Model model) {

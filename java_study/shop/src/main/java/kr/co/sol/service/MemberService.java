@@ -10,4 +10,5 @@ public interface MemberService {
 	MemberDTO logonProc(MemberDTO mdto);
 	int memberUpdate(MemberDTO mdto);
 	MemberDTO memberSelect(MemberDTO mdto);
+	int memberDelete(MemberDTO mdto);
 }

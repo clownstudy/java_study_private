@@ -8,11 +8,13 @@ import lombok.ToString;
 @Setter
 @ToString
 public class ProductDTO {
+	private int rr;
 	private int no;
-	private String name;
+	private String stock;
 	private String price;
+	private String name;
 	private String detail;
 	private String pr_date;
-	private String stock;
-	private String image;
+	private String image="";
+	private final String path = "c:/study/";
 }
