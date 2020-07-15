@@ -8,5 +8,6 @@ public interface ProductMgrService {
 
 	List<ProductDTO> getProduct();
 	int insertProduct(ProductDTO pdto, MultipartFile file);
+	List<ProductDTO> productUpdate();
 
 }

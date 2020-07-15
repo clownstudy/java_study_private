@@ -41,5 +41,10 @@ public class ProductServiceImpl implements ProductMgrService{
 			}
 			return productDao.insertProduct(pdto);
 	}
+	@Override
+	public List<ProductDTO> productUpdate() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

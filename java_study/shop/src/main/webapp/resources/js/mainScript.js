@@ -229,6 +229,27 @@ $(function(){
 		form.submit();
 	}
 	
+	function productUpdate(no, flag){
+		if(flag=='U'){
+			document.update.no.value=no;
+			document.update.action="/productUpdatePro";
+			document.update.submit();
+		} else if(flag=='D'){
+			document.update.no.value=no;
+			document.update.action="/productDeletePro"
+			document.update.submit();
+		}
+	}
+	
+	function orderUpdate(form, flag){
+		form.flag.value=flag;
+		form.submit();
+	}
+	
+	function cartUpdate(form){
+		form.flag.value="update";
+		form.submit();
+	}
 	
 	function pwCheck(s) {
 		window.name = "update";

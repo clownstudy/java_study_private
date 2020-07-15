@@ -11,7 +11,7 @@
 		</choose>
 	</select>
 	<insert id="insertProduct" parameterType="pdto">
-	<selectKey keyProperty="no" resultType="int" order="before">
+	<selectKey keyProperty="no" resultType="int" order="BEFORE">
 select nvl(max(no),0)+1 no from shop_product
 </selectKey>
 Insert Into

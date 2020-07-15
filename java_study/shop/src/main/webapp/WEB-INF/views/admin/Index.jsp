@@ -15,7 +15,7 @@
 	 <c:choose>
 	  <c:when test="${idKey!=null}">
 	     <tr > 
-      	  <td style="background-color: #F1F8E0;">${mdto.m_name}님 방문해 주셔서 감사합니다.</td>
+      	  <td style="background-color: #F1F8E0;">${adto.m_name}님 방문해 주셔서 감사합니다.</td>
   	     </tr>
 	  </c:when>
 	  <c:when test="${idKey==null}">

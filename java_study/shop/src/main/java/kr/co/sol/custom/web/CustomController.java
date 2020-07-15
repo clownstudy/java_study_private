@@ -85,7 +85,8 @@ public class CustomController {
 		    if(mdto.getM_role()!=null) {
 		    	//해당 롤에 해당 메뉴로 갖고 온다
 		    	// 관리자인 경우 해당되는 관리자용 세션만들기.
-		    	session.setAttribute("adminDto", mdto);
+		    	session.setAttribute("adto", mdto);
+		    	System.out.println(session.getAttribute("adto"));
 		    	url="/admin/index";
 			  } else {
 				  //일반 회원정보

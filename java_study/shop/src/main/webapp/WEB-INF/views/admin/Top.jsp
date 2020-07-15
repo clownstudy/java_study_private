@@ -7,7 +7,7 @@
     <c:when test="${idKey==null}">
     	<script>
     		alert("로그인이 필요합니다.");
-    		location.href="/";
+    		location.href="/admin/login";
     	</script>
     </c:when>
     <c:otherwise>

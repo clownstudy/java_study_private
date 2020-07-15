@@ -42,6 +42,10 @@
 	  </c:when>
 	 </c:choose>
   <c:import url="Bottom.jsp"/>
+<form name="detail" method="post" action="/orderDetail">
+	<input type="hidden" value="${odto.no}" />	
+</form> 
+  
  
 </body>
 </html>  

@@ -1,5 +1,7 @@
 package kr.co.sol.shop.web;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -42,4 +44,26 @@ public class ProductMgrController {
 		session.setAttribute("adminDto", adminDto);
 		return "ProductMgr";
 	}
+	
+	@RequestMapping("/productDetail")
+	public String productDetail(HttpServletRequest request, 
+			HttpServletResponse response, ProductDTO pdto, Model model) {
+		List<ProductDTO> pdto2 = productMgrService.getProduct();
+		model.addAttribute("pdto",pdto2.get(0));
+		if(request.getParameter("custom")!=null
+				&& request.getParameter("custom").equals("YES")){
+			return "ProductDetail";
+		}
+		else {
+			return "admin/ProductDetail";
+		}
+	}
+	@RequestMapping("/productUpdate")
+	public String productUpdate(HttpServletRequest request, 
+			HttpServletResponse response, ProductDTO pdto, Model model) {
+	List<ProductDTO> pdto2 = productMgrService.productUpdate();
+	return "/";
+	
+}
+	
 }

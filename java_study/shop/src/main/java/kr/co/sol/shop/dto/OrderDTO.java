@@ -10,9 +10,9 @@ import lombok.ToString;
 public class OrderDTO {
 	// product table
 	private int rr; // 행번호
-	private String no; // 주문번호
+	private int no; // 주문번호
 	private int product_no; // 상품번호
-	private int pricve; // 상품가격
+	private int price; // 상품가격
 	private String pname; // 상품명
 	
 	// order table

@@ -8,6 +8,15 @@
 		o.state, o.id, m.m_name mname, p.price
  	from shop_order o join shop_product p on o.product_no = p.no
   		join member m on o.id = m.mem_id order by o.no) r ) a
-
+<choose>
+	<when test="no!=0">
+	where no = #{no}
+	</when>
+	<otherwise>
+		<if test="end!=null and end!=0">
+			where A.rr between #{start} and #{end}
+		</if>
+	</otherwise>
+</choose>
 </select>
 </mapper>
