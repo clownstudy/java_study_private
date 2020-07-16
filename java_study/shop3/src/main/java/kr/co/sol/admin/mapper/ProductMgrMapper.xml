@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.sol.shop.dao.ProductDAO">
+	<select id="getProduct" parameterType="pdto" resultType="pdto">
+<!-- 		select a.* from (select rownum rr, r.* from (select no, name, price, detail, pr_date, stock, image from shop_product order by no) r) a -->
+		
+		SELECT A.* FROM (SELECT ROWNUM RR, R.* FROM
+		(SELECT NO, NAME, PRICE, pr_date, STOCK FROM SHOP_PRODUCT ORDER BY NO) R) A
+	</select>
+	<insert id="insertProduct" parameterType="pdto">
+	<selectKey keyProperty="no" resultType="int" order="BEFORE">
+		select nvl(max(no),0)+1 no from shop_product
+		</selectKey>
+		Insert Into
+		shop_product(no, name, price, detail, pr_date, stock, image)
+		values(#{no},
+		#{name},
+		#{price},
+		#{detail},
+		SYSDATE,
+		#{stock},
+		#{image})
+	</insert>
+	</mapper>
